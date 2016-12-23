@@ -1,0 +1,13 @@
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\ADP_Tests.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\ADP_Tests.pdb
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\nunit.framework.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\RelevantCodes.ExtentReports.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.Support.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\nunit.framework.xml
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.xml
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.Support.xml
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.csprojResolveAssemblyReference.cache
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.pdb
+C:\AznariyRamazanov\VisualStudioWorkSpace\ADP_Tests\ADP_Tests\bin\Debug\ADP_Tests.dll.config
