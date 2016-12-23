@@ -130,7 +130,6 @@ namespace ADP_SeleniumFramework.resources
             {
                 standBy(3);
                 wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
-                Logger.INFO("Web Element" + " " + "<b><font color = 'blue'>" + element.Text + "</font></b>" + " " + "is found");
                 Console.WriteLine("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
             }
             catch (Exception e)

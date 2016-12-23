@@ -94,10 +94,15 @@ namespace ADP_SeleniumFramework.resources
             test.Log(LogStatus.Pass, details);
         }
 
-        public static void endLogger()
+        public static void endTest()
         {
             report.EndTest(test);
-       //    report.Flush();
+        }
+
+        public static void endLogger()
+        {
+     //       report.Flush();
+     //       report.EndTest(test);   
             report.Close();
             webDriver.getDriver(driver).Quit();
 

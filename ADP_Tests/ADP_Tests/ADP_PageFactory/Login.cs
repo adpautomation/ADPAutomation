@@ -26,6 +26,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 
         public Login():base()
         {
+            Logger.screenshot_PASS("Login page opens successully");
         }
 
         public void BOB_LoginToMobile()
@@ -44,7 +45,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
             UserName.SendKeys(BRET_SmokeTestWindow.username);
             Password.Clear();
             Password.SendKeys(BRET_SmokeTestWindow.password);
-            Logger.screenshot_PASS("Account holder credentials are given");
+  //          Logger.screenshot_PASS("Account holder credentials are given");
             click(login_button);
         }
     }

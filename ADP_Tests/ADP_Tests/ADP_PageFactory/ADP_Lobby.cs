@@ -56,6 +56,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
         public ADP_Lobby() : base()
         {
             waitVisibleText(WelcomeToADP, "Welcome to ADP TotalSource");
+            Logger.screenshot_PASS("Lobby page successfully opens");
         }
 
         public enum Tile
@@ -114,6 +115,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
                 case Tile.Admin:
                     click(headerAccountName);
                     click(Admin);
+                    Logger.INFO("Admin is clicked at the Lobby page");
                     break;
             }     
         }
@@ -122,7 +124,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
         {
             try
             {
-                Assert.AreSame("Felipe Adams", headerAccountName.Text);
+                StringAssert.AreEqualIgnoringCase("Felipe Adams", headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }
             catch (AssertionException ex)
