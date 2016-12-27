@@ -8,8 +8,13 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 {
     public class ADP_Lobby : ADP_AbstractPageFactory
     {
+        private By loading_bar = By.Id("adp-bar-loading-indicator");
+
         [FindsBy(How = How.XPath, Using = "//span[@class='user-menu-name']")]
         private IWebElement headerAccountName;
+
+        [FindsBy(How = How.XPath, Using = "//a[@ng-click='unimpersonate()']")]
+        private IWebElement unImpersonate_button;
 
         [FindsBy(How = How.XPath, Using = "//a[@ui-sref='admin.manageUsers']")]
         private IWebElement Admin;
@@ -55,6 +60,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 
         public ADP_Lobby() : base()
         {
+            waitInvisibleElement(loading_bar);
             waitVisibleText(WelcomeToADP, "Welcome to ADP TotalSource");
             Logger.screenshot_PASS("Lobby page successfully opens");
         }
@@ -132,6 +138,8 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
                 Logger.screenshot_FAIL("Impersonate test has failed");
                 Console.WriteLine(ex.ToString());
             }
+            click(headerAccountName);
+            click(unImpersonate_button);
         }
     }
 }

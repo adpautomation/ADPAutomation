@@ -130,41 +130,41 @@ namespace ADP_SeleniumFramework.resources
             {
                 standBy(3);
                 wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
-                Console.WriteLine("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
+                System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
             }
             catch (Exception e)
             {
                 Logger.screenshot_FAIL(element.Text + " " + "is not found");
-                Console.WriteLine("element that should contain text" + " " + "<<" + text + ">>" + " " + "is not found." +  "The text should be" + " " + "<<" + element.Text + ">>" + " " + "|" + " " + e.Message);
+                System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is not found." +  "The text should be" + " " + "<<" + element.Text + ">>" + " " + "|" + " " + e.Message);
             }
         }
         public static void waitVisibleElement(By by)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             try
             {
                 standBy(3);
                 wait.Until(ExpectedConditions.ElementIsVisible(by));
-                Console.WriteLine("Element" + " " + by.ToString() + " " + "is visible");
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is visible");
             }
             catch (Exception e)
             {
                 Logger.FAIL("Element" + " " + by.ToString() + " " + "is not visible");
-                Console.WriteLine("Element" + " " + by.ToString() + " " +  "is not found |" + " " + e.Message);
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " +  "is not found |" + " " + e.Message);
             }
         }
         public static void waitClickableElement(By by)
         {
-            wait = new WebDriverWait(webDriver.Initialize(browser.GoogleChrome), TimeSpan.FromSeconds(15));
+            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(15));
             try
             {
                 standBy(3);
                 wait.Until(ExpectedConditions.ElementToBeClickable(by));
-                Console.WriteLine("Element" + " " + by.ToString() + " " + "is clickable");
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is clickable");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Element" + " " + by.ToString() + " " + "is not clickable |" + " " + e.Message);
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is not clickable |" + " " + e.Message);
             }
         } 
 
@@ -172,7 +172,7 @@ namespace ADP_SeleniumFramework.resources
         {
             try
             {
-                Console.WriteLine(message + " " + element.Text + " " + "is displayed on the page");
+                System.Diagnostics.Debug.Write(message + " " + element.Text + " " + "is displayed on the page");
                 return element.Displayed;
 
             }
@@ -214,15 +214,16 @@ namespace ADP_SeleniumFramework.resources
 
         public static void waitInvisibleElement(By by)
         {
-            wait = new WebDriverWait(webDriver.Initialize(browser.GoogleChrome), TimeSpan.FromSeconds(20));
+            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(60));
             try
             {
                 standBy(1);
                 wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 60 seconds of waiting");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Element" + " " + by.ToString() + " " + "is still visible after 20 seconds of waiting |" + " " + e.Message);
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is still visible after 60 seconds of waiting |" + " " + e.Message);
             }
         }
     }

@@ -94,7 +94,10 @@
     <Compile Include="ADP_PageFactory\BRET\BRET_HomePage.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_ModifySolution.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_Solutions.cs" />
+    <Compile Include="ADP_PageFactory\EEOC\EEOC.cs" />
     <Compile Include="ADP_PageFactory\Login.cs" />
+    <Compile Include="ADP_PageFactory\VOE\VOE_Results.cs" />
+    <Compile Include="ADP_PageFactory\VOE\VOE_Search.cs" />
     <Compile Include="BOB_SmokeTestWindow.cs">
       <SubType>Form</SubType>
     </Compile>
