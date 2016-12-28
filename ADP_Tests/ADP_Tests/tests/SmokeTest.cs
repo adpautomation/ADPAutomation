@@ -79,6 +79,14 @@ namespace ADP_SeleniumFramework.tests
             ADP_Lobby lobby5 = new ADP_Lobby();
             lobby5.navigate(ADP_Lobby.Tile.WorkBench);
         }
+        [Test, Order(6)]
+        [Parallelizable]
+        public void BOB_ParentPage()
+        {
+            Logger.startLogger("BOB Parent Page", "User should be able to find parent group and access it's parent details page");
+
+        }
+
 
         [OneTimeTearDown]
         public void afterTest()
