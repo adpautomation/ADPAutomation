@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using ADP_SeleniumFramework.resources;
+using ADP_Tests;
 
 namespace ADP_SeleniumFramework.ADP_PageFactory
 {
@@ -32,10 +33,10 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 
         public void ImpersonateUser()
         {
-            inputField.SendKeys("Felipe Adams");
+            inputField.SendKeys(SmokeTestWindow.impersonatedUser);
             click(searchIcon);
             click(impersonateButton);
-            Logger.screenshot_PASS("Trying to impersonate Felipe Adams");
+            Logger.screenshot_PASS("Trying to impersonate" + " " + "<b>" + SmokeTestWindow.impersonatedUser + "</b>");
             click(impersonateButton_YES);
         }
     }

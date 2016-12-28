@@ -29,22 +29,12 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
             Logger.screenshot_PASS("Login page opens successully");
         }
 
-        public void BOB_LoginToMobile()
+        public void LoginToMobile()
         {
             UserName.Clear();
-            UserName.SendKeys(BOB_SmokeTestWindow.username);
+            UserName.SendKeys(SmokeTestWindow.username);
             Password.Clear();
-            Password.SendKeys(BOB_SmokeTestWindow.password);
-            Logger.screenshot_PASS("Account holder credentials are given");
-            click(login_button);
-            }
-
-        public void BRET_LoginToMobile()
-        {
-            UserName.Clear();
-            UserName.SendKeys(BRET_SmokeTestWindow.username);
-            Password.Clear();
-            Password.SendKeys(BRET_SmokeTestWindow.password);
+            Password.SendKeys(SmokeTestWindow.password);
   //          Logger.screenshot_PASS("Account holder credentials are given");
             click(login_button);
         }

@@ -22,10 +22,10 @@ namespace tests
         [SetUp]
         public void setup()
         {
-            BRET_SmokeTestWindow window = new BRET_SmokeTestWindow();
+            SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
             webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(BRET_SmokeTestWindow.env);
+            webDriver.openURL(SmokeTestWindow.env);
             Logger.getLogger("BRET Smoke Test");
             Logger.startLogger("BRET Smoke Test", "Quick smoke test of UI");
             
@@ -34,7 +34,7 @@ namespace tests
         public void BRET_Smoke_Test()
         {
             Login login = new Login();
-            login.BRET_LoginToMobile();
+            login.LoginToMobile();
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.BRET);
             BRET_HomePage hp = new BRET_HomePage();

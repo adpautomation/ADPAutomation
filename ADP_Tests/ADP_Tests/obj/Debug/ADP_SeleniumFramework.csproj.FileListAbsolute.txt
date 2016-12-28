@@ -27,8 +27,11 @@ C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\WebDriver.Support.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_SeleniumFramework.csprojResolveAssemblyReference.cache
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.BOB_SmokeTestWindow.resources
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.BRET_SmokeTestWindow.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_SeleniumFramework.csproj.GenerateResource.Cache
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.dll
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.pdb
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.SmokeTestWindow.resources
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\AutoItX3.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\AutoItX3_x64.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\AutoItX3.Assembly.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\AutoItX3.Assembly.xml

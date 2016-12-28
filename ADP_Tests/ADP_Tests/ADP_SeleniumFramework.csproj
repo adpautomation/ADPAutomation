@@ -41,6 +41,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoItX3.Assembly, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a646454c8d475470, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoItX.Dotnet.3.3.14.2\lib\AutoItX3.Assembly.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -98,22 +102,19 @@
     <Compile Include="ADP_PageFactory\Login.cs" />
     <Compile Include="ADP_PageFactory\VOE\VOE_Results.cs" />
     <Compile Include="ADP_PageFactory\VOE\VOE_Search.cs" />
-    <Compile Include="BOB_SmokeTestWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BOB_SmokeTestWindow.Designer.cs">
-      <DependentUpon>BOB_SmokeTestWindow.cs</DependentUpon>
-    </Compile>
+    <Compile Include="ADP_PageFactory\WorkBench\WorkBench_AM.cs" />
+    <Compile Include="ADP_PageFactory\WorkBench\WorkBench_CA.cs" />
+    <Compile Include="ADP_PageFactory\WorkBench\WorkBench_Lobby.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\Data.cs" />
     <Compile Include="resources\Environments.cs" />
     <Compile Include="resources\Logger.cs" />
     <Compile Include="resources\webDriver.cs" />
-    <Compile Include="BRET_SmokeTestWindow.cs">
+    <Compile Include="SmokeTestWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BRET_SmokeTestWindow.Designer.cs">
-      <DependentUpon>BRET_SmokeTestWindow.cs</DependentUpon>
+    <Compile Include="SmokeTestWindow.Designer.cs">
+      <DependentUpon>SmokeTestWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="tests\BOB_SmokeTest.cs" />
     <Compile Include="tests\SmokeTest.cs" />
@@ -128,11 +129,8 @@
     <Content Include="geckodriver.exe" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BOB_SmokeTestWindow.resx">
-      <DependentUpon>BOB_SmokeTestWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BRET_SmokeTestWindow.resx">
-      <DependentUpon>BRET_SmokeTestWindow.cs</DependentUpon>
+    <EmbeddedResource Include="SmokeTestWindow.resx">
+      <DependentUpon>SmokeTestWindow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>
@@ -162,8 +160,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.24.0.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.24.0.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.IEDriver.3.0.0.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.IEDriver.3.0.0.0\build\Selenium.WebDriver.IEDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\AutoItX.Dotnet.3.3.14.2\build\AutoItX.Dotnet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AutoItX.Dotnet.3.3.14.2\build\AutoItX.Dotnet.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.WebDriver.IEDriver.3.0.0.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.IEDriver.3.0.0.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="..\packages\AutoItX.Dotnet.3.3.14.2\build\AutoItX.Dotnet.targets" Condition="Exists('..\packages\AutoItX.Dotnet.3.3.14.2\build\AutoItX.Dotnet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

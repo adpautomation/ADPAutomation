@@ -15,25 +15,29 @@ namespace ADP_SeleniumFramework.tests
         private IWebDriver driver;
         Data data = new Data();
         
-
-        [SetUp]
+        
+        [OneTimeSetUp]
         public void setUp()
         {
-            BRET_SmokeTestWindow window = new BRET_SmokeTestWindow();
+            SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
             webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(BRET_SmokeTestWindow.env);
+            webDriver.openURL(SmokeTestWindow.env);
             Logger.getLogger("Smoke Test");
         }
 
         [Test, Order(1)]
         [Parallelizable]
-        public void Main_Features_SmokeTest()
+        public void Login()
         {
             Logger.startLogger("Login", "User should be able to login with valid credentials");
             Login login = new Login();
-            login.BRET_LoginToMobile();
+            login.LoginToMobile();
             Logger.endTest();
+        }
+        [Test, Order(2)]
+        [Parallelizable]
+        public void Impersonate() {
             Logger.startLogger("Impersonate User", "User should be able to impersonate another user");
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.Admin);
@@ -42,29 +46,44 @@ namespace ADP_SeleniumFramework.tests
             ADP_Lobby lobby2 = new ADP_Lobby();
             lobby2.verifyImpersonatedUserName();
             Logger.endTest();
-            Logger.startLogger("EEOC", "User should be able to open EEOC and see the results charts");
-            ADP_Lobby lobby3 = new ADP_Lobby();
-            lobby3.navigate(ADP_Lobby.Tile.EEOC);
+        }
+        [Test, Order(3)]
+        [Parallelizable]
+        public void EEOC()
+        {
+            Logger.startLogger("EEOC", "User should be able to open EEOC and see the result charts");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.EEOC);
             EEOC eeoc = new EEOC();
             eeoc.verifyContents();
             Logger.endTest();
-            Logger.startLogger("Verification of Employment", "User should be able to open EEOC and see the results charts");
+        }
+        [Test, Order(4)]
+        [Parallelizable]
+        public void VOE()
+        {
+            Logger.startLogger("Verification of Employment", "User should be able to access VOE and submit the form");
             ADP_Lobby lobby4 = new ADP_Lobby();
             lobby4.navigate(ADP_Lobby.Tile.VOE);
             VOE_Search voe_search = new VOE_Search();
             voe_search.search_ID();
             VOE_Results voe_results = new VOE_Results();
-
-
+            voe_results.submit();
+            Logger.endTest();
+        }
+        [Test, Order(5)]
+        [Parallelizable]
+        public void WorkBench()
+        {
+            Logger.startLogger("WorkBench", "User should be able to create an activity");
+            ADP_Lobby lobby5 = new ADP_Lobby();
+            lobby5.navigate(ADP_Lobby.Tile.WorkBench);
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void afterTest()
         {
             Logger.endLogger();
         }
-
     }
-
-
 }

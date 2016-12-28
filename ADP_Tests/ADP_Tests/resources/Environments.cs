@@ -20,10 +20,10 @@ namespace ADP_SeleniumFramework.resources
             switch (env)
             {
                 case Environment.dev:
-                    URL = BRET_SmokeTestWindow.env;
+                    URL = SmokeTestWindow.env;
                     break;
                 case Environment.staging:
-                    URL = BRET_SmokeTestWindow.env;
+                    URL = SmokeTestWindow.env;
                     break;
             }
             return URL; 

@@ -57,7 +57,7 @@ namespace ADP_SeleniumFramework.resources
             String time = DateTime.Now.ToString("HH : mm");
             test = report.StartTest(name, description);
             test.AssignCategory(date, time);
-            test.AssignAuthor("Environment:" + " " + "<b>" + BRET_SmokeTestWindow.env + "</b>");
+            test.AssignAuthor("Environment:" + " " + "<b>" + SmokeTestWindow.env + "</b>");
         }
         public static String takeScreenShot()
         {

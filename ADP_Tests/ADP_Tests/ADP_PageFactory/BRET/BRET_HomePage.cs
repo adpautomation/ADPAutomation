@@ -51,10 +51,10 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 
         public void search_ERFP()
         {
-            BRET_search.SendKeys(BRET_SmokeTestWindow.bret_id);
+            BRET_search.SendKeys(SmokeTestWindow.bret_id);
             click(search_button);
             waitInvisibleElement(loaderModal);
-            Logger.screenshot_PASS("BRET ID" + " " + "<b>" + BRET_SmokeTestWindow.bret_id + "</b>" + " " + "is chosen for this test");
+            Logger.screenshot_PASS("BRET ID" + " " + "<b>" + SmokeTestWindow.bret_id + "</b>" + " " + "is chosen for this test");
             click(found_ERFP);
         }
 

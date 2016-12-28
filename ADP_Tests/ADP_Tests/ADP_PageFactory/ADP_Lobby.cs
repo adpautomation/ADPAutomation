@@ -1,4 +1,5 @@
 ﻿using ADP_SeleniumFramework.resources;
+using ADP_Tests;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -130,7 +131,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
         {
             try
             {
-                StringAssert.AreEqualIgnoringCase("Felipe Adams", headerAccountName.Text);
+                StringAssert.AreEqualIgnoringCase(SmokeTestWindow.impersonatedUser, headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }
             catch (AssertionException ex)

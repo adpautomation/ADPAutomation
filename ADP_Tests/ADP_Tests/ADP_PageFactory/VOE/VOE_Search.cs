@@ -1,4 +1,5 @@
 ﻿using ADP_SeleniumFramework.resources;
+using ADP_Tests;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -26,8 +27,8 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
 
         public void search_ID()
         {
-            searchField.SendKeys("11111111");
-            Logger.screenshot_PASS("Using 11111111 as Employment ID");
+            searchField.SendKeys(SmokeTestWindow.validEmployeeID);
+            Logger.screenshot_PASS("Using" + " " + "<b>" + SmokeTestWindow.validEmployeeID + "</b>" + " " + "as Employment ID");
             click(verifyID_button);
         }
     }

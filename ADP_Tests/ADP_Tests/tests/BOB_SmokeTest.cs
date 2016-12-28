@@ -21,10 +21,10 @@ namespace tests
         [SetUp]
         public void setup()
         {
-            BOB_SmokeTestWindow window = new BOB_SmokeTestWindow();
+            SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
             webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(BOB_SmokeTestWindow.env);
+            webDriver.openURL(SmokeTestWindow.env);
             Logger.getLogger("BOB Smoke Test");
             Logger.startLogger("BOB Smoke Test", "Quick smoke test of UI");
         }
@@ -33,7 +33,7 @@ namespace tests
         public void BOB_Smoke_Test()
         {
             Login login = new Login();
-            login.BOB_LoginToMobile();
+            login.LoginToMobile();
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
             BenefitsBOB_HomePage bob = new BenefitsBOB_HomePage();
