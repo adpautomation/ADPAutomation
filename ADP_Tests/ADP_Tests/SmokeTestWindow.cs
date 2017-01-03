@@ -20,6 +20,7 @@ namespace ADP_Tests
         public static string env;
         public static int impersonatedUser_index;
         public static string impersonatedUser;
+        public static string validCompanyCode;
         public SmokeTestWindow()
         {
             InitializeComponent();
@@ -189,6 +190,16 @@ namespace ADP_Tests
         private void employeeID_TextChanged(object sender, EventArgs e)
         {
             validEmployeeID = this.employeeID.Text;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void companyCode_TextChanged(object sender, EventArgs e)
+        {
+            validCompanyCode = this.companyCode.Text;
         }
     }
 }

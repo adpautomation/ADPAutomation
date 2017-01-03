@@ -2,15 +2,10 @@
 using ADP_Tests;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
 {
-   public class VOE_Search: ADP_AbstractPageFactory
+    public class VOE_Search: ADP_AbstractPageFactory
     {
         private By title = By.Id("adp-breadcrumb-VOE");
 

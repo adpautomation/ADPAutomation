@@ -131,6 +131,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
         {
             try
             {
+                waitInvisibleElement(loading_bar);
                 StringAssert.AreEqualIgnoringCase(SmokeTestWindow.impersonatedUser, headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }

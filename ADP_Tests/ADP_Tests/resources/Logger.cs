@@ -107,6 +107,10 @@ namespace ADP_SeleniumFramework.resources
             webDriver.getDriver(driver).Quit();
 
         }
+        public static void closeWebDriver()
+        {
+            webDriver.getDriver(driver).Quit();
+        }
 
         private static DirectoryInfo newFolder()
         {

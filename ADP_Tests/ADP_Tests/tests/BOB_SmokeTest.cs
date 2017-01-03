@@ -36,7 +36,7 @@ namespace tests
             login.LoginToMobile();
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
-            BenefitsBOB_HomePage bob = new BenefitsBOB_HomePage();
+            BOB_HomePage bob = new BOB_HomePage();
             bob.verifyFilters();
 
 

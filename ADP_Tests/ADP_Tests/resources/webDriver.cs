@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.PhantomJS;
 using System.IO;
 
 namespace ADP_SeleniumFramework.resources
@@ -21,7 +22,7 @@ namespace ADP_SeleniumFramework.resources
 
         public enum browser
         {
-            GoogleChrome, Firefox, Edge, Remote
+            GoogleChrome, Firefox, Edge, Remote, Phantom
         }
 
         private static DesiredCapabilities caps()
@@ -47,7 +48,7 @@ namespace ADP_SeleniumFramework.resources
             if (driver == null)
                 switch (Browser)
                 {
-                    case browser.GoogleChrome:
+                        case browser.GoogleChrome:                    
                         driver = new ChromeDriver(@"C:\AznariyRamazanov\Installed software\ChromeDriver");
                         driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
                         driver.Manage().Window.Maximize();
@@ -65,7 +66,11 @@ namespace ADP_SeleniumFramework.resources
                     case browser.Remote:
                         driver = new RemoteWebDriver(new Uri(Grid_URL), caps());
                         driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        driver.Manage().Window.Maximize();
+                        driver.Manage().Window.Maximize();                        
+                        break;
+                    case browser.Phantom:
+                        driver = new PhantomJSDriver();
+                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -94,13 +99,15 @@ namespace ADP_SeleniumFramework.resources
         }
 
         //The method specifically written fot BenefitsBOB test
-        public static void newTab(IWebElement element)
+        public static void newTab()
         {
-            String currentTab = driver.CurrentWindowHandle;
-            Actions newTab =  new Actions(driver);
-            newTab.KeyDown(Keys.Control).KeyDown(Keys.Shift).Click(element).KeyUp(Keys.Control).KeyUp(Keys.Shift).Build().Perform();
-            var openedTab = driver.WindowHandles[1];
-            driver.SwitchTo().Window(openedTab);
+            IJavaScriptExecutor jse = ((IJavaScriptExecutor)driver);
+            jse.ExecuteScript("window.open();");
+            /*      String currentTab = driver.CurrentWindowHandle;
+                  Actions newTab =  new Actions(driver);
+                  newTab.KeyDown(Keys.Control).KeyDown(Keys.Shift).Click(element).KeyUp(Keys.Control).KeyUp(Keys.Shift).Build().Perform(); */
+                  var openedTab = driver.WindowHandles[1];
+                  driver.SwitchTo().Window(openedTab);
         }
 
         public static void closeTab()
@@ -189,7 +196,7 @@ namespace ADP_SeleniumFramework.resources
             {
                 if (element.Displayed)
                 {
-                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     wait.Until(ExpectedConditions.ElementToBeClickable(element));
                     ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0," + element.Location.Y + ")");
                     element.Click();
@@ -198,6 +205,7 @@ namespace ADP_SeleniumFramework.resources
                 else
                 {
                     Logger.screenshot_FAIL("Unable to click on" + " " + element.Text);
+                    System.Diagnostics.Debug.Write("Unable to click on" + " " + element.Text);
                 }
             }
         }
@@ -215,16 +223,16 @@ namespace ADP_SeleniumFramework.resources
 
         public static void waitInvisibleElement(By by)
         {
-            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(60));
+            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(90));
             try
             {
                 standBy(1);
                 wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
-                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 60 seconds of waiting");
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 90 seconds of waiting");
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is still visible after 60 seconds of waiting |" + " " + e.Message);
+                System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is still visible after 90 seconds of waiting |" + " " + e.Message);
             }
         }
     }

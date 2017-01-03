@@ -45,6 +45,10 @@
       <HintPath>..\packages\AutoItX.Dotnet.3.3.14.2\lib\AutoItX3.Assembly.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,7 @@
     <Compile Include="ADP_PageFactory\ADP_Lobby.cs" />
     <Compile Include="ADP_PageFactory\BenefitsBOB\BOB_HomePage.cs" />
     <Compile Include="ADP_PageFactory\BenefitsBOB\BOB_ParentDetails.cs" />
+    <Compile Include="ADP_PageFactory\BenefitsBOB\BOB_Solutions.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_AddClass.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_ClassesEmployeesSetup_Modal.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_Details.cs" />
@@ -117,6 +122,7 @@
       <DependentUpon>SmokeTestWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="tests\BOB_SmokeTest.cs" />
+    <Compile Include="tests\PlanComparisonTest.cs" />
     <Compile Include="tests\SmokeTest.cs" />
     <Compile Include="tests\BRET_SmokeTest.cs" />
   </ItemGroup>
@@ -126,7 +132,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
+      <Link>phantomjs.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="geckodriver.exe" />
+    <Content Include="phantomjs-license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SmokeTestWindow.resx">

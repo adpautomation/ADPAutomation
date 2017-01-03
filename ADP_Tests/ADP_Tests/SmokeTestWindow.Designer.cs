@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.employeeID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.companyCode = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorMessage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,12 +180,33 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "VOE. Please provide valid EmpID";
             // 
+            // companyCode
+            // 
+            this.companyCode.Location = new System.Drawing.Point(264, 47);
+            this.companyCode.MaxLength = 3;
+            this.companyCode.Name = "companyCode";
+            this.companyCode.Size = new System.Drawing.Size(212, 22);
+            this.companyCode.TabIndex = 14;
+            this.companyCode.TextChanged += new System.EventHandler(this.companyCode_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(261, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(215, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "BOB. Please provide testable CC";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // SmokeTestWindow
             // 
             this.AcceptButton = this.StartTest;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 333);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.companyCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.employeeID);
             this.Controls.Add(this.label2);
@@ -224,5 +247,7 @@
         private System.Windows.Forms.ComboBox Impersonate_listOfUsers;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox employeeID;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox companyCode;
     }
 }

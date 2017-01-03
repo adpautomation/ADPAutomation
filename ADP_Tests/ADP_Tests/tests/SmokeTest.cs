@@ -3,41 +3,43 @@ using ADP_SeleniumFramework.resources;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using ADP_Tests;
-using ADP_Tests.ADP_PageFactory.EEOC;
+using ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB;
+using ADP_SeleniumFramework.ADP_PageFactory.EEOC;
 using ADP_SeleniumFramework.ADP_PageFactory.VOE;
+using ADP_SeleniumFramework.ADP_PageFactory.WorkBench;
 
 namespace ADP_SeleniumFramework.tests
 {
     [TestFixture]
-    [Parallelizable]
     public class SmokeTest
     {
-        private IWebDriver driver;
-        Data data = new Data();
-        
-        
         [OneTimeSetUp]
-        public void setUp()
+        public void OneTimesetUp()
         {
             SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
             webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
             webDriver.openURL(SmokeTestWindow.env);
+            Login login = new Login();
+            login.LoginToMobile();
             Logger.getLogger("Smoke Test");
+        }
+        [OneTimeTearDown]
+        public void afterEntireTest()
+        {
+            Logger.endLogger();
+        }
+        [SetUp]
+        public void setUp()
+        {
+            webDriver.newTab();
+            webDriver.openURL(SmokeTestWindow.env);
         }
 
         [Test, Order(1)]
         [Parallelizable]
-        public void Login()
+        public void Impersonate()
         {
-            Logger.startLogger("Login", "User should be able to login with valid credentials");
-            Login login = new Login();
-            login.LoginToMobile();
-            Logger.endTest();
-        }
-        [Test, Order(2)]
-        [Parallelizable]
-        public void Impersonate() {
             Logger.startLogger("Impersonate User", "User should be able to impersonate another user");
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.Admin);
@@ -45,9 +47,9 @@ namespace ADP_SeleniumFramework.tests
             admin.ImpersonateUser();
             ADP_Lobby lobby2 = new ADP_Lobby();
             lobby2.verifyImpersonatedUserName();
-            Logger.endTest();
         }
-        [Test, Order(3)]
+
+        [Test, Order(2)]
         [Parallelizable]
         public void EEOC()
         {
@@ -56,42 +58,98 @@ namespace ADP_SeleniumFramework.tests
             lobby.navigate(ADP_Lobby.Tile.EEOC);
             EEOC eeoc = new EEOC();
             eeoc.verifyContents();
-            Logger.endTest();
         }
-        [Test, Order(4)]
+
+        [Test, Order(3)]
         [Parallelizable]
         public void VOE()
         {
             Logger.startLogger("Verification of Employment", "User should be able to access VOE and submit the form");
-            ADP_Lobby lobby4 = new ADP_Lobby();
-            lobby4.navigate(ADP_Lobby.Tile.VOE);
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.VOE);
             VOE_Search voe_search = new VOE_Search();
             voe_search.search_ID();
             VOE_Results voe_results = new VOE_Results();
             voe_results.submit();
-            Logger.endTest();
         }
-        [Test, Order(5)]
+
+        [Test, Order(4)]
         [Parallelizable]
         public void WorkBench()
         {
             Logger.startLogger("WorkBench", "User should be able to create an activity");
-            ADP_Lobby lobby5 = new ADP_Lobby();
-            lobby5.navigate(ADP_Lobby.Tile.WorkBench);
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.WorkBench);
+            WorkBench_Lobby wrklobby = new WorkBench_Lobby();
+            wrklobby.navegateToLobbyPage();
         }
+
+        [Test, Order(5)]
+        [Parallelizable]
+        public void BOB_ParentLookUp()
+        {
+            Logger.startLogger("BOB Home Page", "User should be able to open BOB LookUp page and apply different filters");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
+            BOB_HomePage home = new BOB_HomePage();
+            home.verifyContents();
+            home.verifyFilters();
+            home.navigateClientLevel();
+        }
+
         [Test, Order(6)]
         [Parallelizable]
-        public void BOB_ParentPage()
+        public void BOB_ParentSummary()
         {
-            Logger.startLogger("BOB Parent Page", "User should be able to find parent group and access it's parent details page");
+            Logger.startLogger("BOB Parent Page", "User should be able to download Roster and WSE Presentation");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
+            BOB_HomePage home = new BOB_HomePage();
+            home.navigateClientLevel();
+            BOB_ParentDetails details = new BOB_ParentDetails();
+            details.verifyContents();
+            details.download_WSE_Presentation();
+            details.download_Roster();
+        }
 
+        [Test, Order(7)]
+        [Parallelizable]
+        public void BOB_Solutions()
+        {
+            Logger.startLogger("BOB Solutions", "User should be able to navigate to Solutions page");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
+            BOB_HomePage home = new BOB_HomePage();
+            home.navigateClientLevel();
+            BOB_ParentDetails details = new BOB_ParentDetails();
+            details.navigateSolutions();
+            BOB_Solutions solutions = new BOB_Solutions();
+            solutions.verifyContents();
+        }
+
+        [Test, Order(8)]
+        [Parallelizable]
+        public void BOB_UnmappedPlans()
+        {
+            Logger.startLogger("Plan Comparison Test", "Medical plans should not contain UNMAPPED");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
+            BOB_HomePage home = new BOB_HomePage();
+            home.navigateClientLevel();
+            BOB_ParentDetails details = new BOB_ParentDetails();
+            details.navigateSolutions();
+            BOB_Solutions solutions = new BOB_Solutions();
+            solutions.verifyUNMAPPED();
+        }
+
+        [TearDown]
+        [Parallelizable]
+        public void teardown()
+        {
+            webDriver.closeTab();
+            Logger.endTest();
         }
 
 
-        [OneTimeTearDown]
-        public void afterTest()
-        {
-            Logger.endLogger();
-        }
     }
 }

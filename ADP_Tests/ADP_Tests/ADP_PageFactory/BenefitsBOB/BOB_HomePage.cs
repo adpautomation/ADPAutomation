@@ -1,25 +1,39 @@
-﻿using ADP_SeleniumFramework.ADP_PageFactory;
-using ADP_SeleniumFramework.resources;
+﻿using ADP_SeleniumFramework.resources;
+using ADP_Tests;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
 {
-    public class BenefitsBOB_HomePage : ADP_AbstractPageFactory
+    public class BOB_HomePage : ADP_AbstractPageFactory
     {
         private By title = By.XPath("//div[@class='layout-align-start-center layout-row']//a[@class='md-primary md-hue-1 md-button ng-scope md-ink-ripple']");
+
+        private By loading_bar = By.Id("adp-bar-loading-indicator");
+
+        [FindsBy(How = How.XPath, Using = ("//div[@class='col-xs-4 pb-10 text-center']//a[.='Clear All']"))]
+        private IWebElement clearAll;
 
         [FindsBy(How = How.XPath, Using = ("//div[@class='key-value-edit']//button[@class = 'btn edit-button pull-left']"))]
         private IWebElement clear;
 
-        [FindsBy(How = How.XPath, Using = ("//div[@class='col-xs-4 pb-10 text-center']//a[.='Clear All']"))]
-        private IWebElement clearAll;
+        [FindsBy(How = How.XPath, Using = ("//a[@class='font-size-18 mb-6 ng-binding']"))]
+        private IWebElement companyName;
+
+        [FindsBy(How = How.XPath, Using = ("//input[@name='paygroup']"))]
+        private IWebElement paygroupCodeOrName_field;
+
+        [FindsBy(How = How.XPath, Using = ("//button[@ng-click='findPaygroup()']"))]
+        private IWebElement search_icon;
+
+        [FindsBy(How = How.XPath, Using = ("//button[.='BOB']"))]
+        private IWebElement BOB_button;
+
+        [FindsBy(How = How.XPath, Using = ("//button[.='OE']"))]
+        private IWebElement OE_button;
+
+        [FindsBy(How = How.XPath, Using = ("//button[@aria-label='Save Results']"))]
+        private IWebElement saveResults_button;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='key-select']//button[@class='btn key-select ng-binding']")]
         private IWebElement filterBy_button;
@@ -57,7 +71,7 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Ops Owner']")]
         private IWebElement filterBy_Ops_Owner;
 
-        [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='In OE]")]
+        [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='In OE']")]
         private IWebElement filterBy_In_OE;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Client Status']")]
@@ -258,189 +272,119 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[63]")]
         private IWebElement revenueCenter_West_Palm;
 
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Central')]]")]
+        private IWebElement market_Central;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Mid Atlantic')]]")]
+        private IWebElement market_MidAtlantic;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Northeast')]]")]
+        private IWebElement market_Northeast;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'South')]]")]
+        private IWebElement market_South;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'West')]]")]
+        private IWebElement market_West;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'EV4')]]")]
+        private IWebElement system_EV4;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'WFN')]]")]
+        private IWebElement system_WFN;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Exact Match')]]")]
+        private IWebElement products_ExactMatch;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Medical')]]")]
+        private IWebElement products_Medical;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Dental')]]")]
+        private IWebElement products_Dental;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Vision')]]")]
+        private IWebElement products_Vision;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Life')]]")]
+        private IWebElement products_Life;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'STD')]]")]
+        private IWebElement products_STD;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'LTD')]]")]
+        private IWebElement products_LTD;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'HSA')]]")]
+        private IWebElement products_HSA;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'FSA')]]")]
+        private IWebElement products_FSA;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'401k')]]")]
+        private IWebElement products_401K;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Yes')]]")]
+        private IWebElement inOE_YES;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'No')]]")]
+        private IWebElement inOE_NO;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Active')]]")]
+        private IWebElement clientStatus_Active;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Future Start')]]")]
+        private IWebElement clientStatus_FutureStart;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Future Term')]]")]
+        private IWebElement clientStatus_FutureTerm;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Terminated')]]")]
+        private IWebElement clientStatus_Terminated;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Untouched')]]")]
+        private IWebElement renewalStatus_Untouched;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'In Progress')]]")]
+        private IWebElement renewalStatus_inProgress;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Client Ready')]]")]
+        private IWebElement renewalStatus_ClientReady;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Signed CBE')]]")]
+        private IWebElement renewalStatus_SignedCBE;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Submission In Progress')]]")]
+        private IWebElement renewalStatus_SubmissionInProgress;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Client Review')]]")]
+        private IWebElement renewalStatus_ClientReview;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Resubmission Required')]]")]
+        private IWebElement renewalStatus_ResubmissionRequired;
 
 
-
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[1]")]
-        private IWebElement companyName_1;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[2]")]
-        private IWebElement companyName_2;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[3]")]
-        private IWebElement companyName_3;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[4]")]
-        private IWebElement companyName_4;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[5]")]
-        private IWebElement companyName_5;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[6]")]
-        private IWebElement companyName_6;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[7]")]
-        private IWebElement companyName_7;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[8]")]
-        private IWebElement companyName_8;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[9]")]
-        private IWebElement companyName_9;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[10]")]
-        private IWebElement companyName_10;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[11]")]
-        private IWebElement companyName_11;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[12]")]
-        private IWebElement companyName_12;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[13]")]
-        private IWebElement companyName_13;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[14]")]
-        private IWebElement companyName_14;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[15]")]
-        private IWebElement companyName_15;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[16]")]
-        private IWebElement companyName_16;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[17]")]
-        private IWebElement companyName_17;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[18]")]
-        private IWebElement companyName_18;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[19]")]
-        private IWebElement companyName_19;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[20]")]
-        private IWebElement companyName_20;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[21]")]
-        private IWebElement companyName_21;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[22]")]
-        private IWebElement companyName_22;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[23]")]
-        private IWebElement companyName_23;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[24]")]
-        private IWebElement companyName_24;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[25]")]
-        private IWebElement companyName_25;
-
-        [FindsBy(How = How.XPath, Using = "(//div[@class='bob-row ng-scope layout-row']//a[@class='font-size-18 mb-6 ng-binding'])[26]")]
-        private IWebElement companyName_26;
 
         private By parentDetails = By.XPath("(//span[.='Parent Details'])[1]");
 
-        public BenefitsBOB_HomePage() : base()
+        public BOB_HomePage() : base()
         {
             waitVisibleElement(title);
         }
 
-        public void loopThroughCompanies()
+        public void verifyContents()
         {
-            clear.Click();
-            clearAll.Click();
-            standBy(2);
-            newTab(companyName_1);
-            BOB_ParentDetails pd = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_2);
-            BOB_ParentDetails pd2 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_3);
-            BOB_ParentDetails pd3 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_4);
-            BOB_ParentDetails pd4 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_5);
-            BOB_ParentDetails pd5 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_6);
-            BOB_ParentDetails pd6 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_7);
-            BOB_ParentDetails pd7 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_8);
-            BOB_ParentDetails pd8 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_9);
-            BOB_ParentDetails pd9 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_10);
-            BOB_ParentDetails pd10 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_11);
-            BOB_ParentDetails pd11 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_12);
-            BOB_ParentDetails pd12 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_13);
-            BOB_ParentDetails pd13 = new BOB_ParentDetails();
-            pd.headerVerification();
-            scrollDown(companyName_13);
-            newTab(companyName_1);
-            BOB_ParentDetails pd14 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_2);
-            BOB_ParentDetails pd15 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_3);
-            BOB_ParentDetails pd16 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_4);
-            BOB_ParentDetails pd17 = new BOB_ParentDetails();
-            pd.headerVerification();
-            scrollDown(companyName_4);
-            newTab(companyName_1);
-            BOB_ParentDetails pd18 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_2);
-            BOB_ParentDetails pd19 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_3);
-            BOB_ParentDetails pd20 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_4);
-            BOB_ParentDetails pd21 = new BOB_ParentDetails();
-            pd.headerVerification();
-            scrollDown(companyName_4);
-            newTab(companyName_1);
-            BOB_ParentDetails pd22 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_2);
-            BOB_ParentDetails pd23 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_3);
-            BOB_ParentDetails pd24 = new BOB_ParentDetails();
-            pd.headerVerification();
-            newTab(companyName_4);
-            BOB_ParentDetails pd25 = new BOB_ParentDetails();
-            pd.headerVerification();
-            scrollDown(companyName_4);
-            newTab(companyName_1);
-            BOB_ParentDetails pd26 = new BOB_ParentDetails();
-            pd.headerVerification();
-
-
-
-            //       hoverOverElement(companyName, );
-            //      scrollDown(companyName);
-
-
+            if ((isElementDisplayed(paygroupCodeOrName_field, "")) &&
+                (isElementDisplayed(search_icon, ""))&&
+                (isElementDisplayed(filterBy_button, ""))&&
+                (isElementDisplayed(saveResults_button, ""))&&
+                (isElementDisplayed(BOB_button, ""))&&
+                (isElementDisplayed(OE_button, ""))) {
+                Logger.screenshot_PASS("All the header elements are displayed correctly");
+            }
+            else
+            {
+                Logger.screenshot_FAIL("Some of the header elements are missing on the page");
+            }
         }
 
         public void verifyFilters()
@@ -523,8 +467,107 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
             click(filterBy_button);
             click(filterBy_Markets);
             click(filterBy_dropDown);
-
-
+            try
+            {
+                isElementDisplayed(market_Central, "");
+                isElementDisplayed(market_MidAtlantic, "");
+                isElementDisplayed(market_Northeast, "");
+                isElementDisplayed(market_South, "");
+                isElementDisplayed(market_West, "");
+                Logger.screenshot_PASS("All the markets are listed correctly");
+            }
+            catch(NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("Markets listed incorrectly. Missing" + " " + ex.Message);
+            }
+            click(filterBy_button);
+            click(filterBy_System);
+            click(filterBy_dropDown);
+            try
+            {
+                isElementDisplayed(system_EV4, "");
+                isElementDisplayed(system_WFN, "");
+                Logger.screenshot_PASS("All the systems are displayed correctly");
+            }catch(NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("Systems listed incorrectly. Missing" + " " + ex.Message);
+            }
+            click(filterBy_button);
+            click(filterBy_Products);
+            click(filterBy_dropDown);
+            try
+            {
+                isElementDisplayed(products_ExactMatch, "");
+                isElementDisplayed(products_Medical, "");
+                isElementDisplayed(products_Dental, "");
+                isElementDisplayed(products_Vision, "");
+                isElementDisplayed(products_Life, "");
+                isElementDisplayed(products_STD, "");
+                isElementDisplayed(products_LTD, "");
+                isElementDisplayed(products_HSA, "");
+                isElementDisplayed(products_FSA, "");
+                isElementDisplayed(products_401K, "");
+                Logger.screenshot_PASS("All the products are listed correctly");
+            }
+            catch (NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("Products listed incorrectly. Missing" + " " + ex.Message);
+            }
+            click(filterBy_button);
+            click(filterBy_In_OE);
+            click(filterBy_dropDown);
+            try
+            {
+                isElementDisplayed(inOE_YES, "");
+                isElementDisplayed(inOE_NO, "");
+                Logger.screenshot_PASS("In OE items are displayed correctly");
+            }
+            catch (NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("In OE items listed incorrectly. Missing" + " " + ex.Message);
+            }
+            click(filterBy_button);
+            click(filterBy_Client_Status);
+            click(filterBy_dropDown);
+            try
+            {
+                isElementDisplayed(clientStatus_Active, "");
+                isElementDisplayed(clientStatus_FutureStart, "");
+                isElementDisplayed(clientStatus_FutureTerm, "");
+                isElementDisplayed(clientStatus_Terminated, "");
+                Logger.screenshot_PASS("All client statuses are displayed correctly");
+            }
+            catch (NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("Client statuses listed incorrectly. Missing" + " " + ex.Message);
+            }
+            click(filterBy_button);
+            click(filterBy_OE_Renewal_Status);
+            click(filterBy_dropDown);
+            try
+            {
+                isElementDisplayed(renewalStatus_Untouched, "");
+                isElementDisplayed(renewalStatus_inProgress, "");
+                isElementDisplayed(renewalStatus_ClientReady, "");
+                isElementDisplayed(renewalStatus_ClientReview, "");
+                isElementDisplayed(renewalStatus_SignedCBE, "");
+                isElementDisplayed(renewalStatus_SubmissionInProgress, "");
+                isElementDisplayed(renewalStatus_ResubmissionRequired, "");
+                Logger.screenshot_PASS("All client renewal statuses are displayed correctly");
+            }
+            catch (NoSuchElementException ex)
+            {
+                Logger.screenshot_FAIL("Client renewal statuses listed incorrectly. Missing" + " " + ex.Message);
+            }
+        }
+        public void navigateClientLevel()
+        {
+            waitInvisibleElement(loading_bar);
+            click(paygroupCodeOrName_field);
+            paygroupCodeOrName_field.SendKeys(SmokeTestWindow.validCompanyCode);
+            click(search_icon);
+            waitVisibleText(companyName, "");
+            click(companyName);
         }
     }
 }

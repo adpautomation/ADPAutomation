@@ -15,6 +15,8 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
 
         private By pdfDownload = By.XPath("//div[@class='toast-message']");
 
+        private By loading_bar = By.Id("adp-bar-loading-indicator");
+
         [FindsBy(How = How.XPath, Using = "//a[@class='logo']")]
         private IWebElement logo;
 
@@ -43,21 +45,23 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
             string[] filesToDelete = Directory.GetFiles(folder);
             foreach (string fileToDelete in filesToDelete)
             File.Delete(fileToDelete);
+            waitInvisibleElement(loading_bar);
             click(requestorInfo_field);
             requestorInfo_field.SendKeys("This is test. Please disregard any given information");
             click(showPayInformation_checkmark);
             click(submit_button);
             waitVisibleElement(pdfDownload);
-            standBy(2);
+            standBy(5);
             string[] files = System.IO.Directory.GetFiles(folder, "*.pdf", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
-                Logger.INFO("VOE file is successfully downloaded to" + " " + folder);
+                Logger.screenshot_PASS("VOE file is successfully downloaded to" + " " + folder);
             }
             else
             {
                 Logger.FAIL("Unable to download VOE file");
             }
+            waitInvisibleElement(loading_bar);
             click(logo);
         }
     }
