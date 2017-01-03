@@ -7,6 +7,7 @@ using ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB;
 using ADP_SeleniumFramework.ADP_PageFactory.EEOC;
 using ADP_SeleniumFramework.ADP_PageFactory.VOE;
 using ADP_SeleniumFramework.ADP_PageFactory.WorkBench;
+using ADP_SeleniumFramework.ADP_PageFactory.CAT;
 
 namespace ADP_SeleniumFramework.tests
 {
@@ -128,6 +129,19 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(8)]
+        [Parallelizable]
+        public void CAT()
+        {
+            Logger.startLogger("CAT Home Page", "User should be able to navigate to CAT page");
+            ADP_Lobby lobby = new ADP_Lobby();
+            lobby.navigate(ADP_Lobby.Tile.ClientAdminTool);
+            CAT_HomePage home = new CAT_HomePage();
+            home.navigateClientLevel(); 
+
+        }
+
+
+        [Test, Order(9)]
         [Parallelizable]
         public void BOB_UnmappedPlans()
         {
