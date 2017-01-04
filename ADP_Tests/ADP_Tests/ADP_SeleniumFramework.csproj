@@ -103,7 +103,10 @@
     <Compile Include="ADP_PageFactory\BRET\BRET_HomePage.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_ModifySolution.cs" />
     <Compile Include="ADP_PageFactory\BRET\BRET_Solutions.cs" />
+    <Compile Include="ADP_PageFactory\CAT\CAT_DisabilityRatingsManager.cs" />
+    <Compile Include="ADP_PageFactory\CAT\CAT_ExceptionManager.cs" />
     <Compile Include="ADP_PageFactory\CAT\CAT_HomePage.cs" />
+    <Compile Include="ADP_PageFactory\CAT\CAT_RateLevelManager.cs" />
     <Compile Include="ADP_PageFactory\CAT\CAT_Summary.cs" />
     <Compile Include="ADP_PageFactory\EEOC\EEOC.cs" />
     <Compile Include="ADP_PageFactory\Login.cs" />

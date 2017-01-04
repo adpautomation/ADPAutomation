@@ -1,7 +1,6 @@
 ﻿using ADP_SeleniumFramework.ADP_PageFactory;
 using ADP_SeleniumFramework.resources;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using ADP_Tests;
 using ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB;
 using ADP_SeleniumFramework.ADP_PageFactory.EEOC;
@@ -12,8 +11,10 @@ using ADP_SeleniumFramework.ADP_PageFactory.CAT;
 namespace ADP_SeleniumFramework.tests
 {
     [TestFixture]
+    [Parallelizable]
     public class SmokeTest
     {
+
         [OneTimeSetUp]
         public void OneTimesetUp()
         {
@@ -38,7 +39,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(1)]
-        [Parallelizable]
         public void Impersonate()
         {
             Logger.startLogger("Impersonate User", "User should be able to impersonate another user");
@@ -51,7 +51,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(2)]
-        [Parallelizable]
         public void EEOC()
         {
             Logger.startLogger("EEOC", "User should be able to open EEOC and see the result charts");
@@ -62,7 +61,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(3)]
-        [Parallelizable]
         public void VOE()
         {
             Logger.startLogger("Verification of Employment", "User should be able to access VOE and submit the form");
@@ -75,7 +73,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(4)]
-        [Parallelizable]
         public void WorkBench()
         {
             Logger.startLogger("WorkBench", "User should be able to create an activity");
@@ -86,7 +83,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(5)]
-        [Parallelizable]
         public void BOB_ParentLookUp()
         {
             Logger.startLogger("BOB Home Page", "User should be able to open BOB LookUp page and apply different filters");
@@ -99,7 +95,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(6)]
-        [Parallelizable]
         public void BOB_ParentSummary()
         {
             Logger.startLogger("BOB Parent Page", "User should be able to download Roster and WSE Presentation");
@@ -114,7 +109,6 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(7)]
-        [Parallelizable]
         public void BOB_Solutions()
         {
             Logger.startLogger("BOB Solutions", "User should be able to navigate to Solutions page");
@@ -129,31 +123,24 @@ namespace ADP_SeleniumFramework.tests
         }
 
         [Test, Order(8)]
-        [Parallelizable]
         public void CAT()
         {
             Logger.startLogger("CAT Home Page", "User should be able to navigate to CAT page");
             ADP_Lobby lobby = new ADP_Lobby();
             lobby.navigate(ADP_Lobby.Tile.ClientAdminTool);
             CAT_HomePage home = new CAT_HomePage();
-            home.navigateClientLevel(); 
-
-        }
-
-
-        [Test, Order(9)]
-        [Parallelizable]
-        public void BOB_UnmappedPlans()
-        {
-            Logger.startLogger("Plan Comparison Test", "Medical plans should not contain UNMAPPED");
-            ADP_Lobby lobby = new ADP_Lobby();
-            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
-            BOB_HomePage home = new BOB_HomePage();
             home.navigateClientLevel();
-            BOB_ParentDetails details = new BOB_ParentDetails();
-            details.navigateSolutions();
-            BOB_Solutions solutions = new BOB_Solutions();
-            solutions.verifyUNMAPPED();
+            CAT_Summary summary = new CAT_Summary();
+            summary.verifyContents();
+            summary.navigate(CAT_Summary.Tab.RateLevelManager);
+            CAT_RateLevelManager rate = new CAT_RateLevelManager();
+            rate.verifyContents();
+            summary.navigate(CAT_Summary.Tab.ExceptionManager);
+            CAT_ExceptionManager manager = new CAT_ExceptionManager();
+            manager.verifyContents();
+            summary.navigate(CAT_Summary.Tab.DisabilityRatingsManager);
+            CAT_DisabilityRatingsManager disability = new CAT_DisabilityRatingsManager();
+            disability.verifyContents();
         }
 
         [TearDown]
@@ -163,7 +150,5 @@ namespace ADP_SeleniumFramework.tests
             webDriver.closeTab();
             Logger.endTest();
         }
-
-
     }
 }

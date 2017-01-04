@@ -373,17 +373,18 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
 
         public void verifyContents()
         {
-            if ((isElementDisplayed(paygroupCodeOrName_field, "")) &&
-                (isElementDisplayed(search_icon, ""))&&
-                (isElementDisplayed(filterBy_button, ""))&&
-                (isElementDisplayed(saveResults_button, ""))&&
-                (isElementDisplayed(BOB_button, ""))&&
-                (isElementDisplayed(OE_button, ""))) {
-                Logger.screenshot_PASS("All the header elements are displayed correctly");
-            }
-            else
+            try
             {
-                Logger.screenshot_FAIL("Some of the header elements are missing on the page");
+                isElementDisplayed(paygroupCodeOrName_field, "");
+                isElementDisplayed(search_icon, "");
+                isElementDisplayed(filterBy_button, "");
+                isElementDisplayed(saveResults_button, "");
+                isElementDisplayed(BOB_button, "");
+                isElementDisplayed(OE_button, "");
+                Logger.screenshot_PASS("All the header elements are displayed correctly");
+            }catch(NoSuchElementException ex)
+            {
+                Logger.FAIL("Not all the page elements are displayed on the page. Missing" + " " + ex.Message);
             }
         }
 

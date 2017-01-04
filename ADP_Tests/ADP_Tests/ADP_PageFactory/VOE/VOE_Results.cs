@@ -64,5 +64,12 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
             waitInvisibleElement(loading_bar);
             click(logo);
         }
+        public void submit2()
+        {
+            waitInvisibleElement(loading_bar);
+            click(requestorInfo_field);
+            requestorInfo_field.SendKeys("This is test. Please disregard any given information");
+            submit_button.SendKeys("C:/AznariyRamazanov/TestResults/");
+        }
     }
 }
