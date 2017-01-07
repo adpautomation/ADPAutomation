@@ -1,27 +1,20 @@
-﻿using System;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using ADP_SeleniumFramework.resources;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Interactions;
-using System.Collections;
-using ADP_Tests;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory
+namespace ADP_Tests.ADP_PageFactory
 {
 
-    class Login: ADP_AbstractPageFactory
+    class Login: AdpAbstractPageFactory
     {
         
         [FindsBy(How = How.Id, Using = "txUserName")]
-        private IWebElement UserName;
+        private IWebElement _userName;
 
         [FindsBy(How = How.Id, Using = "txPassword")]
-        private IWebElement Password;
+        private IWebElement _password;
 
         [FindsBy(How = How.Id, Using = "bLogin")]
-        private IWebElement login_button;
+        private IWebElement _loginButton;
 
 
         public Login():base()
@@ -30,12 +23,12 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
 
         public void LoginToMobile()
         {
-            UserName.Clear();
-            UserName.SendKeys(SmokeTestWindow.username);
-            Password.Clear();
-            Password.SendKeys(SmokeTestWindow.password);
+            _userName.Clear();
+            _userName.SendKeys(SmokeTestWindow.Username);
+            _password.Clear();
+            _password.SendKeys(SmokeTestWindow.Password);
    //         Logger.screenshot_PASS("Given valid user creddentials");
-            click(login_button);
+            Click(_loginButton);
         }
     }
 }

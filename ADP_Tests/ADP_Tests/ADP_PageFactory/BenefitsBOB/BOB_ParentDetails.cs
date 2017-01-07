@@ -1,107 +1,103 @@
-﻿using System;
+﻿using System.IO;
+using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using ADP_SeleniumFramework.resources;
-using System.IO;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
+namespace ADP_Tests.ADP_PageFactory.BenefitsBOB
 {
-    public class BOB_ParentDetails : ADP_AbstractPageFactory
+    public class BobParentDetails : AdpAbstractPageFactory
     {
-        string folder = "C:/Users/ramazana/Downloads";
+        private string _folder = "C:/Users/ramazana/Downloads";
 
-        private By title = By.Id("adp-breadcrumb-Parent Details");
+        private By _title = By.Id("adp-breadcrumb-Parent Details");
 
-        private By loading_bar = By.Id("adp-bar-loading-indicator");
+        private By _loadingBar = By.Id("adp-bar-loading-indicator");
 
         [FindsBy(How = How.XPath, Using = "//h3[@class='no-margin ng-binding']")]
-        private IWebElement companyName_text;
+        private IWebElement _companyNameText;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Select Download']")]
-        private IWebElement choosePlanType_dropDown;
+        private IWebElement _choosePlanTypeDropDown;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Download WSE Presentation']")]
-        private IWebElement WSE_Presentation;
+        private IWebElement _wsePresentation;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Download Roster']")]
-        private IWebElement Roster;
+        private IWebElement _roster;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Select Download...']")]
-        private IWebElement downloadPlan_button;
+        private IWebElement _downloadPlanButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Benefit Solutions']")]
-        private IWebElement benefitSolutions_button;
+        private IWebElement _benefitSolutionsButton;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Market']")]
-        private IWebElement market_text;
+        private IWebElement _marketText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Revenue Center']")]
-        private IWebElement revenueCenter_text;
+        private IWebElement _revenueCenterText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='ACR']")]
-        private IWebElement ACR_text;
+        private IWebElement _acrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='PTR']")]
-        private IWebElement PTR_text;
+        private IWebElement _ptrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='CRE']")]
-        private IWebElement CRE_text;
+        private IWebElement _creText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='HWE']")]
-        private IWebElement HWE_text;
+        private IWebElement _hweText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='# Of WSE']")]
-        private IWebElement WSE_text;
+        private IWebElement _wseText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='HRBP']")]
-        private IWebElement HRBP_text;
+        private IWebElement _hrbpText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='BSR']")]
-        private IWebElement BSR_text;
+        private IWebElement _bsrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='PSR']")]
-        private IWebElement PSR_text;
+        private IWebElement _psrText;
 
         [FindsBy(How = How.XPath, Using = "//span[.='      WSE Presentation will be emailed to you shortly    ']")]
-        private IWebElement WSE_Email_Presentation_Sent;
+        private IWebElement _wseEmailPresentationSent;
 
 
 
-        public BOB_ParentDetails() : base()
+        public BobParentDetails() : base()
         {
-            waitVisibleElement(title);
+            WaitVisibleElement(_title);
         }
 
-        public void verifyContents()
+        public void VerifyContents()
         {
-            try
+            if (IsElementDisplayed(_marketText)) { }
+            if(IsElementDisplayed(_revenueCenterText)) { }
+            if (IsElementDisplayed(_acrText)) { }
+            if (IsElementDisplayed(_ptrText)) { }
+            if (IsElementDisplayed(_creText)) { }
+            if (IsElementDisplayed(_hweText)) { }
+            if (IsElementDisplayed(_wseText)) { }
+            if (IsElementDisplayed(_hrbpText)) { }
+            if (IsElementDisplayed(_bsrText)) { }
+            if (IsElementDisplayed(_psrText))
             {
-                isElementDisplayed(market_text, "");
-                isElementDisplayed(revenueCenter_text, "");
-                isElementDisplayed(ACR_text, "");
-                isElementDisplayed(PTR_text, "");
-                isElementDisplayed(CRE_text, "");
-                isElementDisplayed(HWE_text, "");
-                isElementDisplayed(WSE_text, "");
-                isElementDisplayed(HRBP_text, "");
-                isElementDisplayed(BSR_text, "");
-                isElementDisplayed(PSR_text, "");
                 Logger.screenshot_PASS("All the header icons are displayed");
-            } catch (NoSuchElementException ex) {
-                Logger.screenshot_FAIL("Header icons are displayed incorrectly. Missing" + "" + ex.Message);
             }
         }
         public void download_WSE_Presentation()
         {
-            click(choosePlanType_dropDown);
-            standBy(1);
-            click(WSE_Presentation);
-            standBy(1);
-            click(downloadPlan_button);
-            waitInvisibleElement(loading_bar);
+            Click(_choosePlanTypeDropDown);
+            StandBy(1);
+            Click(_wsePresentation);
+            StandBy(1);
+            Click(_downloadPlanButton);
+            WaitInvisibleElement(_loadingBar);
             try
             {
-                isElementDisplayed(WSE_Email_Presentation_Sent, "");
+                IsElementDisplayed(_wseEmailPresentationSent);
                 Logger.screenshot_PASS("WSE Presentation should be sent to the user's email");
             }catch(NoSuchElementException ex)
             {
@@ -110,29 +106,29 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
         }
         public void download_Roster()
         {
-            string[] filesToDelete = Directory.GetFiles(folder);
+            string[] filesToDelete = Directory.GetFiles(_folder);
             foreach (string fileToDelete in filesToDelete)
             File.Delete(fileToDelete);
-            click(choosePlanType_dropDown);
-            standBy(1);
-            click(Roster);
-            standBy(1);
-            click(downloadPlan_button);
-            standBy(5);
-            string[] files = System.IO.Directory.GetFiles(folder, "*.xlsx", SearchOption.AllDirectories);
+            Click(_choosePlanTypeDropDown);
+            StandBy(1);
+            Click(_roster);
+            StandBy(1);
+            Click(_downloadPlanButton);
+            StandBy(5);
+            string[] files = System.IO.Directory.GetFiles(_folder, "*.xlsx", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
-                Logger.screenshot_PASS("Roster file is successfully downloaded to" + " " + folder);
+                Logger.screenshot_PASS("Roster file is successfully downloaded to" + " " + _folder);
             }
             else
             {
-                Logger.FAIL("Unable to download Roster file");
+                Logger.Fail("Unable to download Roster file");
             }
         }
-        public void navigateSolutions()
+        public void NavigateSolutions()
         {
-            waitInvisibleElement(loading_bar);
-            click(benefitSolutions_button);
+            WaitInvisibleElement(_loadingBar);
+            Click(_benefitSolutionsButton);
         }
     }
 }

@@ -1,121 +1,117 @@
-﻿using RelevantCodes.ExtentReports;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Support.Events;
-using System.IO;
-using System.Collections;
+﻿using System;
 using System.Drawing.Imaging;
-using System.Drawing.Design;
-using ADP_SeleniumFramework.resources;
+using System.IO;
+using System.Text;
 using NUnit.Framework;
-using ADP_Tests;
+using OpenQA.Selenium;
+using RelevantCodes.ExtentReports;
 
-namespace ADP_SeleniumFramework.resources
+namespace ADP_Tests.resources
 {
     public class Logger
     {
-        private static IWebDriver driver;
-        private static String curentTime = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-        private static String basePath = "C:\\AznariyRamazanov\\TestResults\\";
+        private static IWebDriver _driver;
+        private static String _curentTime = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+        private static String _basePath = "C:\\AznariyRamazanov\\TestResults\\";
         [ThreadStatic]
-        private static Logger instance = null;
-        private static String ReportPath = System.IO.Path.Combine(basePath, ("Report_" + curentTime + "\\"));
+        private static Logger _instance = null;
+        private static String _reportPath = System.IO.Path.Combine(_basePath, ("Report_" + _curentTime + "\\"));
         [ThreadStatic]
-        public static ExtentReports report;
-        private static String testName;
+        public static ExtentReports Report;
+        private static String _testName;
         [ThreadStatic]
-        private static ExtentTest test;
+        private static ExtentTest _test;
 
 
         public Logger(String testSuiteName)
         {
-            testName = testSuiteName;
+            _testName = testSuiteName;
         }
 
-        public static Logger getLogger(String testSuiteName)
+        public static Logger GetLogger(String testSuiteName)
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = new Logger(testSuiteName);
-                System.IO.Directory.CreateDirectory(ReportPath);
+                _instance = new Logger(testSuiteName);
+                System.IO.Directory.CreateDirectory(_reportPath);
                 String currentTimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-                String HTMLReportPath = ReportPath + testSuiteName + "_" + currentTimeStamp + ".html";
-                report = new ExtentReports(HTMLReportPath, false, DisplayOrder.NewestFirst);
+                String htmlReportPath = _reportPath + testSuiteName + "_" + currentTimeStamp + ".html";
+                Report = new ExtentReports(htmlReportPath, false, DisplayOrder.NewestFirst);
             }
-            return instance;
+            return _instance;
 
         }
 
-        public static void startLogger(String name, String description)
+        public static void StartLogger(String name, String description)
         {
             String date = DateTime.Now.ToString("MMMM dd, yyyy");
             String time = DateTime.Now.ToString("HH : mm");
-            test = report.StartTest(name, description);
-            test.AssignCategory(date, time);
-            test.AssignAuthor("Environment:" + " " + "<b>" + SmokeTestWindow.env + "</b>");
+            _test = Report.StartTest(name, description);
+            _test.AssignCategory(date, time);
+            _test.AssignAuthor("Environment:" + " " + "<b>" + SmokeTestWindow.Env + "</b>");
         }
-        public static String takeScreenShot()
+        public static String TakeScreenShot()
         {
             String currentTimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-            String imageAbsolutePath = ReportPath + currentTimeStamp + ".png";
+            String imageAbsolutePath = _reportPath + currentTimeStamp + ".png";
             String imageRelativePath = currentTimeStamp + ".png";
             var fileName = new StringBuilder(imageAbsolutePath);
-            var screenShot = ((ITakesScreenshot)webDriver.getDriver(driver)).GetScreenshot();
+            var screenShot = ((ITakesScreenshot)WebDriver.GetDriver(_driver)).GetScreenshot();
             screenShot.SaveAsFile(fileName.ToString(), ImageFormat.Png);
             return imageRelativePath;
         }
 
         public static void screenshot_FAIL(String details)
         {
-            test.Log(LogStatus.Fail, test.AddScreenCapture(Logger.takeScreenShot()), "<b><font color = 'red'>" + details + "</font></b>");
+            _test.Log(LogStatus.Fail, _test.AddScreenCapture(Logger.TakeScreenShot()), "<b><font color = 'red'>" + details + "</font></b>");
         }
         public static void screenshot_PASS(String details)
         {
-            test.Log(LogStatus.Pass, test.AddScreenCapture(Logger.takeScreenShot()), details);
+            _test.Log(LogStatus.Pass, _test.AddScreenCapture(Logger.TakeScreenShot()), details);
 
         }
-        public static void INFO(String details)
+
+        public static void screenshot_WARNING(String details)
         {
-            test.Log(LogStatus.Info, details);
+            _test.Log(LogStatus.Warning, _test.AddScreenCapture(Logger.TakeScreenShot()), details);
         }
-
-        public static void FAIL(String details)
+        public static void Info(String details)
         {
-            test.Log(LogStatus.Fail, "<b><font color = 'red'>" + details + "</font></b>");
+            _test.Log(LogStatus.Info, details);
         }
 
-        public static void PASS(String details)
+        public static void Fail(String details)
         {
-            test.Log(LogStatus.Pass, details);
+            _test.Log(LogStatus.Fail, "<b><font color = 'red'>" + details + "</font></b>");
         }
 
-        public static void endTest()
+        public static void Pass(String details)
         {
-            report.EndTest(test);
+            _test.Log(LogStatus.Pass, details);
         }
 
-        public static void endLogger()
+        public static void EndTest()
+        {
+            Report.EndTest(_test);
+        }
+
+        public static void EndLogger()
         {
      //       report.Flush();
      //       report.EndTest(test);   
-            report.Close();
-            webDriver.getDriver(driver).Quit();
+            Report.Close();
+            WebDriver.GetDriver(_driver).Quit();
 
         }
-        public static void closeWebDriver()
+        public static void CloseWebDriver()
         {
-            webDriver.getDriver(driver).Quit();
+            WebDriver.GetDriver(_driver).Quit();
         }
 
-        private static DirectoryInfo newFolder()
+        private static DirectoryInfo NewFolder()
         {
-            DirectoryInfo info = new DirectoryInfo(basePath);
-            info.CreateSubdirectory(basePath);
+            DirectoryInfo info = new DirectoryInfo(_basePath);
+            info.CreateSubdirectory(_basePath);
             return info;
         }
 

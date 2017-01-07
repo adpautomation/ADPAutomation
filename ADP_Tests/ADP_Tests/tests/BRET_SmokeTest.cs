@@ -1,33 +1,27 @@
-﻿using ADP_SeleniumFramework.ADP_PageFactory;
-using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.ADP_PageFactory;
+using ADP_Tests.ADP_PageFactory.BRET;
+using ADP_Tests.resources;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ADP_SeleniumFramework.ADP_PageFactory.BRET;
-using ADP_Tests;
 
-namespace tests
+namespace ADP_Tests.tests
 {
     [TestFixture]
     [Parallelizable]
-    public class BRET_SmokeTest
+    public class BretSmokeTest
     {
-        private IWebDriver driver;
-        Data data = new Data();
+        private IWebDriver _driver;
+        Data _data = new Data();
 
         [SetUp]
-        public void setup()
+        public void Setup()
         {
             SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
-            webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(SmokeTestWindow.env);
-            Logger.getLogger("BRET Smoke Test");
-            Logger.startLogger("BRET Smoke Test", "Quick smoke test of UI");
+            WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
+            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            Logger.GetLogger("BRET Smoke Test");
+            Logger.StartLogger("BRET Smoke Test", "Quick smoke test of UI");
             
         }
         [Test]
@@ -35,25 +29,25 @@ namespace tests
         {
             Login login = new Login();
             login.LoginToMobile();
-            ADP_Lobby lobby = new ADP_Lobby();
-            lobby.navigate(ADP_Lobby.Tile.BRET);
-            BRET_HomePage hp = new BRET_HomePage();
+            AdpLobby lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.Bret);
+            BretHomePage hp = new BretHomePage();
             hp.search_ERFP();
-            BRET_Details details = new BRET_Details();
-            details.verifyHeaderInfo();
-            details.navigateToSolutions();
-            BRET_Solutions solutions = new BRET_Solutions();
-            solutions.verifyHeaderInfo();
-            solutions.navigateToClassesAndEmployeesSetUp();
-            BRET_ClassesEmployeesSetup_Modal setup = new BRET_ClassesEmployeesSetup_Modal();
-            setup.verifyModalContent();
-            setup.navigateToAddClass();
-            BRET_AddClass addClass = new BRET_AddClass();
-            addClass.verifyModalContents();
-            setup.closeModal();
-            solutions.navigateToModifySolution();
-            BRET_ModifySolution modify = new BRET_ModifySolution();
-            modify.verifyContents();
+            BretDetails details = new BretDetails();
+            details.VerifyHeaderInfo();
+            details.NavigateToSolutions();
+            BretSolutions solutions = new BretSolutions();
+            solutions.VerifyHeaderInfo();
+            solutions.NavigateToClassesAndEmployeesSetUp();
+            BretClassesEmployeesSetupModal setup = new BretClassesEmployeesSetupModal();
+            setup.VerifyModalContent();
+            setup.NavigateToAddClass();
+            BretAddClass addClass = new BretAddClass();
+            addClass.VerifyModalContents();
+            setup.CloseModal();
+            solutions.NavigateToModifySolution();
+            BretModifySolution modify = new BretModifySolution();
+            modify.VerifyContents();
 
 
 
@@ -64,9 +58,9 @@ namespace tests
 
         }
         [TearDown]
-        public void afterTest()
+        public void AfterTest()
         {
-            Logger.endLogger();
+            Logger.EndLogger();
         }
 
     }

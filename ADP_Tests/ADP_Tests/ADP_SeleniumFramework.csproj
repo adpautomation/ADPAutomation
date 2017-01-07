@@ -91,6 +91,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ADP_PageFactory\ACAWizard\ACAWizard_HomePage.cs" />
+    <Compile Include="ADP_PageFactory\ACAWizard\ACAWizard_Report.cs" />
     <Compile Include="ADP_PageFactory\ADP_Admin.cs" />
     <Compile Include="ADP_PageFactory\ADP_AbstractPageFactory.cs" />
     <Compile Include="ADP_PageFactory\ADP_Lobby.cs" />

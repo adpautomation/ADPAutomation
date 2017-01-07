@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ADP_Tests.ADP_PageFactory.WorkBench
 {
-    class WorkBench_CA
+    class WorkBenchCa
     {
     }
 }

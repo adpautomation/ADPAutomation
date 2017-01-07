@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ADP_Tests;
 
-namespace ADP_SeleniumFramework.resources
+namespace ADP_Tests.resources
 {
     public class Environments
     {
-        public String URL;
+        public String Url;
         public enum Environment
         {
-            dev, staging
+            Dev, Staging
         }
 
-        public String getEnv(Environment env)
+        public String GetEnv(Environment env)
         {
             switch (env)
             {
-                case Environment.dev:
-                    URL = SmokeTestWindow.env;
+                case Environment.Dev:
+                    Url = SmokeTestWindow.Env;
                     break;
-                case Environment.staging:
-                    URL = SmokeTestWindow.env;
+                case Environment.Staging:
+                    Url = SmokeTestWindow.Env;
                     break;
             }
-            return URL; 
+            return Url; 
         }
     }
 }

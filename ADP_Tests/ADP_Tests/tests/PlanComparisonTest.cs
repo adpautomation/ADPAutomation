@@ -1,10 +1,9 @@
-﻿using ADP_SeleniumFramework.ADP_PageFactory;
-using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.ADP_PageFactory;
+using ADP_Tests.ADP_PageFactory.BenefitsBOB;
+using ADP_Tests.resources;
 using NUnit.Framework;
-using ADP_Tests;
-using ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB;
 
-namespace ADP_SeleniumFramework.tests
+namespace ADP_Tests.tests
 {
     [TestFixture]
     [Parallelizable]
@@ -12,35 +11,35 @@ namespace ADP_SeleniumFramework.tests
     {
 
         [SetUp]
-        public void setUp()
+        public void SetUp()
         {
             SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
-            webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(SmokeTestWindow.env);
+            WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
+            WebDriver.OpenUrl(SmokeTestWindow.Env);
             Login login = new Login();
             login.LoginToMobile();
-            Logger.getLogger("Plan Comparison Test");
+            Logger.GetLogger("Plan Comparison Test");
         }
 
         [Test]
         public void UnmappedPlansTest()
         {
-            Logger.startLogger("Plan Comparison Test", "Medical plans should not contain UNMAPPED");
-            ADP_Lobby lobby = new ADP_Lobby();
-            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
-            BOB_HomePage home = new BOB_HomePage();
-            home.navigateClientLevel();
-            BOB_ParentDetails details = new BOB_ParentDetails();
-            details.navigateSolutions();
-            BOB_Solutions solutions = new BOB_Solutions();
-            solutions.verifyUNMAPPED();
+            Logger.StartLogger("Plan Comparison Test", "Medical plans should not contain UNMAPPED");
+            AdpLobby lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.BenefitsBob);
+            BobHomePage home = new BobHomePage();
+            home.NavigateClientLevel();
+            BobParentDetails details = new BobParentDetails();
+            details.NavigateSolutions();
+            BobSolutions solutions = new BobSolutions();
+            solutions.VerifyUnmapped();
        }
         [TearDown]
-        public void teardown()
+        public void Teardown()
         {
-            Logger.endTest();
-            Logger.endLogger();
+            Logger.EndTest();
+            Logger.EndLogger();
         }
     }      
  }

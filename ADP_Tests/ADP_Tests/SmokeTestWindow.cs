@@ -12,15 +12,16 @@ namespace ADP_Tests
 {
     public partial class SmokeTestWindow : Form
     {
-        public static string bret_id;
-        public static string username;
-        public static string password;
-        public static string validEmployeeID;
-        public static int env_index;
-        public static string env;
-        public static int impersonatedUser_index;
-        public static string impersonatedUser;
-        public static string validCompanyCode;
+        public static string BretId;
+        public static string Username;
+        public static string Password;
+        public static string ValidEmployeeId;
+        public static int EnvIndex;
+        public static string Env;
+        public static int ImpersonatedUserIndex;
+        public static string ImpersonatedUser;
+        public static string ValidCompanyCode;
+        public static string ValidFein;
         public SmokeTestWindow()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace ADP_Tests
 
         private void BRET_ID_TextChanged(object sender, EventArgs e)
         {
-            bret_id = this.BRET_ID.Text;
+            BretId = this.BRET_ID.Text;
             if (string.IsNullOrWhiteSpace(BRET_ID.Text))
             {
                 errorMessage.SetError(BRET_ID, "Please provide valid BRET ID");
@@ -42,7 +43,7 @@ namespace ADP_Tests
 
         private void username_field_TextChanged(object sender, EventArgs e)
         {
-            username = this.username_field.Text;
+            Username = this.username_field.Text;
             if (string.IsNullOrWhiteSpace(username_field.Text))
             {
                 errorMessage.SetError(username_field, "Please provide the username");
@@ -100,7 +101,7 @@ namespace ADP_Tests
 
         private void password_field_TextChanged(object sender, EventArgs e)
         {
-            password = this.password_field.Text;
+            Password = this.password_field.Text;
             if (string.IsNullOrWhiteSpace(password_field.Text)){
                 errorMessage.SetError(password_field, "Please provide the password");
             }
@@ -121,14 +122,14 @@ namespace ADP_Tests
 
         private void env_dropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            env_index = this.env_dropDown.SelectedIndex;
+            EnvIndex = this.env_dropDown.SelectedIndex;
             if (env_dropDown.SelectedIndex == 0)
             {
-                env = "http://bsg-mobile-dev/dist/#/lobby";
+                Env = "http://bsg-mobile-dev/dist/#/lobby";
             }
             else if (env_dropDown.SelectedIndex == 1)
             {
-                env = "http://bsg-mobile-staging/dist/#/lobby";
+                Env = "http://bsg-mobile-staging/dist/#/lobby";
             }
         }
 
@@ -159,37 +160,37 @@ namespace ADP_Tests
 
         private void Impersonate_listOfUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            impersonatedUser_index = this.Impersonate_listOfUsers.SelectedIndex;
+            ImpersonatedUserIndex = this.Impersonate_listOfUsers.SelectedIndex;
             if (Impersonate_listOfUsers.SelectedIndex == 0)
             {
-                impersonatedUser = "Felipe Adams";
+                ImpersonatedUser = "Felipe Adams";
             }else if(Impersonate_listOfUsers.SelectedIndex == 1)
             {
-                impersonatedUser = "Allen Lee";
+                ImpersonatedUser = "Allen Lee";
             }else if(Impersonate_listOfUsers.SelectedIndex == 2)
             {
-                impersonatedUser = "Ross Herrera";
+                ImpersonatedUser = "Ross Herrera";
             }else if(Impersonate_listOfUsers.SelectedIndex == 3)
             {
-                impersonatedUser = "Jesus Rodriguez";
+                ImpersonatedUser = "Jesus Rodriguez";
             }else if(Impersonate_listOfUsers.SelectedIndex == 4)
             {
-                impersonatedUser = "Giovanni Perez";
+                ImpersonatedUser = "Giovanni Perez";
             }else if(Impersonate_listOfUsers.SelectedIndex == 5)
             {
-                impersonatedUser = "Robert Lyn";
+                ImpersonatedUser = "Robert Lyn";
             }else if(Impersonate_listOfUsers.SelectedIndex == 6)
             {
-                impersonatedUser = "Aznariy Ramazanov";
+                ImpersonatedUser = "Aznariy Ramazanov";
             }else if(Impersonate_listOfUsers.SelectedIndex == 7)
             {
-                impersonatedUser = "Michelle Supple";
+                ImpersonatedUser = "Michelle Supple";
             }
         }
 
         private void employeeID_TextChanged(object sender, EventArgs e)
         {
-            validEmployeeID = this.employeeID.Text;
+            ValidEmployeeId = this.employeeID.Text;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -199,7 +200,12 @@ namespace ADP_Tests
 
         private void companyCode_TextChanged(object sender, EventArgs e)
         {
-            validCompanyCode = this.companyCode.Text;
+            ValidCompanyCode = this.companyCode.Text;
+        }
+
+        private void FEIN_TextChanged(object sender, EventArgs e)
+        {
+            ValidFein = this.FEIN.Text;
         }
     }
 }

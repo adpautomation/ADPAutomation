@@ -1,143 +1,142 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using System;
-using OpenQA.Selenium.Support.UI;
-using System.Threading;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.PhantomJS;
-using System.IO;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 
-namespace ADP_SeleniumFramework.resources
+namespace ADP_Tests.resources
 {
-    public class webDriver
+    public class WebDriver
     {
         
-        [ThreadStatic] private static IWebDriver driver = null;
-        [ThreadStatic] private static WebDriverWait wait;
-        private static String Grid_URL = "http://localhost:4444/wd/hub";
+        [ThreadStatic] private static IWebDriver _driver = null;
+        [ThreadStatic] private static WebDriverWait _wait;
+        private static String _gridUrl = "http://localhost:4444/wd/hub";
         
 
-        public enum browser
+        public enum Browser
         {
             GoogleChrome, Firefox, Edge, Remote, Phantom
         }
 
-        private static DesiredCapabilities caps()
+        private static DesiredCapabilities Caps()
         {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.SetCapability(CapabilityType.BrowserName, "chrome");
             return caps;
         }
 
-        public static IWebDriver getDriver(IWebDriver Idriver)
+        public static IWebDriver GetDriver(IWebDriver idriver)
         {
-            if(driver == null)
+            if(_driver == null)
             {
-                Idriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                Idriver.Manage().Window.Maximize();
+                idriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                idriver.Manage().Window.Maximize();
             }
-            return driver;
+            return _driver;
         }
 
 
-        public static IWebDriver Initialize(browser Browser)
+        public static IWebDriver Initialize(Browser browser)
         {
-            if (driver == null)
-                switch (Browser)
+            if (_driver == null)
+                switch (browser)
                 {
-                        case browser.GoogleChrome:                    
-                        driver = new ChromeDriver(@"C:\AznariyRamazanov\Installed software\ChromeDriver");
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        driver.Manage().Window.Maximize();
+                        case Browser.GoogleChrome:                    
+                        _driver = new ChromeDriver(@"C:\AznariyRamazanov\Installed software\ChromeDriver");
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                        _driver.Manage().Window.Maximize();
                         break;
-                    case browser.Edge:
-                        driver = new EdgeDriver(@"C:\AznariyRamazanov\Installed software\MicrosoftWebDriver");
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        driver.Manage().Window.Maximize();
+                    case Browser.Edge:
+                        _driver = new EdgeDriver(@"C:\AznariyRamazanov\Installed software\MicrosoftWebDriver");
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                        _driver.Manage().Window.Maximize();
                         break;
-                    case browser.Firefox:
-                        driver = new FirefoxDriver();
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        driver.Manage().Window.Maximize();
+                    case Browser.Firefox:
+                        _driver = new FirefoxDriver();
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                        _driver.Manage().Window.Maximize();
                         break;
-                    case browser.Remote:
-                        driver = new RemoteWebDriver(new Uri(Grid_URL), caps());
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        driver.Manage().Window.Maximize();                        
+                    case Browser.Remote:
+                        _driver = new RemoteWebDriver(new Uri(_gridUrl), Caps());
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                        _driver.Manage().Window.Maximize();                        
                         break;
-                    case browser.Phantom:
-                        driver = new PhantomJSDriver();
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+                    case Browser.Phantom:
+                        _driver = new PhantomJSDriver();
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-            return driver;
+            return _driver;
         }
 
-        public static void scrollDown(IWebElement element)
+        public static void ScrollDown(IWebElement element)
         {
             element.SendKeys(Keys.PageDown);
           //  IJavaScriptExecutor jse = (IJavaScriptExecutor)driverWeb.initDriver(browser.GoogleChrome);
           //  jse.ExecuteScript("window.scrollBy(0, 250)", "");
     }
-        public static void scrollUp(IWebElement element)
+        public static void ScrollUp(IWebElement element)
         {
             element.SendKeys(Keys.PageDown);
          //   IJavaScriptExecutor jse = (IJavaScriptExecutor)webDriver.Initialize(browser.GoogleChrome);
          //   jse.ExecuteScript("window.scrollBy(0, -250)", "");
         }
         
-        public static void hoverOverElement(IWebElement element)
+        public static void HoverOverElement(IWebElement element)
         {
-            Actions actions = new Actions(driver);
+            Actions actions = new Actions(_driver);
             actions.MoveToElement(element);
             actions.Perform();
         }
 
         //The method specifically written fot BenefitsBOB test
-        public static void newTab()
+        public static void NewTab()
         {
-            IJavaScriptExecutor jse = ((IJavaScriptExecutor)driver);
+            IJavaScriptExecutor jse = ((IJavaScriptExecutor)_driver);
             jse.ExecuteScript("window.open();");
             /*      String currentTab = driver.CurrentWindowHandle;
                   Actions newTab =  new Actions(driver);
                   newTab.KeyDown(Keys.Control).KeyDown(Keys.Shift).Click(element).KeyUp(Keys.Control).KeyUp(Keys.Shift).Build().Perform(); */
-                  var openedTab = driver.WindowHandles[1];
-                  driver.SwitchTo().Window(openedTab);
+                  var openedTab = _driver.WindowHandles[1];
+                  _driver.SwitchTo().Window(openedTab);
         }
 
-        public static void closeTab()
+        public static void CloseTab()
         {
-            String currentTab = driver.CurrentWindowHandle;
-            driver.SwitchTo().Window(currentTab).Close();
-            driver.SwitchTo().Window(driver.WindowHandles[0]);
+            String currentTab = _driver.CurrentWindowHandle;
+            _driver.SwitchTo().Window(currentTab).Close();
+            _driver.SwitchTo().Window(_driver.WindowHandles[0]);
 
         }
 
          
 
-        public static void openURL(String URL)
+        public static void OpenUrl(String url)
         {
-            driver.Navigate().GoToUrl(URL);
+            _driver.Navigate().GoToUrl(url);
         }
 
-        public static void standBy(int seconds)
+        public static void StandBy(int seconds)
         {
             Thread.Sleep(seconds * 1000);
         }
 
-        public static void waitVisibleText(IWebElement element, String text)
+        public static void WaitVisibleText(IWebElement element, String text)
         {
 
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
             try
             {
-                standBy(3);
-                wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
+                StandBy(3);
+                _wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
                 System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
             }
             catch (Exception e)
@@ -146,28 +145,28 @@ namespace ADP_SeleniumFramework.resources
                 System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is not found." +  "The text should be" + " " + "<<" + element.Text + ">>" + " " + "|" + " " + e.Message);
             }
         }
-        public static void waitVisibleElement(By by)
+        public static void WaitVisibleElement(By by)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(60));
             try
             {
-                standBy(3);
-                wait.Until(ExpectedConditions.ElementIsVisible(by));
+                StandBy(3);
+                _wait.Until(ExpectedConditions.ElementIsVisible(by));
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is visible");
             }
             catch (Exception e)
             {
-                Logger.FAIL("Element" + " " + by.ToString() + " " + "is not visible");
+                Logger.Fail("Element" + " " + by.ToString() + " " + "is not visible");
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " +  "is not found |" + " " + e.Message);
             }
         }
-        public static void waitClickableElement(By by)
+        public static void WaitClickableElement(By by)
         {
-            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(15));
+            _wait = new WebDriverWait(WebDriver.Initialize(Browser.Remote), TimeSpan.FromSeconds(15));
             try
             {
-                standBy(3);
-                wait.Until(ExpectedConditions.ElementToBeClickable(by));
+                StandBy(3);
+                _wait.Until(ExpectedConditions.ElementToBeClickable(by));
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "is clickable");
             }
             catch (Exception e)
@@ -176,58 +175,58 @@ namespace ADP_SeleniumFramework.resources
             }
         } 
 
-        public static Boolean isElementDisplayed(IWebElement element, String message)
+        public static Boolean IsElementDisplayed(IWebElement element)
         {
             try
             {
-                System.Diagnostics.Debug.Write(message + " " + element.Text + " " + "is displayed on the page");
+                System.Diagnostics.Debug.Write(element.Text + " " + "is displayed on the page");
                 return element.Displayed;
 
             }
-            catch (NoSuchElementException)
+            catch (NoSuchElementException ex)
             {
-                Console.WriteLine("Unable to find" + element.Text);
+                Logger.Fail(element.Text + " " + "is not found on the page");
                 return false;
             }
         }
-        public static void click(IWebElement element)
+        public static void Click(IWebElement element)
         {
            for (int i = 0; i < 3; i++)
             {
                 if (element.Displayed)
                 {
-                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                    wait.Until(ExpectedConditions.ElementToBeClickable(element));
-                    ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0," + element.Location.Y + ")");
+                    _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(element));
+                    ((IJavaScriptExecutor)_driver).ExecuteScript("window.scrollTo(0," + element.Location.Y + ")");
                     element.Click();
                     break;
                 }
                 else
                 {
-                    Logger.screenshot_FAIL("Unable to click on" + " " + element.Text);
+                    Logger.screenshot_WARNING("Temporarily unable to click on" + " " + element.Text);
                     System.Diagnostics.Debug.Write("Unable to click on" + " " + element.Text);
                 }
             }
         }
 
-        public static void clickAnywhere(IWebDriver driver)
+        public static void ClickAnywhere(IWebDriver driver)
         {
-            webDriver.getDriver(driver).FindElement(By.XPath("//html")).Click();
+            WebDriver.GetDriver(driver).FindElement(By.XPath("//html")).Click();
         }
 
-        public static void highLight(IWebDriver driver, IWebDriver element)
+        public static void HighLight(IWebDriver driver, IWebDriver element)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
             jse.ExecuteScript("arguments[0].style.border='3px solid yellow'", element);
         }
 
-        public static void waitInvisibleElement(By by)
+        public static void WaitInvisibleElement(By by)
         {
-            wait = new WebDriverWait(webDriver.Initialize(browser.Remote), TimeSpan.FromSeconds(90));
+            _wait = new WebDriverWait(WebDriver.Initialize(Browser.Remote), TimeSpan.FromSeconds(90));
             try
             {
-                standBy(1);
-                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+                StandBy(1);
+                _wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 90 seconds of waiting");
             }
             catch (Exception e)

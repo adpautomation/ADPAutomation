@@ -1,574 +1,528 @@
-﻿using ADP_SeleniumFramework.resources;
-using ADP_Tests;
+﻿using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB
+namespace ADP_Tests.ADP_PageFactory.BenefitsBOB
 {
-    public class BOB_HomePage : ADP_AbstractPageFactory
+    public class BobHomePage : AdpAbstractPageFactory
     {
-        private By title = By.XPath("//div[@class='layout-align-start-center layout-row']//a[@class='md-primary md-hue-1 md-button ng-scope md-ink-ripple']");
+        private By _title = By.XPath("//div[@class='layout-align-start-center layout-row']//a[@class='md-primary md-hue-1 md-button ng-scope md-ink-ripple']");
 
-        private By loading_bar = By.Id("adp-bar-loading-indicator");
+        private By _loadingBar = By.Id("adp-bar-loading-indicator");
 
         [FindsBy(How = How.XPath, Using = ("//div[@class='col-xs-4 pb-10 text-center']//a[.='Clear All']"))]
-        private IWebElement clearAll;
+        private IWebElement _clearAll;
 
         [FindsBy(How = How.XPath, Using = ("//div[@class='key-value-edit']//button[@class = 'btn edit-button pull-left']"))]
-        private IWebElement clear;
+        private IWebElement _clear;
 
         [FindsBy(How = How.XPath, Using = ("//a[@class='font-size-18 mb-6 ng-binding']"))]
-        private IWebElement companyName;
+        private IWebElement _companyName;
 
         [FindsBy(How = How.XPath, Using = ("//input[@name='paygroup']"))]
-        private IWebElement paygroupCodeOrName_field;
+        private IWebElement _paygroupCodeOrNameField;
 
         [FindsBy(How = How.XPath, Using = ("//button[@ng-click='findPaygroup()']"))]
-        private IWebElement search_icon;
+        private IWebElement _searchIcon;
 
         [FindsBy(How = How.XPath, Using = ("//button[.='BOB']"))]
-        private IWebElement BOB_button;
+        private IWebElement _bobButton;
 
         [FindsBy(How = How.XPath, Using = ("//button[.='OE']"))]
-        private IWebElement OE_button;
+        private IWebElement _oeButton;
 
         [FindsBy(How = How.XPath, Using = ("//button[@aria-label='Save Results']"))]
-        private IWebElement saveResults_button;
+        private IWebElement _saveResultsButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='key-select']//button[@class='btn key-select ng-binding']")]
-        private IWebElement filterBy_button;
+        private IWebElement _filterByButton;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Revenue Centers']")]
-        private IWebElement filterBy_RevenueCenters;
+        private IWebElement _filterByRevenueCenters;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Markets']")]
-        private IWebElement filterBy_Markets;
+        private IWebElement _filterByMarkets;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='System']")]
-        private IWebElement filterBy_System;
+        private IWebElement _filterBySystem;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Products']")]
-        private IWebElement filterBy_Products;
+        private IWebElement _filterByProducts;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='HRBP']")]
-        private IWebElement filterBy_HRBP;
+        private IWebElement _filterByHrbp;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='CRE']")]
-        private IWebElement filterBy_CRE;
+        private IWebElement _filterByCre;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Providers']")]
-        private IWebElement filterBy_Providers;
+        private IWebElement _filterByProviders;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='BSR']")]
-        private IWebElement filterBy_BSR;
+        private IWebElement _filterByBsr;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='HWE']")]
-        private IWebElement filterBy_HWE;
+        private IWebElement _filterByHwe;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='OE Owner']")]
-        private IWebElement filterBy_OE_Owner;
+        private IWebElement _filterByOeOwner;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Ops Owner']")]
-        private IWebElement filterBy_Ops_Owner;
+        private IWebElement _filterByOpsOwner;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='In OE']")]
-        private IWebElement filterBy_In_OE;
+        private IWebElement _filterByInOe;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='Client Status']")]
-        private IWebElement filterBy_Client_Status;
+        private IWebElement _filterByClientStatus;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class='dropdown-menu']//a[.='OE Renewal Status']")]
-        private IWebElement filterBy_OE_Renewal_Status;
+        private IWebElement _filterByOeRenewalStatus;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='value-select']//button[@type='button']")]
-        private IWebElement filterBy_dropDown;
+        private IWebElement _filterByDropDown;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Atlanta')]]")]
-        private IWebElement revenueCenter_Atlanta;
+        private IWebElement _revenueCenterAtlanta;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Auburn Hills')]]")]
-        private IWebElement revenueCenter_Auburn_Hills;
+        private IWebElement _revenueCenterAuburnHills;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Austin')]]")]
-        private IWebElement revenueCenter_Austin;
+        private IWebElement _revenueCenterAustin;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Boston')]]")]
-        private IWebElement revenueCenter_Boston;
+        private IWebElement _revenueCenterBoston;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Charlotte')]]")]
-        private IWebElement revenueCenter_Charlotte;
+        private IWebElement _revenueCenterCharlotte;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Chicago')]]")]
-        private IWebElement revenueCenter_Chicago;
+        private IWebElement _revenueCenterChicago;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Cleveland')]]")]
-        private IWebElement revenueCenter_Cleveland;
+        private IWebElement _revenueCenterCleveland;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Dallas')]]")]
-        private IWebElement revenueCenter_Dallas;
+        private IWebElement _revenueCenterDallas;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Denver')]]")]
-        private IWebElement revenueCenter_Denver;
+        private IWebElement _revenueCenterDenver;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Des Moines')]]")]
-        private IWebElement revenueCenter_Des_Moines;
+        private IWebElement _revenueCenterDesMoines;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' El Paso')]]")]
-        private IWebElement revenueCenter_El_Paso;
+        private IWebElement _revenueCenterElPaso;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Ft. Lauderdale')]]")]
-        private IWebElement revenueCenter_Ft_Lauderdale;
+        private IWebElement _revenueCenterFtLauderdale;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Grand Junction')]]")]
-        private IWebElement revenueCenter_Grand_Junction;
+        private IWebElement _revenueCenterGrandJunction;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Grand Rapids')]]")]
-        private IWebElement revenueCenter_Grand_Rapids;
+        private IWebElement _revenueCenterGrandRapids;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Green Bay')]]")]
-        private IWebElement revenueCenter_Green_Bay;
+        private IWebElement _revenueCenterGreenBay;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Houston')]]")]
-        private IWebElement revenueCenter_Houston;
+        private IWebElement _revenueCenterHouston;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Indianapolis')]]")]
-        private IWebElement revenueCenter_Indianapolis;
+        private IWebElement _revenueCenterIndianapolis;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Jacksonville')]]")]
-        private IWebElement revenueCenter_Jacksonville;
+        private IWebElement _revenueCenterJacksonville;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Kansas City')]]")]
-        private IWebElement revenueCenter_Kansas_City;
+        private IWebElement _revenueCenterKansasCity;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Las Vegas')]]")]
-        private IWebElement revenueCenter_Las_Vegas;
+        private IWebElement _revenueCenterLasVegas;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Los Angeles')]]")]
-        private IWebElement revenueCenter_Los_Angeles;
+        private IWebElement _revenueCenterLosAngeles;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Louisville')]]")]
-        private IWebElement revenueCenter_Lousville;
+        private IWebElement _revenueCenterLousville;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Madison')]]")]
-        private IWebElement revenueCenter_Madison;
+        private IWebElement _revenueCenterMadison;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Manchester')]]")]
-        private IWebElement revenueCenter_Manchester;
+        private IWebElement _revenueCenterManchester;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Melville, LI')]]")]
-        private IWebElement revenueCenter_Melville;
+        private IWebElement _revenueCenterMelville;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Metro Detroit')]]")]
-        private IWebElement revenueCenter_Metro_Detroit;
+        private IWebElement _revenueCenterMetroDetroit;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Miami')]]")]
-        private IWebElement revenueCenter_Miami;
+        private IWebElement _revenueCenterMiami;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Milwaukee')]]")]
-        private IWebElement revenueCenter_Milwaukee;
+        private IWebElement _revenueCenterMilwaukee;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Minneapolis')]]")]
-        private IWebElement revenueCenter_Minneapolis;
+        private IWebElement _revenueCenterMinneapolis;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' New Jersey')]]")]
-        private IWebElement revenueCenter_New_Jersey;
+        private IWebElement _revenueCenterNewJersey;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[31]")]
-        private IWebElement revenueCenter_New_Orleans;
+        private IWebElement _revenueCenterNewOrleans;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[32]")]
-        private IWebElement revenueCenter_New_York;
+        private IWebElement _revenueCenterNewYork;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[33]")]
-        private IWebElement revenueCenter_Novi;
+        private IWebElement _revenueCenterNovi;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[34]")]
-        private IWebElement revenueCenter_Oklahoma;
+        private IWebElement _revenueCenterOklahoma;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[35]")]
-        private IWebElement revenueCenter_Omaha;
+        private IWebElement _revenueCenterOmaha;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[36]")]
-        private IWebElement revenueCenter_Orange;
+        private IWebElement _revenueCenterOrange;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[37]")]
-        private IWebElement revenueCenter_Orlando;
+        private IWebElement _revenueCenterOrlando;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[38]")]
-        private IWebElement revenueCenter_Philadelhia;
+        private IWebElement _revenueCenterPhiladelhia;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[39]")]
-        private IWebElement revenueCenter_Phoenix;
+        private IWebElement _revenueCenterPhoenix;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[40]")]
-        private IWebElement revenueCenter_Pittsburg;
+        private IWebElement _revenueCenterPittsburg;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[41]")]
-        private IWebElement revenueCenter_Portland;
+        private IWebElement _revenueCenterPortland;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[42]")]
-        private IWebElement revenueCenter_Prime;
+        private IWebElement _revenueCenterPrime;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[43]")]
-        private IWebElement revenueCenter_Prime_Central;
+        private IWebElement _revenueCenterPrimeCentral;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[44]")]
-        private IWebElement revenueCenter_Prime_MidAtlantic;
+        private IWebElement _revenueCenterPrimeMidAtlantic;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[45]")]
-        private IWebElement revenueCenter_Prime_South;
+        private IWebElement _revenueCenterPrimeSouth;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[46]")]
-        private IWebElement revenueCenter_Prime_WestCentral;
+        private IWebElement _revenueCenterPrimeWestCentral;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[47]")]
-        private IWebElement revenueCenter_Princeton;
+        private IWebElement _revenueCenterPrinceton;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[48]")]
-        private IWebElement revenueCenter_Raleigh;
+        private IWebElement _revenueCenterRaleigh;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[49]")]
-        private IWebElement revenueCenter_Richmond;
+        private IWebElement _revenueCenterRichmond;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[50]")]
-        private IWebElement revenueCenter_Rochester;
+        private IWebElement _revenueCenterRochester;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[51]")]
-        private IWebElement revenueCenter_Rockville;
+        private IWebElement _revenueCenterRockville;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[52]")]
-        private IWebElement revenueCenter_Sacramento;
+        private IWebElement _revenueCenterSacramento;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[53]")]
-        private IWebElement revenueCenter_SaltLakeCity;
+        private IWebElement _revenueCenterSaltLakeCity;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[54]")]
-        private IWebElement revenueCenter_San_Antonio;
+        private IWebElement _revenueCenterSanAntonio;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[55]")]
-        private IWebElement revenueCenter_San_Diego;
+        private IWebElement _revenueCenterSanDiego;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[56]")]
-        private IWebElement revenueCenter_San_Francisco;
+        private IWebElement _revenueCenterSanFrancisco;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[57]")]
-        private IWebElement revenueCenter_Seattle;
+        private IWebElement _revenueCenterSeattle;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[58]")]
-        private IWebElement revenueCenter_St_Louis;
+        private IWebElement _revenueCenterStLouis;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[59]")]
-        private IWebElement revenueCenter_Tampa;
+        private IWebElement _revenueCenterTampa;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[60]")]
-        private IWebElement revenueCenter_Tennessee;
+        private IWebElement _revenueCenterTennessee;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[61]")]
-        private IWebElement revenueCenter_Upstate_NY;
+        private IWebElement _revenueCenterUpstateNy;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[62]")]
-        private IWebElement revenueCenter_Washington_DC;
+        private IWebElement _revenueCenterWashingtonDc;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[63]")]
-        private IWebElement revenueCenter_West_Palm;
+        private IWebElement _revenueCenterWestPalm;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,' Central')]]")]
-        private IWebElement market_Central;
+        private IWebElement _marketCentral;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Mid Atlantic')]]")]
-        private IWebElement market_MidAtlantic;
+        private IWebElement _marketMidAtlantic;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Northeast')]]")]
-        private IWebElement market_Northeast;
+        private IWebElement _marketNortheast;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'South')]]")]
-        private IWebElement market_South;
+        private IWebElement _marketSouth;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'West')]]")]
-        private IWebElement market_West;
+        private IWebElement _marketWest;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'EV4')]]")]
-        private IWebElement system_EV4;
+        private IWebElement _systemEv4;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'WFN')]]")]
-        private IWebElement system_WFN;
+        private IWebElement _systemWfn;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Exact Match')]]")]
-        private IWebElement products_ExactMatch;
+        private IWebElement _productsExactMatch;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Medical')]]")]
-        private IWebElement products_Medical;
+        private IWebElement _productsMedical;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Dental')]]")]
-        private IWebElement products_Dental;
+        private IWebElement _productsDental;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Vision')]]")]
-        private IWebElement products_Vision;
+        private IWebElement _productsVision;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Life')]]")]
-        private IWebElement products_Life;
+        private IWebElement _productsLife;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'STD')]]")]
-        private IWebElement products_STD;
+        private IWebElement _productsStd;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'LTD')]]")]
-        private IWebElement products_LTD;
+        private IWebElement _productsLtd;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'HSA')]]")]
-        private IWebElement products_HSA;
+        private IWebElement _productsHsa;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'FSA')]]")]
-        private IWebElement products_FSA;
+        private IWebElement _productsFsa;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'401k')]]")]
-        private IWebElement products_401K;
+        private IWebElement _products401K;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Yes')]]")]
-        private IWebElement inOE_YES;
+        private IWebElement _inOeYes;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'No')]]")]
-        private IWebElement inOE_NO;
+        private IWebElement _inOeNo;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Active')]]")]
-        private IWebElement clientStatus_Active;
+        private IWebElement _clientStatusActive;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Future Start')]]")]
-        private IWebElement clientStatus_FutureStart;
+        private IWebElement _clientStatusFutureStart;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Future Term')]]")]
-        private IWebElement clientStatus_FutureTerm;
+        private IWebElement _clientStatusFutureTerm;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Terminated')]]")]
-        private IWebElement clientStatus_Terminated;
+        private IWebElement _clientStatusTerminated;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Untouched')]]")]
-        private IWebElement renewalStatus_Untouched;
+        private IWebElement _renewalStatusUntouched;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'In Progress')]]")]
-        private IWebElement renewalStatus_inProgress;
+        private IWebElement _renewalStatusInProgress;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Client Ready')]]")]
-        private IWebElement renewalStatus_ClientReady;
+        private IWebElement _renewalStatusClientReady;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Signed CBE')]]")]
-        private IWebElement renewalStatus_SignedCBE;
+        private IWebElement _renewalStatusSignedCbe;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Submission In Progress')]]")]
-        private IWebElement renewalStatus_SubmissionInProgress;
+        private IWebElement _renewalStatusSubmissionInProgress;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Client Review')]]")]
-        private IWebElement renewalStatus_ClientReview;
+        private IWebElement _renewalStatusClientReview;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class = 'select-items-container']//li[text()[contains(.,'Resubmission Required')]]")]
-        private IWebElement renewalStatus_ResubmissionRequired;
+        private IWebElement _renewalStatusResubmissionRequired;
 
 
 
-        private By parentDetails = By.XPath("(//span[.='Parent Details'])[1]");
+        private By _parentDetails = By.XPath("(//span[.='Parent Details'])[1]");
 
-        public BOB_HomePage() : base()
+        public BobHomePage() : base()
         {
-            waitVisibleElement(title);
+            WaitVisibleElement(_title);
         }
 
-        public void verifyContents()
+        public void VerifyContents()
         {
-            try
+            if (IsElementDisplayed(_paygroupCodeOrNameField)) { }
+            if (IsElementDisplayed(_searchIcon)) { }
+            if (IsElementDisplayed(_filterByButton)) { }
+            if (IsElementDisplayed(_saveResultsButton)) { }
+            if (IsElementDisplayed(_bobButton)) { }
+            if (IsElementDisplayed(_oeButton)) { }
             {
-                isElementDisplayed(paygroupCodeOrName_field, "");
-                isElementDisplayed(search_icon, "");
-                isElementDisplayed(filterBy_button, "");
-                isElementDisplayed(saveResults_button, "");
-                isElementDisplayed(BOB_button, "");
-                isElementDisplayed(OE_button, "");
                 Logger.screenshot_PASS("All the header elements are displayed correctly");
-            }catch(NoSuchElementException ex)
-            {
-                Logger.FAIL("Not all the page elements are displayed on the page. Missing" + " " + ex.Message);
             }
         }
 
-        public void verifyFilters()
+        public void VerifyFilters()
         {
-            click(clear);
-            click(clearAll);
-            click(filterBy_button);
-            click(filterBy_RevenueCenters);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(revenueCenter_Atlanta, "");
-                isElementDisplayed(revenueCenter_Auburn_Hills, "");
-                isElementDisplayed(revenueCenter_Austin, "");
-                isElementDisplayed(revenueCenter_Boston, "");
-                isElementDisplayed(revenueCenter_Charlotte, "");
-                isElementDisplayed(revenueCenter_Chicago, "");
-                isElementDisplayed(revenueCenter_Cleveland, "");
-                isElementDisplayed(revenueCenter_Dallas, "");
-                isElementDisplayed(revenueCenter_Denver, "");
-                isElementDisplayed(revenueCenter_Des_Moines, "");
-                isElementDisplayed(revenueCenter_El_Paso, "");
-                isElementDisplayed(revenueCenter_Ft_Lauderdale, "");
-                isElementDisplayed(revenueCenter_Grand_Rapids, "");
-                isElementDisplayed(revenueCenter_Green_Bay, "");
-                isElementDisplayed(revenueCenter_Houston, "");
-                isElementDisplayed(revenueCenter_Indianapolis, "");
-                isElementDisplayed(revenueCenter_Jacksonville, "");
-                isElementDisplayed(revenueCenter_Kansas_City, "");
-                isElementDisplayed(revenueCenter_Las_Vegas, "");
-                isElementDisplayed(revenueCenter_Los_Angeles, "");
-                isElementDisplayed(revenueCenter_Lousville, "");
-                isElementDisplayed(revenueCenter_Madison, "");
-                isElementDisplayed(revenueCenter_Manchester, "");
-                isElementDisplayed(revenueCenter_Melville, "");
-                isElementDisplayed(revenueCenter_Metro_Detroit, "");
-                isElementDisplayed(revenueCenter_Miami, "");
-                isElementDisplayed(revenueCenter_Milwaukee, "");
-                isElementDisplayed(revenueCenter_Minneapolis, "");
-                isElementDisplayed(revenueCenter_New_Jersey, "");
-                isElementDisplayed(revenueCenter_New_Orleans, "");
-                isElementDisplayed(revenueCenter_New_York, "");
-                isElementDisplayed(revenueCenter_Novi, "");
-                isElementDisplayed(revenueCenter_Oklahoma, "");
-                isElementDisplayed(revenueCenter_Omaha, "");
-                isElementDisplayed(revenueCenter_Orange, "");
-                isElementDisplayed(revenueCenter_Orlando, "");
-                isElementDisplayed(revenueCenter_Philadelhia, "");
-                isElementDisplayed(revenueCenter_Phoenix, "");
-                isElementDisplayed(revenueCenter_Pittsburg, "");
-                isElementDisplayed(revenueCenter_Portland, "");
-                isElementDisplayed(revenueCenter_Prime, "");
-                isElementDisplayed(revenueCenter_Prime_Central, "");
-                isElementDisplayed(revenueCenter_Prime_MidAtlantic, "");
-                isElementDisplayed(revenueCenter_Prime_South, "");
-                isElementDisplayed(revenueCenter_Prime_WestCentral, "");
-                isElementDisplayed(revenueCenter_Princeton, "");
-                isElementDisplayed(revenueCenter_Raleigh, "");
-                isElementDisplayed(revenueCenter_Richmond, "");
-                isElementDisplayed(revenueCenter_Rochester, "");
-                isElementDisplayed(revenueCenter_Rockville, "");
-                isElementDisplayed(revenueCenter_Sacramento, "");
-                isElementDisplayed(revenueCenter_SaltLakeCity, "");
-                isElementDisplayed(revenueCenter_San_Antonio, "");
-                isElementDisplayed(revenueCenter_San_Diego, "");
-                isElementDisplayed(revenueCenter_San_Francisco, "");
-                isElementDisplayed(revenueCenter_Seattle, "");
-                isElementDisplayed(revenueCenter_St_Louis, "");
-                isElementDisplayed(revenueCenter_Tampa, "");
-                isElementDisplayed(revenueCenter_Tennessee, "");
-                isElementDisplayed(revenueCenter_Upstate_NY, "");
-                isElementDisplayed(revenueCenter_Washington_DC, "");
-                isElementDisplayed(revenueCenter_West_Palm, "");
-                Logger.screenshot_PASS("All the revenue centers are listed correctly");
+            Click(_clear);
+            Click(_clearAll);
+            Click(_filterByButton);
+            Click(_filterByRevenueCenters);
+            Click(_filterByDropDown);
+            if (IsElementDisplayed(_revenueCenterAtlanta)) { }
+            if (IsElementDisplayed(_revenueCenterAuburnHills)) { }
+            if (IsElementDisplayed(_revenueCenterAustin)) { }
+            if (IsElementDisplayed(_revenueCenterBoston)) { }
+            if (IsElementDisplayed(_revenueCenterCharlotte)) { }
+            if (IsElementDisplayed(_revenueCenterChicago)) { }
+            if (IsElementDisplayed(_revenueCenterCleveland)) { }
+            if (IsElementDisplayed(_revenueCenterDallas)) { }
+            if (IsElementDisplayed(_revenueCenterDenver)) { }
+            if (IsElementDisplayed(_revenueCenterDesMoines)) { }
+            if (IsElementDisplayed(_revenueCenterElPaso)) { }
+            if (IsElementDisplayed(_revenueCenterFtLauderdale)) { }
+            if (IsElementDisplayed(_revenueCenterGrandRapids)) { }
+            if (IsElementDisplayed(_revenueCenterGreenBay)) { }
+            if (IsElementDisplayed(_revenueCenterHouston)) { }
+            if (IsElementDisplayed(_revenueCenterIndianapolis)) { }
+            if (IsElementDisplayed(_revenueCenterJacksonville)) { }
+            if (IsElementDisplayed(_revenueCenterKansasCity)) { }
+            if (IsElementDisplayed(_revenueCenterLasVegas)) { }
+            if (IsElementDisplayed(_revenueCenterLosAngeles)) { }
+            if (IsElementDisplayed(_revenueCenterLousville)) { }
+            if (IsElementDisplayed(_revenueCenterMadison)) { }
+            if (IsElementDisplayed(_revenueCenterManchester)) { }
+            if (IsElementDisplayed(_revenueCenterMelville)) { }
+            if (IsElementDisplayed(_revenueCenterMetroDetroit)) { }
+            if (IsElementDisplayed(_revenueCenterMiami)) { }
+            if (IsElementDisplayed(_revenueCenterMilwaukee)) { }
+            if (IsElementDisplayed(_revenueCenterMinneapolis)) { }
+            if (IsElementDisplayed(_revenueCenterNewJersey)) { }
+            if (IsElementDisplayed(_revenueCenterNewOrleans)) { }
+            if (IsElementDisplayed(_revenueCenterNewYork)) { }
+            if (IsElementDisplayed(_revenueCenterNovi)) { }
+            if (IsElementDisplayed(_revenueCenterOklahoma)) { }
+            if (IsElementDisplayed(_revenueCenterOmaha)) { }
+            if (IsElementDisplayed(_revenueCenterOrange)) { }
+            if (IsElementDisplayed(_revenueCenterOrlando)) { }
+            if (IsElementDisplayed(_revenueCenterPhiladelhia)) { }
+            if (IsElementDisplayed(_revenueCenterPhoenix)) { }
+            if (IsElementDisplayed(_revenueCenterPittsburg)) { }
+            if (IsElementDisplayed(_revenueCenterPortland)) { }
+            if (IsElementDisplayed(_revenueCenterPrime)) { }
+            if (IsElementDisplayed(_revenueCenterPrimeCentral)) { }
+            if (IsElementDisplayed(_revenueCenterPrimeMidAtlantic)) { }
+            if (IsElementDisplayed(_revenueCenterPrimeSouth)) { }
+            if (IsElementDisplayed(_revenueCenterPrimeWestCentral)) { }
+            if (IsElementDisplayed(_revenueCenterPrinceton)) { }
+            if (IsElementDisplayed(_revenueCenterRaleigh)) { }
+            if (IsElementDisplayed(_revenueCenterRichmond)) { }
+            if (IsElementDisplayed(_revenueCenterRochester)) { }
+            if (IsElementDisplayed(_revenueCenterRockville)) { }
+            if (IsElementDisplayed(_revenueCenterSacramento)) { }
+            if (IsElementDisplayed(_revenueCenterSaltLakeCity)) { }
+            if (IsElementDisplayed(_revenueCenterSanAntonio)) { }
+            if (IsElementDisplayed(_revenueCenterSanDiego)) { }
+            if (IsElementDisplayed(_revenueCenterSanFrancisco)) { }
+            if (IsElementDisplayed(_revenueCenterSeattle)) { }
+            if (IsElementDisplayed(_revenueCenterStLouis)) { }
+            if (IsElementDisplayed(_revenueCenterTampa)) { }
+            if (IsElementDisplayed(_revenueCenterTennessee)) { }
+            if (IsElementDisplayed(_revenueCenterUpstateNy)) { }
+            if (IsElementDisplayed(_revenueCenterWashingtonDc)) { }
+            if (IsElementDisplayed(_revenueCenterWestPalm)) {
+            Logger.screenshot_PASS("All the revenue centers are listed correctly");
             }
-            catch (NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Revenue Centers listed incorrectly. Missing" + " " + ex.Message);
+            Click(_filterByButton);
+            Click(_filterByMarkets);
+            Click(_filterByDropDown);
+            if(IsElementDisplayed(_marketCentral)) { }
+            if(IsElementDisplayed(_marketMidAtlantic)) { }
+            if(IsElementDisplayed(_marketNortheast)) { }
+            if(IsElementDisplayed(_marketSouth)) { }
+            if(IsElementDisplayed(_marketWest)) {
+            Logger.screenshot_PASS("All the markets are listed correctly");
             }
-            click(filterBy_button);
-            click(filterBy_Markets);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(market_Central, "");
-                isElementDisplayed(market_MidAtlantic, "");
-                isElementDisplayed(market_Northeast, "");
-                isElementDisplayed(market_South, "");
-                isElementDisplayed(market_West, "");
-                Logger.screenshot_PASS("All the markets are listed correctly");
-            }
-            catch(NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Markets listed incorrectly. Missing" + " " + ex.Message);
-            }
-            click(filterBy_button);
-            click(filterBy_System);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(system_EV4, "");
-                isElementDisplayed(system_WFN, "");
+            Click(_filterByButton);
+            Click(_filterBySystem);
+            Click(_filterByDropDown);
+            if (IsElementDisplayed(_systemEv4)) { }
+            if (IsElementDisplayed(_systemWfn)) {
                 Logger.screenshot_PASS("All the systems are displayed correctly");
-            }catch(NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Systems listed incorrectly. Missing" + " " + ex.Message);
             }
-            click(filterBy_button);
-            click(filterBy_Products);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(products_ExactMatch, "");
-                isElementDisplayed(products_Medical, "");
-                isElementDisplayed(products_Dental, "");
-                isElementDisplayed(products_Vision, "");
-                isElementDisplayed(products_Life, "");
-                isElementDisplayed(products_STD, "");
-                isElementDisplayed(products_LTD, "");
-                isElementDisplayed(products_HSA, "");
-                isElementDisplayed(products_FSA, "");
-                isElementDisplayed(products_401K, "");
-                Logger.screenshot_PASS("All the products are listed correctly");
+            Click(_filterByButton);
+            Click(_filterByProducts);
+            Click(_filterByDropDown);
+            if(IsElementDisplayed(_productsExactMatch)) { }
+            if (IsElementDisplayed(_productsMedical)) { }
+            if (IsElementDisplayed(_productsDental)) { }
+            if (IsElementDisplayed(_productsVision)) { }
+            if (IsElementDisplayed(_productsLife)) { }
+            if (IsElementDisplayed(_productsStd)) { }
+            if (IsElementDisplayed(_productsLtd)) { }
+            if (IsElementDisplayed(_productsHsa)) { }
+            if (IsElementDisplayed(_productsFsa)) { }
+            if (IsElementDisplayed(_products401K)) {
+            Logger.screenshot_PASS("All the products are listed correctly");
             }
-            catch (NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Products listed incorrectly. Missing" + " " + ex.Message);
-            }
-            click(filterBy_button);
-            click(filterBy_In_OE);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(inOE_YES, "");
-                isElementDisplayed(inOE_NO, "");
+            Click(_filterByButton);
+            Click(_filterByInOe);
+            Click(_filterByDropDown);
+            if (IsElementDisplayed(_inOeYes)) { }
+            if(IsElementDisplayed(_inOeNo)){
                 Logger.screenshot_PASS("In OE items are displayed correctly");
             }
-            catch (NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("In OE items listed incorrectly. Missing" + " " + ex.Message);
-            }
-            click(filterBy_button);
-            click(filterBy_Client_Status);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(clientStatus_Active, "");
-                isElementDisplayed(clientStatus_FutureStart, "");
-                isElementDisplayed(clientStatus_FutureTerm, "");
-                isElementDisplayed(clientStatus_Terminated, "");
+            Click(_filterByButton);
+            Click(_filterByClientStatus);
+            Click(_filterByDropDown);
+            if(IsElementDisplayed(_clientStatusActive)) { }
+            if (IsElementDisplayed(_clientStatusFutureStart)) { }
+            if (IsElementDisplayed(_clientStatusFutureTerm)) { }
+            if (IsElementDisplayed(_clientStatusTerminated)) {
                 Logger.screenshot_PASS("All client statuses are displayed correctly");
             }
-            catch (NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Client statuses listed incorrectly. Missing" + " " + ex.Message);
-            }
-            click(filterBy_button);
-            click(filterBy_OE_Renewal_Status);
-            click(filterBy_dropDown);
-            try
-            {
-                isElementDisplayed(renewalStatus_Untouched, "");
-                isElementDisplayed(renewalStatus_inProgress, "");
-                isElementDisplayed(renewalStatus_ClientReady, "");
-                isElementDisplayed(renewalStatus_ClientReview, "");
-                isElementDisplayed(renewalStatus_SignedCBE, "");
-                isElementDisplayed(renewalStatus_SubmissionInProgress, "");
-                isElementDisplayed(renewalStatus_ResubmissionRequired, "");
+            Click(_filterByButton);
+            Click(_filterByOeRenewalStatus);
+            Click(_filterByDropDown);
+            if (IsElementDisplayed(_renewalStatusUntouched)) { }
+            if (IsElementDisplayed(_renewalStatusInProgress)) { }
+            if (IsElementDisplayed(_renewalStatusClientReady)) { }
+            if (IsElementDisplayed(_renewalStatusClientReview)) { }
+            if (IsElementDisplayed(_renewalStatusSignedCbe)) { }
+            if (IsElementDisplayed(_renewalStatusSubmissionInProgress)) { }
+            if (IsElementDisplayed(_renewalStatusResubmissionRequired)){
                 Logger.screenshot_PASS("All client renewal statuses are displayed correctly");
             }
-            catch (NoSuchElementException ex)
-            {
-                Logger.screenshot_FAIL("Client renewal statuses listed incorrectly. Missing" + " " + ex.Message);
-            }
-        }
-        public void navigateClientLevel()
+}
+        public void NavigateClientLevel()
         {
-            waitInvisibleElement(loading_bar);
-            click(paygroupCodeOrName_field);
-            paygroupCodeOrName_field.SendKeys(SmokeTestWindow.validCompanyCode);
-            click(search_icon);
-            waitVisibleText(companyName, "");
-            click(companyName);
+            WaitInvisibleElement(_loadingBar);
+            Click(_paygroupCodeOrNameField);
+            _paygroupCodeOrNameField.SendKeys(SmokeTestWindow.ValidCompanyCode);
+            Click(_searchIcon);
+            WaitVisibleText(_companyName, "");
+            Click(_companyName);
         }
     }
 }

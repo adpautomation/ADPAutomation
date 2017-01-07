@@ -1,18 +1,13 @@
-﻿using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.resources;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory
+namespace ADP_Tests.ADP_PageFactory
 {
-    public class ADP_AbstractPageFactory : webDriver
+    public class AdpAbstractPageFactory : WebDriver
     {
-        public ADP_AbstractPageFactory()
+        public AdpAbstractPageFactory()
         {
-            PageFactory.InitElements(webDriver.Initialize(browser.GoogleChrome), this);
+            PageFactory.InitElements(WebDriver.Initialize(Browser.GoogleChrome), this);
         }
     }
 }

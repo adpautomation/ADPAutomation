@@ -1,128 +1,123 @@
-﻿using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory.CAT
+namespace ADP_Tests.ADP_PageFactory.CAT
 {
-    class CAT_Summary: ADP_AbstractPageFactory
+    class CatSummary: AdpAbstractPageFactory
     {
-        private By title = By.Id("adp-current-breadcrumb-Summary");
+        private readonly By _title = By.Id("adp-current-breadcrumb-Summary");
 
-        private By loading_bar = By.Id("adp-bar-loading-indicator");
+        private readonly By _loadingBar = By.Id("adp-bar-loading-indicator");
 
         [FindsBy(How = How.XPath, Using = "//label[.='Market:']")]
-        private IWebElement market_text;
+        private readonly IWebElement _marketText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='REVENUE CENTER:']")]
-        private IWebElement revenueCenter_text;
+        private readonly IWebElement revenueCenterText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='ACR:']")]
-        private IWebElement ACR_text;
+        private readonly IWebElement acrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='PTR:']")]
-        private IWebElement PTR_text;
+        private readonly IWebElement ptrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='CRE:']")]
-        private IWebElement CRE_text;
+        private readonly IWebElement _creText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='HWE:']")]
-        private IWebElement HWE_text;
+        private readonly IWebElement _hweText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='# OR WSE:']")]
-        private IWebElement numberOfEmployees_text;
+        private readonly IWebElement _numberOfEmployeesText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='HRBP:']")]
-        private IWebElement HRBT_text;
+        private readonly IWebElement _hrbtText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='BSR:']")]
-        private IWebElement BSR_text;
+        private readonly IWebElement _bsrText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='PSR:']")]
-        private IWebElement PSR_text;
+        private readonly IWebElement _psrText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Paygroup']")]
-        private IWebElement payGroup_text;
+        private readonly IWebElement _payGroupText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Name']")]
-        private IWebElement name_text;
+        private readonly IWebElement _nameText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Client Status']")]
-        private IWebElement clientStatus_text;
+        private readonly IWebElement _clientStatusText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Start Date - Term Date']")]
-        private IWebElement startDate_text;
+        private readonly IWebElement _startDateText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='ACR']")]
-        private IWebElement acr_text;
+        private readonly IWebElement _acrText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='WSE Count']")]
-        private IWebElement WSE_count_text;
+        private IWebElement _wseCountText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='PTR']")]
-        private IWebElement ptr_text;
+        private readonly IWebElement _ptrText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='DP']")]
-        private IWebElement DP_text;
+        private readonly IWebElement _dpText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Revenue Center']")]
-        private IWebElement revenue_center_text;
+        private readonly IWebElement _revenueCenterText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Product']")]
-        private IWebElement product_text;
+        private readonly IWebElement _productText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='Premium']")]
-        private IWebElement premium_text;
+        private readonly IWebElement _premiumText;
 
         [FindsBy(How = How.XPath, Using = "//td[.='ER Contribution (% ER Contribution)']")]
-        private IWebElement ER_contribution_text;
+        private readonly IWebElement _erContributionText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='EE Contribution']")]
-        private IWebElement EE_contribution_text;
+        private readonly IWebElement _eeContributionText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Eligible']")]
-        private IWebElement eligible_text;
+        private readonly IWebElement _eligibleText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Enrolled (% Med Enrolled)']")]
-        private IWebElement medEnrolled_text;
+        private readonly IWebElement _medEnrolledText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Type']")]
-        private IWebElement type_text;
+        private readonly IWebElement _typeText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Provider']")]
-        private IWebElement provider_text;
+        private readonly IWebElement _providerText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Plan Code']")]
-        private IWebElement planCode_text;
+        private IWebElement _planCodeText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Plan Name']")]
-        private IWebElement planName_text;
+        private IWebElement _planNameText;
 
         [FindsBy(How = How.XPath, Using = "//label[.='Enrolled']")]
-        private IWebElement enrolled_text;
+        private readonly IWebElement _enrolledText;
 
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='Summary']")]
-        private IWebElement summary_tab;
+        private readonly IWebElement _summaryTab;
 
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='PSA/Rate Level Manager']")]
-        private IWebElement rateLevelManager_tab;
+        private readonly IWebElement _rateLevelManagerTab;
 
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='Exception Manager']")]
-        private IWebElement exceptionManager_tab;
+        private readonly IWebElement _exceptionManagerTab;
 
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='Disability Ratings Manager']")]
-        private IWebElement disabilityRatingManager_tab;
+        private readonly IWebElement _disabilityRatingManagerTab;
 
 
 
 
-        public CAT_Summary() : base()
+        public CatSummary() : base()
         {
-            waitVisibleElement(title);
+            WaitVisibleElement(_title);
         }
 
         public enum Tab
@@ -130,66 +125,62 @@ namespace ADP_SeleniumFramework.ADP_PageFactory.CAT
             Summary, RateLevelManager, ExceptionManager, DisabilityRatingsManager 
         } 
 
-        public void navigate(Tab tab)
+        public void Navigate(Tab tab)
         {
             switch (tab)
             {
                 case Tab.Summary:
-                    waitInvisibleElement(loading_bar);
-                    click(summary_tab);
+                    WaitInvisibleElement(_loadingBar);
+                    Click(_summaryTab);
                     break;
                 case Tab.RateLevelManager:
-                    waitInvisibleElement(loading_bar);
-                    click(rateLevelManager_tab);
+                    WaitInvisibleElement(_loadingBar);
+                    Click(_rateLevelManagerTab);
                     break;
                 case Tab.DisabilityRatingsManager:
-                    waitInvisibleElement(loading_bar);
-                    click(disabilityRatingManager_tab);
+                    WaitInvisibleElement(_loadingBar);
+                    Click(_disabilityRatingManagerTab);
                     break;
                 case Tab.ExceptionManager:
-                    waitInvisibleElement(loading_bar);
-                    click(exceptionManager_tab);
+                    WaitInvisibleElement(_loadingBar);
+                    Click(_exceptionManagerTab);
                     break;
             }
         }
-        public void verifyContents()
+        public void VerifyContents()
         {
-            try
+            if (IsElementDisplayed(_marketText)) { }
+            if (IsElementDisplayed(_revenueCenterText)) { }
+            if (IsElementDisplayed(_acrText)) { }
+            if (IsElementDisplayed(_ptrText)) { }
+            if (IsElementDisplayed(_creText)) { }
+            if (IsElementDisplayed(_hweText)) { }
+            if (IsElementDisplayed(_numberOfEmployeesText)) { }
+            if (IsElementDisplayed(_hrbtText)) { }
+            if (IsElementDisplayed(_bsrText)) { }
+            if (IsElementDisplayed(_psrText)) { }
+            if (IsElementDisplayed(_payGroupText)) { }
+            if (IsElementDisplayed(_nameText)) { }
+            if (IsElementDisplayed(_clientStatusText)) { }
+            if (IsElementDisplayed(_startDateText)) { }
+            if (IsElementDisplayed(acrText)) { }
+            if (IsElementDisplayed(_wseCountText)) { }
+            if (IsElementDisplayed(ptrText)) { }
+            if (IsElementDisplayed(_dpText)) { }
+            if (IsElementDisplayed(revenueCenterText)) { }
+            if (IsElementDisplayed(_productText)) { }
+            if (IsElementDisplayed(_premiumText)) { }
+            if (IsElementDisplayed(_erContributionText)) { }
+            if (IsElementDisplayed(_eeContributionText)) { }
+            if (IsElementDisplayed(_eligibleText)) { }
+            if (IsElementDisplayed(_medEnrolledText)) { }
+            if (IsElementDisplayed(_typeText)) { }
+            if (IsElementDisplayed(_providerText)) { }
+            if (IsElementDisplayed(_planCodeText)) { }
+            if (IsElementDisplayed(_planNameText)) { }
+            if (IsElementDisplayed(_enrolledText))
             {
-                isElementDisplayed(market_text, "");
-                isElementDisplayed(revenueCenter_text,"");
-                isElementDisplayed(ACR_text, "");
-                isElementDisplayed(PTR_text, "");
-                isElementDisplayed(CRE_text, "");
-                isElementDisplayed(HWE_text, "");
-                isElementDisplayed(numberOfEmployees_text, "");
-                isElementDisplayed(HRBT_text, "");
-                isElementDisplayed(BSR_text, "");
-                isElementDisplayed(PSR_text, "");
-                isElementDisplayed(payGroup_text, "");
-                isElementDisplayed(name_text, "");
-                isElementDisplayed(clientStatus_text, "");
-                isElementDisplayed(startDate_text, "");
-                isElementDisplayed(acr_text, "");
-                isElementDisplayed(WSE_count_text, "");
-                isElementDisplayed(ptr_text, "");
-                isElementDisplayed(DP_text, "");
-                isElementDisplayed(revenue_center_text, "");
-                isElementDisplayed(product_text, "");
-                isElementDisplayed(premium_text, "");
-                isElementDisplayed(ER_contribution_text, "");
-                isElementDisplayed(EE_contribution_text, "");
-                isElementDisplayed(eligible_text, "");
-                isElementDisplayed(medEnrolled_text, "");
-                isElementDisplayed(type_text, "");
-                isElementDisplayed(provider_text, "");
-                isElementDisplayed(planCode_text, "");
-                isElementDisplayed(planName_text, "");
-                isElementDisplayed(enrolled_text, "");
                 Logger.screenshot_PASS("CAT Summary. All the page elements are displayed correctly");
-            }catch(NoSuchElementException ex)
-            {
-                Logger.FAIL("CAT Summary. Not all the page elements are displayed correctly." + " " + ex.Message);
             }
         }
     }

@@ -1,32 +1,26 @@
-﻿using ADP_SeleniumFramework.ADP_PageFactory;
-using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.ADP_PageFactory;
+using ADP_Tests.ADP_PageFactory.BenefitsBOB;
+using ADP_Tests.resources;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ADP_SeleniumFramework.ADP_PageFactory.BenefitsBOB;
 using OpenQA.Selenium;
-using ADP_Tests;
 
-namespace tests
+namespace ADP_Tests.tests
 {
     [TestFixture]
     [Parallelizable]
-    class BOB_SmokeTest
+    class BobSmokeTest
     {
-        private IWebDriver driver;
+        private IWebDriver _driver;
 
         [SetUp]
-        public void setup()
+        public void Setup()
         {
             SmokeTestWindow window = new SmokeTestWindow();
             window.ShowDialog();
-            webDriver.getDriver(webDriver.Initialize(webDriver.browser.Remote));
-            webDriver.openURL(SmokeTestWindow.env);
-            Logger.getLogger("BOB Smoke Test");
-            Logger.startLogger("BOB Smoke Test", "Quick smoke test of UI");
+            WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
+            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            Logger.GetLogger("BOB Smoke Test");
+            Logger.StartLogger("BOB Smoke Test", "Quick smoke test of UI");
         }
 
         [Test]
@@ -34,19 +28,19 @@ namespace tests
         {
             Login login = new Login();
             login.LoginToMobile();
-            ADP_Lobby lobby = new ADP_Lobby();
-            lobby.navigate(ADP_Lobby.Tile.Benefits_BOB);
-            BOB_HomePage bob = new BOB_HomePage();
-            bob.verifyFilters();
+            AdpLobby lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.BenefitsBob);
+            BobHomePage bob = new BobHomePage();
+            bob.VerifyFilters();
 
 
 
         }
 
         [TearDown]
-        public void afterTest()
+        public void AfterTest()
         {
-            Logger.endLogger();
+            Logger.EndLogger();
         }
     }
 }

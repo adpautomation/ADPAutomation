@@ -1,138 +1,137 @@
-﻿using ADP_SeleniumFramework.resources;
-using ADP_Tests;
+﻿using System;
+using ADP_Tests.resources;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory
+namespace ADP_Tests.ADP_PageFactory
 {
-    public class ADP_Lobby : ADP_AbstractPageFactory
+    public class AdpLobby : AdpAbstractPageFactory
     {
-        private By loading_bar = By.Id("adp-bar-loading-indicator");
+        private By _loadingBar = By.Id("adp-bar-loading-indicator");
 
         [FindsBy(How = How.XPath, Using = "//span[@class='user-menu-name']")]
-        private IWebElement headerAccountName;
+        private IWebElement _headerAccountName;
 
         [FindsBy(How = How.XPath, Using = "//a[@ng-click='unimpersonate()']")]
-        private IWebElement unImpersonate_button;
+        private IWebElement _unImpersonateButton;
 
         [FindsBy(How = How.XPath, Using = "//a[@ui-sref='admin.manageUsers']")]
-        private IWebElement Admin;
+        private IWebElement _admin;
 
         [FindsBy(How = How.XPath, Using  = "//h2[.='Welcome to ADP TotalSource']")]
-        private IWebElement WelcomeToADP;
+        private IWebElement _welcomeToAdp;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-eeoc")]
-        private IWebElement EEOC;
+        private IWebElement _eeoc;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-voe")]
-        private IWebElement VOE;
+        private IWebElement _voe;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-workbench-old-app")]
-        private IWebElement WorkBench;
+        private IWebElement _workBench;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-wbsettings-old-app")]
-        private IWebElement WB_Settings;
+        private IWebElement _wbSettings;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-benefitbob")]
-        private IWebElement Benefits_BOB;
+        private IWebElement _benefitsBob;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-cat")]
-        private IWebElement ClientAdminTool;
+        private IWebElement _clientAdminTool;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-wizard")]
-        private IWebElement ACA_Wizard;
+        private IWebElement _acaWizard;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-bret")]
-        private IWebElement BRET;
+        private IWebElement _bret;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-ratesheets")]
-        private IWebElement RateSheets;
+        private IWebElement _rateSheets;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-videosettings")]
-        private IWebElement VideoManagement;
+        private IWebElement _videoManagement;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-mep")]
-        private IWebElement MEP;
+        private IWebElement _mep;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-mep-report")]
-        private IWebElement MEP_Reports;
+        private IWebElement _mepReports;
 
-        public ADP_Lobby() : base()
+        public AdpLobby() : base()
         {
-            waitInvisibleElement(loading_bar);
-            waitVisibleText(WelcomeToADP, "Welcome to ADP TotalSource");
+            WaitInvisibleElement(_loadingBar);
+            WaitVisibleText(_welcomeToAdp, "Welcome to ADP TotalSource");
             Logger.screenshot_PASS("Lobby page successfully opens");
         }
 
         public enum Tile
         {
-            EEOC, VOE, WorkBench, WB_Settings, Benefits_BOB, ClientAdminTool, ACA_Wizard, BRET, RateSheets, VideoManagement, MEP, MEP_Reports, Admin
+            Eeoc, Voe, WorkBench, WbSettings, BenefitsBob, ClientAdminTool, AcaWizard, Bret, RateSheets, VideoManagement, Mep, MepReports, Admin
         }
 
-        public void navigate(Tile tile)
+        public void Navigate(Tile tile)
         {
             switch (tile)
             {
-                case Tile.EEOC:
-                    click(EEOC);
-                    Logger.INFO("EEOC is clicked at the Lobby page");
+                case Tile.Eeoc:
+                    Click(_eeoc);
+                    Logger.Info("EEOC is clicked at the Lobby page");
                     break;
-                case Tile.VOE:
-                    click(VOE);
-                    Logger.INFO("VOE is clicked at the Lobby page");
+                case Tile.Voe:
+                    Click(_voe);
+                    Logger.Info("VOE is clicked at the Lobby page");
                     break;
                 case Tile.WorkBench:
-                    click(WorkBench);
-                    Logger.INFO("WorkBench is clicked at the Lobby page");
+                    Click(_workBench);
+                    Logger.Info("WorkBench is clicked at the Lobby page");
                     break;
-                case Tile.Benefits_BOB:
-                    click(Benefits_BOB);
-                    Logger.INFO("Benefits BOB is clicked at the Lobby page");
+                case Tile.BenefitsBob:
+                    Click(_benefitsBob);
+                    Logger.Info("Benefits BOB is clicked at the Lobby page");
                     break;
                 case Tile.ClientAdminTool:
-                    click(ClientAdminTool);
-                    Logger.INFO("Client Admin Tool is clicked at the Lobby page");
+                    Click(_clientAdminTool);
+                    Logger.Info("Client Admin Tool is clicked at the Lobby page");
                     break;
-                case Tile.ACA_Wizard:
-                    click(ACA_Wizard);
-                    Logger.INFO("ACA Wizard is clicked at the Lobby page");
+                case Tile.AcaWizard:
+                    Click(_acaWizard);
+                    Logger.Info("ACA Wizard is clicked at the Lobby page");
                     break;
-                case Tile.BRET:
-                    click(BRET);
-                    Logger.INFO("BRET is clicked at the Lobby page");
+                case Tile.Bret:
+                    Click(_bret);
+                    Logger.Info("BRET is clicked at the Lobby page");
                     break;
                 case Tile.RateSheets:
-                    click(RateSheets);
-                    Logger.INFO("Rate sheets is clicked at the Lobby page");
+                    Click(_rateSheets);
+                    Logger.Info("Rate sheets is clicked at the Lobby page");
                     break;
                 case Tile.VideoManagement:
-                    click(VideoManagement);
-                    Logger.INFO("Video Management is clicked at the Lobby page");
+                    Click(_videoManagement);
+                    Logger.Info("Video Management is clicked at the Lobby page");
                     break;
-                case Tile.MEP:
-                    click(MEP);
-                    Logger.INFO("401K MEP is clicked at the Lobby page");
+                case Tile.Mep:
+                    Click(_mep);
+                    Logger.Info("401K MEP is clicked at the Lobby page");
                     break;
-                case Tile.MEP_Reports:
-                    click(MEP_Reports);
-                    Logger.INFO("MEP Reports is clicked at the Lobby page");
+                case Tile.MepReports:
+                    Click(_mepReports);
+                    Logger.Info("MEP Reports is clicked at the Lobby page");
                     break;
                 case Tile.Admin:
-                    click(headerAccountName);
-                    click(Admin);
-                    Logger.INFO("Admin is clicked at the Lobby page");
+                    Click(_headerAccountName);
+                    Click(_admin);
+                    Logger.Info("Admin is clicked at the Lobby page");
                     break;
             }     
         }
 
-        public void verifyImpersonatedUserName()
+        public void VerifyImpersonatedUserName()
         {
             try
             {
-                waitInvisibleElement(loading_bar);
-                StringAssert.AreEqualIgnoringCase(SmokeTestWindow.impersonatedUser, headerAccountName.Text);
+                WaitInvisibleElement(_loadingBar);
+                StringAssert.AreEqualIgnoringCase(SmokeTestWindow.ImpersonatedUser, _headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }
             catch (AssertionException ex)
@@ -140,8 +139,8 @@ namespace ADP_SeleniumFramework.ADP_PageFactory
                 Logger.screenshot_FAIL("Impersonate test has failed");
                 Console.WriteLine(ex.ToString());
             }
-            click(headerAccountName);
-            click(unImpersonate_button);
+            Click(_headerAccountName);
+            Click(_unImpersonateButton);
         }
     }
 }

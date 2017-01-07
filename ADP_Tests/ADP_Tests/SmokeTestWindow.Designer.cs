@@ -45,6 +45,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.companyCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.FEIN = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorMessage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,7 +187,7 @@
             this.companyCode.Location = new System.Drawing.Point(264, 47);
             this.companyCode.MaxLength = 3;
             this.companyCode.Name = "companyCode";
-            this.companyCode.Size = new System.Drawing.Size(212, 22);
+            this.companyCode.Size = new System.Drawing.Size(222, 22);
             this.companyCode.TabIndex = 14;
             this.companyCode.TextChanged += new System.EventHandler(this.companyCode_TextChanged);
             // 
@@ -199,12 +201,32 @@
             this.label4.Text = "BOB. Please provide testable CC";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // FEIN
+            // 
+            this.FEIN.Location = new System.Drawing.Point(264, 105);
+            this.FEIN.MaxLength = 9;
+            this.FEIN.Name = "FEIN";
+            this.FEIN.Size = new System.Drawing.Size(222, 22);
+            this.FEIN.TabIndex = 16;
+            this.FEIN.TextChanged += new System.EventHandler(this.FEIN_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(261, 85);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "ACA. Please provide testable FEIN";
+            // 
             // SmokeTestWindow
             // 
             this.AcceptButton = this.StartTest;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 333);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.FEIN);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.companyCode);
             this.Controls.Add(this.label3);
@@ -249,5 +271,7 @@
         private System.Windows.Forms.TextBox employeeID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox companyCode;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox FEIN;
     }
 }

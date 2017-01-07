@@ -1,61 +1,59 @@
-﻿using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using ADP_Tests;
-using NUnit.Framework;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory
+namespace ADP_Tests.ADP_PageFactory.BRET
 {
-    public class BRET_HomePage: ADP_AbstractPageFactory
+    public class BretHomePage: AdpAbstractPageFactory
     {
         [FindsBy(How = How.XPath, Using = "//a[@class='md-primary md-hue-1 md-button ng-scope md-ink-ripple']")]
-        private IWebElement BRET;
+        private IWebElement _bret;
 
         [FindsBy(How = How.Id, Using = "adp-bret-id-input")]
-        private IWebElement BRET_search;
+        private IWebElement _bretSearch;
 
         [FindsBy(How = How.Id, Using = "adp-bret-erfp-input")]
-        private IWebElement ERFP_search;
+        private IWebElement _erfpSearch;
 
         [FindsBy(How = How.Id, Using = "adp-bret-legal-name-input")]
-        private IWebElement Name_search;
+        private IWebElement _nameSearch;
 
         [FindsBy(How = How.Id, Using = "adp-bret-sales-team-select")]
-        private IWebElement SalesTeam_dd;
+        private IWebElement _salesTeamDd;
 
         [FindsBy(How = How.Id, Using = "adp-bret-district-manager-select")]
-        private IWebElement DistrictManager_dd;
+        private IWebElement _districtManagerDd;
 
         [FindsBy(How = How.Id, Using = "adp-bret-activity-select")]
-        private IWebElement Activity_dd;
+        private IWebElement _activityDd;
 
         [FindsBy(How = How.Id, Using = "adp-bret-assigned-broker-input")]
-        private IWebElement AssignedBroker_dd;
+        private IWebElement _assignedBrokerDd;
 
         [FindsBy(How = How.Id, Using = "adp-bret-clear-button")]
-        private IWebElement clear_button;
+        private IWebElement _clearButton;
 
         [FindsBy(How = How.Id, Using = "adp-bret-search-button")]
-        private IWebElement search_button;
+        private IWebElement _searchButton;
 
         [FindsBy(How = How.XPath, Using = "//a[@ui-sref='sales.details.profile({profileID: result.BRET_ID})']")]
-        private IWebElement found_ERFP;
+        private IWebElement _foundErfp;
 
-        private By loaderModal = By.Id("adp-bar-loading-indicator");
+        private By _loaderModal = By.Id("adp-bar-loading-indicator");
 
 
-        public BRET_HomePage(): base()
+        public BretHomePage(): base()
         {
-            waitVisibleText(BRET, "BRET");
+            WaitVisibleText(_bret, "BRET");
         }
 
         public void search_ERFP()
         {
-            BRET_search.SendKeys(SmokeTestWindow.bret_id);
-            click(search_button);
-            waitInvisibleElement(loaderModal);
-            Logger.screenshot_PASS("BRET ID" + " " + "<b>" + SmokeTestWindow.bret_id + "</b>" + " " + "is chosen for this test");
-            click(found_ERFP);
+            _bretSearch.SendKeys(SmokeTestWindow.BretId);
+            Click(_searchButton);
+            WaitInvisibleElement(_loaderModal);
+            Logger.screenshot_PASS("BRET ID" + " " + "<b>" + SmokeTestWindow.BretId + "</b>" + " " + "is chosen for this test");
+            Click(_foundErfp);
         }
 
         }

@@ -1,62 +1,54 @@
-﻿using ADP_SeleniumFramework.resources;
+﻿using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory.BRET
+namespace ADP_Tests.ADP_PageFactory.BRET
 {
-    class BRET_ModifySolution: ADP_AbstractPageFactory
+    class BretModifySolution: AdpAbstractPageFactory
     {
-        private By title = By.XPath("//h2[.='Solutions Summary']");
+        private By _title = By.XPath("//h2[.='Solutions Summary']");
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='View deltas in dollars']")]
-        private IWebElement viewDetailsDeltas;
+        private IWebElement _viewDetailsDeltas;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='%']")]
-        private IWebElement viewDetailsPercent;
+        private IWebElement _viewDetailsPercent;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='button-group']//button[@aria-label='monetization_on']")]
-        private IWebElement viewDetailsDollars;
+        private IWebElement _viewDetailsDollars;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='event_available']")]
-        private IWebElement Annualized;
+        private IWebElement _annualized;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='today']")]
-        private IWebElement pointInTime;
+        private IWebElement _pointInTime;
 
         [FindsBy(How = How.XPath, Using = "//h2[.='Plans']")]
-        private IWebElement Plans;
+        private IWebElement _plans;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='format_list_bulleted']")]
-        private IWebElement planClassMapping;
+        private IWebElement _planClassMapping;
 
         [FindsBy(How = How.XPath, Using = "//a[@aria-label='add']")]
-        private IWebElement addClass;
+        private IWebElement _addClass;
 
-        public BRET_ModifySolution() : base()
+        public BretModifySolution() : base()
         {
-            waitVisibleElement(title);
+            WaitVisibleElement(_title);
         }
 
-        public void verifyContents()
+        public void VerifyContents()
         {
-            if (
-            isElementDisplayed(viewDetailsDeltas, "") &&
-            isElementDisplayed(viewDetailsPercent, "") &&
-            isElementDisplayed(viewDetailsDollars, "") &&
-            isElementDisplayed(Annualized, "") &&
-            isElementDisplayed(pointInTime, "") &&
-            isElementDisplayed(Plans, "") &&
-            isElementDisplayed(planClassMapping, "") &&
-            isElementDisplayed(addClass, "")
-        )
-            {
+            if (IsElementDisplayed(_viewDetailsDeltas)) { }
+            if (IsElementDisplayed(_viewDetailsPercent)) { }
+            if (IsElementDisplayed(_viewDetailsDollars)) { }
+            if (IsElementDisplayed(_annualized)) { }
+            if (IsElementDisplayed(_pointInTime)) { }
+            if (IsElementDisplayed(_plans)) { }
+            if (IsElementDisplayed(_planClassMapping)) { }
+            if (IsElementDisplayed(_addClass)) {
                 Logger.screenshot_PASS("Modify plan page icons are OK");
             }
         }
-    }
+}
 }

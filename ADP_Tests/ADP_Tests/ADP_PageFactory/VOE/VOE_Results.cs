@@ -1,75 +1,72 @@
-﻿using OpenQA.Selenium;
+﻿using System.IO;
+using ADP_Tests.resources;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using AutoIt;
-using ADP_SeleniumFramework.resources;
-using System.Linq;
-using System.IO;
 
-namespace ADP_SeleniumFramework.ADP_PageFactory.VOE
+namespace ADP_Tests.ADP_PageFactory.VOE
 {
-    class VOE_Results: ADP_AbstractPageFactory
+    class VoeResults: AdpAbstractPageFactory
     {
-        string folder = "C:/Users/ramazana/Downloads";
+        string _folder = "C:/Users/ramazana/Downloads";
 
-        private By title = By.XPath("//section[@id='request-form']//label[contains(text(), 'Employee')]");
+        private By _title = By.XPath("//section[@id='request-form']//label[contains(text(), 'Employee')]");
 
-        private By pdfDownload = By.XPath("//div[@class='toast-message']");
+        private By _pdfDownload = By.XPath("//div[@class='toast-message']");
 
-        private By loading_bar = By.Id("adp-bar-loading-indicator");
+        private By _loadingBar = By.Id("adp-bar-loading-indicator");
 
         [FindsBy(How = How.XPath, Using = "//a[@class='logo']")]
-        private IWebElement logo;
+        private IWebElement _logo;
 
         [FindsBy(How = How.Id, Using = "inputEmplID")]
-        private IWebElement searchField;
+        private IWebElement _searchField;
 
         [FindsBy(How = How.Id, Using = "taRequestor")]
-        private IWebElement requestorInfo_field;
+        private IWebElement _requestorInfoField;
 
         [FindsBy(How = How.Id, Using = "inputShowPayInfo")] 
-        private IWebElement showPayInformation_checkmark;
+        private IWebElement _showPayInformationCheckmark;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn-cancel']")]
-        private IWebElement startOver_button;
+        private IWebElement _startOverButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn-primary']")]
-        private IWebElement submit_button;
+        private IWebElement _submitButton;
 
-        public VOE_Results() : base()
+        public VoeResults() : base()
         {
-            waitVisibleElement(title);
+            WaitVisibleElement(_title);
         }
 
-        public void submit()
+        public void Submit()
         {
-            string[] filesToDelete = Directory.GetFiles(folder);
+            string[] filesToDelete = Directory.GetFiles(_folder);
             foreach (string fileToDelete in filesToDelete)
             File.Delete(fileToDelete);
-            waitInvisibleElement(loading_bar);
-            click(requestorInfo_field);
-            requestorInfo_field.SendKeys("This is test. Please disregard any given information");
-            click(showPayInformation_checkmark);
-            click(submit_button);
-            waitVisibleElement(pdfDownload);
-            standBy(5);
-            string[] files = System.IO.Directory.GetFiles(folder, "*.pdf", SearchOption.AllDirectories);
+            WaitInvisibleElement(_loadingBar);
+            Click(_requestorInfoField);
+            _requestorInfoField.SendKeys("This is test. Please disregard any given information");
+            Click(_showPayInformationCheckmark);
+            Click(_submitButton);
+            WaitVisibleElement(_pdfDownload);
+            StandBy(5);
+            string[] files = System.IO.Directory.GetFiles(_folder, "*.pdf", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
-                Logger.screenshot_PASS("VOE file is successfully downloaded to" + " " + folder);
+                Logger.screenshot_PASS("VOE file is successfully downloaded to" + " " + _folder);
             }
             else
             {
-                Logger.FAIL("Unable to download VOE file");
+                Logger.Fail("Unable to download VOE file");
             }
-            waitInvisibleElement(loading_bar);
-            click(logo);
+            WaitInvisibleElement(_loadingBar);
         }
-        public void submit2()
+        public void Submit2()
         {
-            waitInvisibleElement(loading_bar);
-            click(requestorInfo_field);
-            requestorInfo_field.SendKeys("This is test. Please disregard any given information");
-            submit_button.SendKeys("C:/AznariyRamazanov/TestResults/");
+            WaitInvisibleElement(_loadingBar);
+            Click(_requestorInfoField);
+            _requestorInfoField.SendKeys("This is test. Please disregard any given information");
+            _submitButton.SendKeys("C:/AznariyRamazanov/TestResults/");
         }
     }
 }
