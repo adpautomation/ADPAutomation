@@ -1,6 +1,7 @@
 ﻿using ADP_Tests.ADP_PageFactory;
 using ADP_Tests.ADP_PageFactory.ACAWizard;
 using ADP_Tests.ADP_PageFactory.BenefitsBOB;
+using ADP_Tests.ADP_PageFactory.BRET;
 using ADP_Tests.ADP_PageFactory.CAT;
 using ADP_Tests.ADP_PageFactory.EEOC;
 using ADP_Tests.ADP_PageFactory.VOE;
@@ -78,7 +79,6 @@ namespace ADP_Tests.tests
             var lobby = new AdpLobby();
             lobby.Navigate(AdpLobby.Tile.WorkBench);
             var wrklobby = new WorkBenchLobby();
-            wrklobby.NavegateToLobbyPage();
         }
 
         [Test, Order(5)]
@@ -155,8 +155,32 @@ namespace ADP_Tests.tests
             report.VerifyFinalReport();
         }
 
+        [Test, Order(10)]
+        public void Bret()
+        {
+            Logger.StartLogger("BRET", "User should be able to navigate to BRET Solutions");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.Bret);
+            var home = new BretHomePage();
+            home.search_ERFP();
+            var details = new BretDetails();
+            details.VerifyHeaderInfo();
+            details.NavigateToSolutions();
+            var solutions = new BretSolutions();
+            solutions.VerifyHeaderInfo();
+            solutions.NavigateToClassesAndEmployeesSetUp();
+            var setup = new BretClassesEmployeesSetupModal();
+            setup.VerifyModalContent();
+            setup.NavigateToAddClass();
+            var addClass = new BretAddClass();
+            addClass.VerifyModalContents();
+            setup.CloseModal();
+            solutions.NavigateToModifySolution();
+            var modify = new BretModifySolution();
+            modify.VerifyContents();
+        }
+
         [TearDown]
-        [Parallelizable]
         public void Teardown()
         {
             Logger.EndTest();

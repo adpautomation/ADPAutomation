@@ -11,6 +11,8 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         private By _loaderModal = By.Id("adp-bar-loading-indicator");
 
+        private By closeButton = By.XPath("//md-dialog-actions[@class='plr-16']//a[@aria-label='Close']");
+
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='Classes']")]
         private IWebElement _classesTab;
 
@@ -19,6 +21,9 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         [FindsBy(How = How.XPath, Using = "//span[.='Domestic Partner']")]
         private IWebElement _domesticPartner;
+
+        [FindsBy(How = How.XPath, Using = "//span[.='FSA Carveout']")]
+        private IWebElement _fsaCarveOut;
 
         [FindsBy(How = How.XPath, Using = "//md-switch[@aria-label='Domestic Partner'][@aria-checked='true']")]
         private IWebElement _domesticPartnerFlagOn;
@@ -56,19 +61,19 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         [FindsBy(How = How.XPath, Using = "//md-switch[@aria-label='1099'][@aria-checked='false']")]
         private IWebElement _class1099FlagOff;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='relative layout-column']//h6[.='Name']")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='relative layout-column']//h6[normalize-space(text()) = 'Name']")]
         private IWebElement _classesTabName;
 
         [FindsBy(How = How.XPath, Using = "//h6[@class='bold flex-25']//span[@class='ng-scope']")]
         private IWebElement _defaultMedicalContributionStrategy;
 
-        [FindsBy(How = How.XPath, Using = "//h6[.='Waiting Period']")]
+        [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Waiting Period']")]
         private IWebElement _waitingPeriod;
 
-        [FindsBy(How = How.XPath, Using = "//h6[.='Offering Method']")]
+        [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Offering Method']")]
         private IWebElement _offeringMethod;
 
-        [FindsBy(How = How.XPath, Using = "//h6[.='Type']")]
+        [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Type']")]
         private IWebElement _type;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='md-icon-button md-button ng-scope md-ink-ripple'][@aria-label='add']")]
@@ -80,16 +85,16 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         [FindsBy(How = How.XPath, Using = "//div[@class='layout-align-start-center layout-row flex']//div[contains(text(), 'A -')]")]
         private IWebElement _allFtEmployeesA;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='adp-employees-scroller']//h6[.='Name']")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='adp-employees-scroller']//h6[normalize-space(text()) = 'Name']")]
         private IWebElement _employeesTabName;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='layout-row']//h6[.='FT/PT']")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='layout-row']//h6[normalize-space(text()) = 'FT/PT']")]
         private IWebElement _ftPt;
 
-        [FindsBy(How = How.XPath, Using = "//h6[.='Location']")]
+        [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Location']")]
         private IWebElement _location;
 
-        [FindsBy(How = How.XPath, Using = "//h6[.='Selected Class']")]
+        [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Selected Class']")]
         private IWebElement _selectedClass;
 
         [FindsBy(How = How.XPath, Using = "//h6[.='Classes']")]
@@ -104,6 +109,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         public void VerifyModalContent()
         {
             if (IsElementDisplayed(_domesticPartner)) { }
+            if (IsElementDisplayed(_fsaCarveOut)) { }
             if (IsElementDisplayed(_benefitStartDate)) { }
             if (IsElementDisplayed(_enrollmentStartDate)) { }
             if (IsElementDisplayed(_enrollmentEndDate)) { }
@@ -139,13 +145,13 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         public void NavigateToAddClass()
         {
             Click(_classesTab);
-            WaitVisibleText(_addClassIcon, "");
+            StandBy(2);
             Click(_addClassIcon);
         }
         public void CloseModal()
         {
-            StandBy(2);
             WaitInvisibleElement(_loaderModal);
+            WaitVisibleElement(closeButton);
             Click(_closeButton);
         }
     }

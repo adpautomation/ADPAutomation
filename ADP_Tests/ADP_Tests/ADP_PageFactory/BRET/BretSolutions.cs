@@ -8,6 +8,8 @@ namespace ADP_Tests.ADP_PageFactory.BRET
     {
         private By _selection = By.Id("adp-current-breadcrumb-Selection");
 
+        private By _loaderModal = By.Id("adp-bar-loading-indicator");
+
         [FindsBy(How = How.XPath, Using = "//a[@aria-label = 'device_hub']")]
         private IWebElement _classesEmployeesSetup;
 
@@ -35,7 +37,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         [FindsBy(How = How.XPath, Using = "//div[@class='layout-row']//a[@aria-label = 'file_download']")]
         private IWebElement _documents;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='layout-row']//button[@aria-label = 'view_carouselclear']")]
+        [FindsBy(How = How.XPath, Using = "//button[@title='Select solutions order']")]
         private IWebElement _orderSolutions;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='layout-row']//button[@aria-label = 'add']")]
@@ -43,6 +45,8 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         [FindsBy(How = How.XPath, Using = "//button[@ng-click='onModifySolution()']")]
         private IWebElement _modifySolution;
+
+
 
 
 
@@ -75,11 +79,8 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         public void NavigateToModifySolution()
         {
-         StandBy(2);
+         WaitInvisibleElement(_loaderModal);
          Click(_modifySolution);
         }
-
-
-
     }
 }

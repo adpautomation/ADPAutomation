@@ -6,7 +6,6 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 {
     public class BretDetails: AdpAbstractPageFactory
     {
-
         [FindsBy(How = How.Id, Using = "adp-breadcrumb-Details")]
         private IWebElement _details;
 
@@ -63,6 +62,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         public BretDetails(): base()
         {
+            WaitInvisibleElement((_loaderModal));
             WaitVisibleText(_details, "DETAILS");
         }
 
@@ -88,6 +88,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         public void NavigateToSolutions()
         {
+
             Click(_bsButton);
         }
 

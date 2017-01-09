@@ -135,14 +135,13 @@ namespace ADP_Tests.resources
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
             try
             {
-                StandBy(3);
                 _wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
-                System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
+     //           System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is found");
             }
-            catch (Exception e)
+            catch (TimeoutException ex)
             {
-                Logger.screenshot_FAIL(element.Text + " " + "is not found");
-                System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is not found." +  "The text should be" + " " + "<<" + element.Text + ">>" + " " + "|" + " " + e.Message);
+                Logger.screenshot_FAIL(ex.Message);
+     //           System.Diagnostics.Debug.Write("element that should contain text" + " " + "<<" + text + ">>" + " " + "is not found." +  "The text should be" + " " + "<<" + element.Text + ">>" + " " + "|" + " " + e.Message);
             }
         }
         public static void WaitVisibleElement(By by)
@@ -179,7 +178,6 @@ namespace ADP_Tests.resources
         {
             try
             {
-                System.Diagnostics.Debug.Write(element.Text + " " + "is displayed on the page");
                 return element.Displayed;
 
             }
@@ -222,7 +220,7 @@ namespace ADP_Tests.resources
 
         public static void WaitInvisibleElement(By by)
         {
-            _wait = new WebDriverWait(WebDriver.Initialize(Browser.Remote), TimeSpan.FromSeconds(90));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(90));
             try
             {
                 StandBy(1);
