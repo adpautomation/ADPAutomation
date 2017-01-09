@@ -185,7 +185,7 @@ namespace ADP_Tests.resources
             }
             catch (NoSuchElementException ex)
             {
-                Logger.Fail(element.Text + " " + "is not found on the page");
+                Logger.Fail(ex.Message);
                 return false;
             }
         }
@@ -203,7 +203,7 @@ namespace ADP_Tests.resources
                 }
                 else
                 {
-                    Logger.screenshot_WARNING("Temporarily unable to click on" + " " + element.Text);
+                    Logger.Info("<b><font color = 'orange'>" + "Temporarily unable to click on" + " " + element.Text + "</font></b>");
                     System.Diagnostics.Debug.Write("Unable to click on" + " " + element.Text);
                 }
             }

@@ -34,7 +34,6 @@ namespace ADP_Tests.tests
         [SetUp]
         public void SetUp()
         {
-            WebDriver.NewTab();
             WebDriver.OpenUrl(SmokeTestWindow.Env);
         }
 
@@ -160,7 +159,6 @@ namespace ADP_Tests.tests
         [Parallelizable]
         public void Teardown()
         {
-            WebDriver.CloseTab();
             Logger.EndTest();
         }
     }

@@ -76,28 +76,28 @@ namespace ADP_Tests.ADP_PageFactory.CAT
         [FindsBy(How = How.XPath, Using = "//td[.='ER Contribution (% ER Contribution)']")]
         private readonly IWebElement _erContributionText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='EE Contribution']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='EE Contribution']")]
         private readonly IWebElement _eeContributionText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Eligible']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Eligible']")]
         private readonly IWebElement _eligibleText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Enrolled (% Med Enrolled)']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Enrolled (% Med Enrolled)']")]
         private readonly IWebElement _medEnrolledText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Type']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Type']")]
         private readonly IWebElement _typeText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Provider']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Provider']")]
         private readonly IWebElement _providerText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Plan Code']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Plan Code']")]
         private IWebElement _planCodeText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Plan Name']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Plan Name']")]
         private IWebElement _planNameText;
 
-        [FindsBy(How = How.XPath, Using = "//label[.='Enrolled']")]
+        [FindsBy(How = How.XPath, Using = "//td[.='Enrolled']")]
         private readonly IWebElement _enrolledText;
 
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@role='tab']//span[.='Summary']")]

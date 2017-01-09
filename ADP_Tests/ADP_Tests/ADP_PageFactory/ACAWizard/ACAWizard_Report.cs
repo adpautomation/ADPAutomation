@@ -50,16 +50,16 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Open Menu Button']")]
         private IWebElement _hamburgerMenuIcon;
 
-        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[.='All']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[normalize-space(text()) = 'All']")]
         private IWebElement _filterAllDropDownSelection;
 
-        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[.='EV4']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[normalize-space(text()) = 'EV4']")]
         private IWebElement _filterEv4DropDownSelection;
 
-        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[.='Additional']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[normalize-space(text()) = 'Additional']")]
         private IWebElement _filterAdditionalDropDownSelection;
 
-        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[.='Selected']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@ng-repeat='option in ctrl.filter.options']//div[normalize-space(text()) = 'Selected']")]
         private IWebElement _filterSelectedDropDownSelection;
 
         [FindsBy(How = How.XPath, Using = "//h4[.='Client Survey']")]

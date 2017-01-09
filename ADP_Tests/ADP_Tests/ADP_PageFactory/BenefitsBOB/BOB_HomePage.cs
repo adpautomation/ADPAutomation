@@ -25,10 +25,10 @@ namespace ADP_Tests.ADP_PageFactory.BenefitsBOB
         [FindsBy(How = How.XPath, Using = ("//button[@ng-click='findPaygroup()']"))]
         private IWebElement _searchIcon;
 
-        [FindsBy(How = How.XPath, Using = ("//button[.='BOB']"))]
+        [FindsBy(How = How.XPath, Using = ("(//button[@ng-model='config.tableDisplay'])[1]"))]
         private IWebElement _bobButton;
 
-        [FindsBy(How = How.XPath, Using = ("//button[.='OE']"))]
+        [FindsBy(How = How.XPath, Using = ("(//button[@ng-model='config.tableDisplay'])[2]"))]
         private IWebElement _oeButton;
 
         [FindsBy(How = How.XPath, Using = ("//button[@aria-label='Save Results']"))]
