@@ -1,9 +1,11 @@
-﻿using ADP_Tests.ADP_PageFactory;
+﻿using ADP_Tests.ADPageFactory.MEP;
+using ADP_Tests.ADP_PageFactory;
 using ADP_Tests.ADP_PageFactory.ACAWizard;
 using ADP_Tests.ADP_PageFactory.BenefitsBOB;
 using ADP_Tests.ADP_PageFactory.BRET;
 using ADP_Tests.ADP_PageFactory.CAT;
 using ADP_Tests.ADP_PageFactory.EEOC;
+using ADP_Tests.ADP_PageFactory.RateSheets;
 using ADP_Tests.ADP_PageFactory.VOE;
 using ADP_Tests.ADP_PageFactory.WorkBench;
 using ADP_Tests.resources;
@@ -178,6 +180,35 @@ namespace ADP_Tests.tests
             solutions.NavigateToModifySolution();
             var modify = new BretModifySolution();
             modify.VerifyContents();
+        }
+
+        [Test, Order(11)]
+        public void RateSheets()
+        {
+            Logger.StartLogger("Rate Sheets", "User should be able to navigate to Rate Sheets and generate the report");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.RateSheets);
+            var sheets = new RateSheetsHomePage();
+            sheets.VerifyContents();
+            sheets.NavigatetoSheets();
+        }
+
+        [Test, Order(12)]
+        public void Mep()
+        {
+            Logger.StartLogger("MEP", "User should be able to look for and navigate to Company Level");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.Mep);
+            var home = new MepHomePage();
+            home.VerifyContents();
+            home.NavigateElection();
+            var elections = new MepElection();
+            elections.VerifyContents();
+            var home2 = new MepHomePage();
+            home2.NavigateCompany();
+            var company = new MepCompany();
+            company.VerifyContents();
+
         }
 
         [TearDown]

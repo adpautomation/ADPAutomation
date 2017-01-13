@@ -47,22 +47,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.FEIN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.MEP_companycode = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorMessage)).BeginInit();
             this.SuspendLayout();
             // 
             // BRET_ID
             // 
-            this.BRET_ID.Location = new System.Drawing.Point(12, 299);
+            this.BRET_ID.Location = new System.Drawing.Point(12, 215);
             this.BRET_ID.MaxLength = 6;
             this.BRET_ID.Name = "BRET_ID";
-            this.BRET_ID.Size = new System.Drawing.Size(190, 22);
+            this.BRET_ID.Size = new System.Drawing.Size(207, 22);
             this.BRET_ID.TabIndex = 5;
             this.BRET_ID.TextChanged += new System.EventHandler(this.BRET_ID_TextChanged);
             // 
             // BRET_ID_text
             // 
             this.BRET_ID_text.AutoSize = true;
-            this.BRET_ID_text.Location = new System.Drawing.Point(9, 279);
+            this.BRET_ID_text.Location = new System.Drawing.Point(12, 195);
             this.BRET_ID_text.Name = "BRET_ID_text";
             this.BRET_ID_text.Size = new System.Drawing.Size(193, 17);
             this.BRET_ID_text.TabIndex = 1;
@@ -74,7 +76,7 @@
             this.StartTest.BackColor = System.Drawing.SystemColors.Info;
             this.StartTest.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartTest.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.StartTest.Location = new System.Drawing.Point(753, 260);
+            this.StartTest.Location = new System.Drawing.Point(786, 298);
             this.StartTest.Name = "StartTest";
             this.StartTest.Size = new System.Drawing.Size(141, 61);
             this.StartTest.TabIndex = 7;
@@ -123,7 +125,7 @@
             // 
             this.env_dropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.env_dropDown.FormattingEnabled = true;
-            this.env_dropDown.Location = new System.Drawing.Point(547, 260);
+            this.env_dropDown.Location = new System.Drawing.Point(547, 335);
             this.env_dropDown.MaxDropDownItems = 2;
             this.env_dropDown.Name = "env_dropDown";
             this.env_dropDown.Size = new System.Drawing.Size(187, 24);
@@ -133,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(544, 240);
+            this.label1.Location = new System.Drawing.Point(544, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 17);
             this.label1.TabIndex = 9;
@@ -148,7 +150,7 @@
             // 
             this.Impersonate_listOfUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Impersonate_listOfUsers.FormattingEnabled = true;
-            this.Impersonate_listOfUsers.Location = new System.Drawing.Point(15, 159);
+            this.Impersonate_listOfUsers.Location = new System.Drawing.Point(541, 279);
             this.Impersonate_listOfUsers.Name = "Impersonate_listOfUsers";
             this.Impersonate_listOfUsers.Size = new System.Drawing.Size(210, 24);
             this.Impersonate_listOfUsers.TabIndex = 3;
@@ -157,7 +159,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 139);
+            this.label2.Location = new System.Drawing.Point(538, 259);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(240, 17);
             this.label2.TabIndex = 11;
@@ -166,7 +168,7 @@
             // 
             // employeeID
             // 
-            this.employeeID.Location = new System.Drawing.Point(12, 220);
+            this.employeeID.Location = new System.Drawing.Point(12, 160);
             this.employeeID.MaxLength = 8;
             this.employeeID.Name = "employeeID";
             this.employeeID.Size = new System.Drawing.Size(210, 22);
@@ -176,7 +178,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 200);
+            this.label3.Location = new System.Drawing.Point(12, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 17);
             this.label3.TabIndex = 13;
@@ -219,12 +221,32 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "ACA. Please provide testable FEIN";
             // 
+            // MEP_companycode
+            // 
+            this.MEP_companycode.Location = new System.Drawing.Point(12, 270);
+            this.MEP_companycode.MaxLength = 3;
+            this.MEP_companycode.Name = "MEP_companycode";
+            this.MEP_companycode.Size = new System.Drawing.Size(210, 22);
+            this.MEP_companycode.TabIndex = 18;
+            this.MEP_companycode.TextChanged += new System.EventHandler(this.MEP_companycode_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 250);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(215, 17);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "MEP. Please provide testable CC";
+            // 
             // SmokeTestWindow
             // 
             this.AcceptButton = this.StartTest;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 333);
+            this.ClientSize = new System.Drawing.Size(939, 371);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.MEP_companycode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.FEIN);
             this.Controls.Add(this.label4);
@@ -273,5 +295,7 @@
         private System.Windows.Forms.TextBox companyCode;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox FEIN;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox MEP_companycode;
     }
 }

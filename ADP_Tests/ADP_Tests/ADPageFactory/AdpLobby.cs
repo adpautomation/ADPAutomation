@@ -19,7 +19,7 @@ namespace ADP_Tests.ADP_PageFactory
         [FindsBy(How = How.XPath, Using = "//a[@ui-sref='admin.manageUsers']")]
         private IWebElement _admin;
 
-        [FindsBy(How = How.XPath, Using  = "//h2[.='Welcome to ADP TotalSource']")]
+        [FindsBy(How = How.XPath, Using  = "//h3[.='Welcome to ADP TotalSource']")]
         private IWebElement _welcomeToAdp;
 
         [FindsBy(How = How.Id, Using = "icon-lobby-eeoc")]

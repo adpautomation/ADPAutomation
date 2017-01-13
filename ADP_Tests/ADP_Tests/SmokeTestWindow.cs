@@ -22,6 +22,7 @@ namespace ADP_Tests
         public static string ImpersonatedUser;
         public static string ValidCompanyCode;
         public static string ValidFein;
+        public static string validMEP;
         public SmokeTestWindow()
         {
             InitializeComponent();
@@ -63,8 +64,15 @@ namespace ADP_Tests
         {
             this.Visible = true;
             env_dropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            env_dropDown.Items.Add("development");
-            env_dropDown.Items.Add("staging");
+            if (!env_dropDown.Items.Contains("development"))
+            {
+                env_dropDown.Items.Add("development");
+            }
+            if (!env_dropDown.Items.Contains("staging"))
+            {
+                env_dropDown.Items.Add("staging");
+            }
+            
             if (!Impersonate_listOfUsers.Items.Contains("Felipe Adams"))
             {
                 Impersonate_listOfUsers.Items.Add("Felipe Adams");
@@ -206,6 +214,11 @@ namespace ADP_Tests
         private void FEIN_TextChanged(object sender, EventArgs e)
         {
             ValidFein = this.FEIN.Text;
+        }
+
+        private void MEP_companycode_TextChanged(object sender, EventArgs e)
+        {
+            validMEP = this.MEP_companycode.Text;
         }
     }
 }
