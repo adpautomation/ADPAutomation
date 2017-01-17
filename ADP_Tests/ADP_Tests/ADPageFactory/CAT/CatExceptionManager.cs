@@ -63,7 +63,7 @@ namespace ADP_Tests.ADP_PageFactory.CAT
             if (IsElementDisplayed(_effectiveDateText)) { }
             if (IsElementDisplayed(_endDateText))
             {
-                Logger.screenshot_PASS("CAT Exception Manager. All the page elements displayed correclty");
+                Logger.screenshot_PASS("CAT Exception Manager. All the page elements displayed correctly");
             }
         } 
     }

@@ -49,7 +49,7 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             _feinField.SendKeys((SmokeTestWindow.ValidFein));
             Click(_searchButton);
             Click(_yearDropDown);
-            Click(_year2017);
+            Click(_year2016);
             Click(_showReportButton);
         }
     }

@@ -64,7 +64,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         [FindsBy(How = How.XPath, Using = "//div[@class='relative layout-column']//h6[normalize-space(text()) = 'Name']")]
         private IWebElement _classesTabName;
 
-        [FindsBy(How = How.XPath, Using = "//h6[@class='bold flex-25']//span[@class='ng-scope']")]
+        [FindsBy(How = How.XPath, Using = "//span[normalize-space(text())= 'Default Medical']")]
         private IWebElement _defaultMedicalContributionStrategy;
 
         [FindsBy(How = How.XPath, Using = "//h6[normalize-space(text()) = 'Waiting Period']")]

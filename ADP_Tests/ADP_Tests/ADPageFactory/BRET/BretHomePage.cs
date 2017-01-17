@@ -50,6 +50,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         public void search_ERFP()
         {
             _bretSearch.SendKeys(SmokeTestWindow.BretId);
+            WaitInvisibleElement(_loaderModal);
             Click(_searchButton);
             WaitInvisibleElement(_loaderModal);
             Logger.screenshot_PASS("BRET ID" + " " + "<b>" + SmokeTestWindow.BretId + "</b>" + " " + "is chosen for this test");
