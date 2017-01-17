@@ -80,7 +80,7 @@ namespace ADP_Tests.ADPageFactory.MEP
         [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Minimum Age']")]
         private IWebElement _minimumAgeText;
 
-        [FindsBy(How = How.XPath, Using = "//span[normalize-space(text()) ='Service Requirement']")]
+        [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Service Requirement']")]
         private IWebElement _serviceRequirementText;
 
         [FindsBy(How = How.XPath, Using = "//md-switch[@aria-label = 'Auto Enroll']//div[@class ='md-bar']")]

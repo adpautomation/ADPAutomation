@@ -67,7 +67,7 @@ namespace ADP_Tests.ADPageFactory.MEP
         [FindsBy(How = How.XPath, Using = "//span[normalize-space(text()) ='Union Employees']")]
         private IWebElement _unionEmployeesText;
 
-        [FindsBy(How = How.XPath, Using = "//span[normalize-space(text()) ='Autopay Schema']")]
+        [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Autopay Schema']")]
         private IWebElement _autoPaySchema;
 
         [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Legal Name']")]
@@ -196,7 +196,7 @@ namespace ADP_Tests.ADPageFactory.MEP
         [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Minimum Age']")]
         private IWebElement _minimumAgeText;
 
-        [FindsBy(How = How.XPath, Using = "//span[normalize-space(text()) ='Service Requirement']")]
+        [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Service Requirement']")]
         private IWebElement _serviceRequirementText;
 
         [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='All Employees']")]
@@ -208,7 +208,7 @@ namespace ADP_Tests.ADPageFactory.MEP
         [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Grandfathered Eligibility Age']")]
         private IWebElement _grandfatheredEligibilityAgeText;
 
-        [FindsBy(How = How.XPath, Using = "//label[normalize-space(text()) ='Grandfathered Service']")]
+        [FindsBy(How = How.XPath, Using = "//span[normalize-space(text()) ='Grandfathered Service']")]
         private IWebElement _grandfatheredServiceText;
 
         [FindsBy(How = How.XPath, Using = "//md-switch[@ng-model ='mepCompany.clientInfo.Election.IsAllEmployees.Value']//div[@class='md-bar']")]
@@ -348,7 +348,7 @@ namespace ADP_Tests.ADPageFactory.MEP
             if (IsElementDisplayed(_grandfatheredEligibilityAgeText)) { }
             if (IsElementDisplayed(_grandfatheredServiceText))
             {
-                Logger.screenshot_PASS("MEP Plan Information: All the page elements are displayed correctly");
+                Logger.screenshot_PASS("MEP Plan Information: All the page elements are displayed correectly");
             }
             Click(_wseTab);
             StandBy(1);

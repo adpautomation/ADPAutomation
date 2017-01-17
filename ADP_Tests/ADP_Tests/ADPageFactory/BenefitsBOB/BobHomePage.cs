@@ -16,7 +16,7 @@ namespace ADP_Tests.ADP_PageFactory.BenefitsBOB
         [FindsBy(How = How.XPath, Using = ("//div[@class='key-value-edit']//button[@class = 'btn edit-button pull-left']"))]
         private IWebElement _clear;
 
-        [FindsBy(How = How.XPath, Using = ("//a[@class='font-size-18 mb-6 ng-binding']"))]
+        [FindsBy(How = How.XPath, Using = ("//a[@class='font-size-17 mb-6 ng-binding']"))]
         private IWebElement _companyName;
 
         [FindsBy(How = How.XPath, Using = ("//input[@name='paygroup']"))]

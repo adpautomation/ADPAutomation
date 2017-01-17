@@ -10,6 +10,10 @@ using ADP_Tests.ADP_PageFactory.VOE;
 using ADP_Tests.ADP_PageFactory.WorkBench;
 using ADP_Tests.resources;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
+using NUnit.Framework.Internal;
+using Logger = ADP_Tests.resources.Logger;
+using System;
 
 namespace ADP_Tests.tests
 {
@@ -21,19 +25,45 @@ namespace ADP_Tests.tests
         [OneTimeSetUp]
         public void OneTimesetUp()
         {
+            #region Open the window to insert test parameters 
+
             var window = new SmokeTestWindow();
             window.ShowDialog();
+
+            #endregion
+
+            #region Initializing remote web driver
+
             WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
+
+            #endregion
+
+            #region Open predefined environment
+
             WebDriver.OpenUrl(SmokeTestWindow.Env);
+
+            #endregion
+
+            #region Login to the Total Solutions
+
             var login = new Login();
             login.LoginToMobile();
+
+            #endregion
+
+            #region Start the reporter tool
+
             Logger.GetLogger("Smoke Test");
+
+            #endregion
         }
+
         [OneTimeTearDown]
         public void AfterEntireTest()
         {
             Logger.EndLogger();
         }
+
         [SetUp]
         public void SetUp()
         {
@@ -86,7 +116,8 @@ namespace ADP_Tests.tests
         [Test, Order(5)]
         public void BOB_ParentLookUp()
         {
-            Logger.StartLogger("BOB Home Page", "User should be able to open BOB LookUp page and apply different filters");
+            Logger.StartLogger("BOB Home Page",
+                "User should be able to open BOB LookUp page and apply different filters");
             var lobby = new AdpLobby();
             lobby.Navigate(AdpLobby.Tile.BenefitsBob);
             var home = new BobHomePage();
@@ -145,19 +176,6 @@ namespace ADP_Tests.tests
         }
 
         [Test, Order(9)]
-        public void ACA_Wizard()
-        {
-            Logger.StartLogger("ACA Wizard", "User should be able to see the report");
-            var lobby = new AdpLobby();
-            lobby.Navigate(AdpLobby.Tile.AcaWizard);
-            var home = new AcaWizardHomePage();
-            home.NavigateAca();
-            var report = new AcaWizardReport();
-            report.VerifyContents();
-            report.VerifyFinalReport();
-        }
-
-        [Test, Order(10)]
         public void Bret()
         {
             Logger.StartLogger("BRET", "User should be able to navigate to BRET Solutions");
@@ -182,7 +200,7 @@ namespace ADP_Tests.tests
             modify.VerifyContents();
         }
 
-        [Test, Order(11)]
+        [Test, Order(10)]
         public void RateSheets()
         {
             Logger.StartLogger("Rate Sheets", "User should be able to navigate to Rate Sheets and generate the report");
@@ -193,7 +211,7 @@ namespace ADP_Tests.tests
             sheets.NavigatetoSheets();
         }
 
-        [Test, Order(12)]
+        [Test, Order(11)]
         public void Mep()
         {
             Logger.StartLogger("MEP", "User should be able to look for and navigate to Company Level");
@@ -211,9 +229,29 @@ namespace ADP_Tests.tests
 
         }
 
+        [Test, Order(12)]
+        public void ACA_Wizard()
+        {
+            Logger.StartLogger("ACA Wizard", "User should be able to see the report");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.AcaWizard);
+            var home = new AcaWizardHomePage();
+            home.NavigateAca();
+            var report = new AcaWizardReport();
+            report.VerifyContents();
+            report.VerifyFinalReport();
+        }
+
         [TearDown]
         public void Teardown()
         {
+            if ((TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure)) ||
+                (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Error)))
+            {
+                string problem = TestContext.CurrentContext.Result.Message;
+                Logger.screenshot_FAIL(problem);
+                Console.WriteLine();
+            }
             Logger.EndTest();
         }
     }
