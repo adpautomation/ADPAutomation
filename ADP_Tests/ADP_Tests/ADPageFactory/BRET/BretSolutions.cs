@@ -74,6 +74,7 @@ namespace ADP_Tests.ADP_PageFactory.BRET
 
         public void NavigateToClassesAndEmployeesSetUp()
         {
+            WaitInvisibleElement(_loaderModal);
          Click(_classesEmployeesSetup);
         }
 

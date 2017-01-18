@@ -144,8 +144,10 @@ namespace ADP_Tests.ADP_PageFactory.BRET
         }
         public void NavigateToAddClass()
         {
+            WaitInvisibleElement(_loaderModal);
             Click(_classesTab);
             StandBy(2);
+            WaitInvisibleElement(_loaderModal);
             Click(_addClassIcon);
         }
         public void CloseModal()

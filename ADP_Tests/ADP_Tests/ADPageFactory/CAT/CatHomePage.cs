@@ -24,7 +24,7 @@ namespace ADP_Tests.ADP_PageFactory.CAT
         public void NavigateClientLevel()
         {
             Click(_clientSearchField);
-            _clientSearchField.SendKeys(SmokeTestWindow.ValidCompanyCode);
+            _clientSearchField.SendKeys(TestCredentialsWindow.ValidCompanyCode);
             Click(_companyName);
         }
     }

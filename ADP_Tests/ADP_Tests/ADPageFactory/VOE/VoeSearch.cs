@@ -21,8 +21,8 @@ namespace ADP_Tests.ADP_PageFactory.VOE
 
         public void search_ID()
         {
-            _searchField.SendKeys(SmokeTestWindow.ValidEmployeeId);
-            Logger.screenshot_PASS("Using" + " " + "<b>" + SmokeTestWindow.ValidEmployeeId + "</b>" + " " + "as Employment ID");
+            _searchField.SendKeys(TestCredentialsWindow.ValidEmployeeId);
+            Logger.screenshot_PASS("Using" + " " + "<b>" + TestCredentialsWindow.ValidEmployeeId + "</b>" + " " + "as Employment ID");
             Click(_verifyIdButton);
         }
     }

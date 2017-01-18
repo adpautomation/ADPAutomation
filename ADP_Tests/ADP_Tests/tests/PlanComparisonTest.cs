@@ -13,10 +13,10 @@ namespace ADP_Tests.tests
         [SetUp]
         public void SetUp()
         {
-            SmokeTestWindow window = new SmokeTestWindow();
+            TestCredentialsWindow window = new TestCredentialsWindow();
             window.ShowDialog();
             WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
-            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            WebDriver.OpenUrl(TestCredentialsWindow.Env);
             Login login = new Login();
             login.LoginToMobile();
             Logger.GetLogger("Plan Comparison Test");

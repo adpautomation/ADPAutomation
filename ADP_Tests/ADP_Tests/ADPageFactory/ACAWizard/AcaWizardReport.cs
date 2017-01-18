@@ -201,7 +201,7 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             string[] files = System.IO.Directory.GetFiles(_folder, "*.xls", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
-                Logger.screenshot_PASS("FEIN for" + " " + "<b>" + SmokeTestWindow.ValidFein + "</b>" + " " + "is successfully downloaded to" + " " + _folder);
+                Logger.screenshot_PASS("FEIN for" + " " + "<b>" + TestCredentialsWindow.ValidFein + "</b>" + " " + "is successfully downloaded to" + " " + _folder);
             }
             else
             {

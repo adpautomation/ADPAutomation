@@ -27,7 +27,7 @@ namespace ADP_Tests.tests
         {
             #region Open the window to insert test parameters 
 
-            var window = new SmokeTestWindow();
+            var window = new TestCredentialsWindow();
             window.ShowDialog();
 
             #endregion
@@ -40,7 +40,7 @@ namespace ADP_Tests.tests
 
             #region Open predefined environment
 
-            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            WebDriver.OpenUrl(TestCredentialsWindow.Env);
 
             #endregion
 
@@ -67,7 +67,7 @@ namespace ADP_Tests.tests
         [SetUp]
         public void SetUp()
         {
-            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            WebDriver.OpenUrl(TestCredentialsWindow.Env);
         }
 
         [Test, Order(1)]

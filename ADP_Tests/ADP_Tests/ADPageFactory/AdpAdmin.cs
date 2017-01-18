@@ -32,10 +32,10 @@ namespace ADP_Tests.ADP_PageFactory
 
         public void ImpersonateUser()
         {
-            _inputField.SendKeys(SmokeTestWindow.ImpersonatedUser);
+            _inputField.SendKeys(TestCredentialsWindow.ImpersonatedUser);
             Click(_searchIcon);
             Click(_impersonateButton);
-            Logger.screenshot_PASS("Trying to impersonate" + " " + "<b>" + SmokeTestWindow.ImpersonatedUser + "</b>");
+            Logger.screenshot_PASS("Trying to impersonate" + " " + "<b>" + TestCredentialsWindow.ImpersonatedUser + "</b>");
             Click(_impersonateButtonYes);
         }
     }

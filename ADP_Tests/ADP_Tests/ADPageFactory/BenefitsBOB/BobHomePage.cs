@@ -519,7 +519,7 @@ namespace ADP_Tests.ADP_PageFactory.BenefitsBOB
         {
             WaitInvisibleElement(_loadingBar);
             Click(_paygroupCodeOrNameField);
-            _paygroupCodeOrNameField.SendKeys(SmokeTestWindow.ValidCompanyCode);
+            _paygroupCodeOrNameField.SendKeys(TestCredentialsWindow.ValidCompanyCode);
             Click(_searchIcon);
             WaitVisibleText(_companyName, "");
             Click(_companyName);

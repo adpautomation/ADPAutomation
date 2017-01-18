@@ -16,10 +16,10 @@ namespace ADP_Tests.tests
         [SetUp]
         public void Setup()
         {
-            SmokeTestWindow window = new SmokeTestWindow();
+            TestCredentialsWindow window = new TestCredentialsWindow();
             window.ShowDialog();
             WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
-            WebDriver.OpenUrl(SmokeTestWindow.Env);
+            WebDriver.OpenUrl(TestCredentialsWindow.Env);
             Logger.GetLogger("BRET Smoke Test");
             Logger.StartLogger("BRET Smoke Test", "Quick smoke test of UI");
             

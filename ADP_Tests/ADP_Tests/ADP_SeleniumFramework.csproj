@@ -127,16 +127,23 @@
     <Compile Include="resources\Environments.cs" />
     <Compile Include="resources\Logger.cs" />
     <Compile Include="resources\webDriver.cs" />
-    <Compile Include="SmokeTestWindow.cs">
+    <Compile Include="TestCredentialsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SmokeTestWindow.Designer.cs">
-      <DependentUpon>SmokeTestWindow.cs</DependentUpon>
+    <Compile Include="TestCredentialsWindow.Designer.cs">
+      <DependentUpon>TestCredentialsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="tests\BOB_SmokeTest.cs" />
     <Compile Include="tests\PlanComparisonTest.cs" />
     <Compile Include="tests\SmokeTest.cs" />
     <Compile Include="tests\BRET_SmokeTest.cs" />
+    <Compile Include="tests\WFN_SubmissionTest.cs" />
+    <Compile Include="WFN_SubmissionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFN_SubmissionWindow.Designer.cs">
+      <DependentUpon>WFN_SubmissionWindow.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -154,8 +161,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SmokeTestWindow.resx">
-      <DependentUpon>SmokeTestWindow.cs</DependentUpon>
+    <EmbeddedResource Include="TestCredentialsWindow.resx">
+      <DependentUpon>TestCredentialsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFN_SubmissionWindow.resx">
+      <DependentUpon>WFN_SubmissionWindow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace ADP_Tests.ADP_PageFactory
@@ -24,10 +25,9 @@ namespace ADP_Tests.ADP_PageFactory
         public void LoginToMobile()
         {
             _userName.Clear();
-            _userName.SendKeys(SmokeTestWindow.Username);
+            _userName.SendKeys(TestCredentialsWindow.Username);
             _password.Clear();
-            _password.SendKeys(SmokeTestWindow.Password);
-   //         Logger.screenshot_PASS("Given valid user creddentials");
+            _password.SendKeys(TestCredentialsWindow.Password);
             Click(_loginButton);
         }
     }

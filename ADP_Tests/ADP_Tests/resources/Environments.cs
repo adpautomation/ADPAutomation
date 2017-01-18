@@ -15,10 +15,10 @@ namespace ADP_Tests.resources
             switch (env)
             {
                 case Environment.Dev:
-                    Url = SmokeTestWindow.Env;
+                    Url = TestCredentialsWindow.Env;
                     break;
                 case Environment.Staging:
-                    Url = SmokeTestWindow.Env;
+                    Url = TestCredentialsWindow.Env;
                     break;
             }
             return Url; 

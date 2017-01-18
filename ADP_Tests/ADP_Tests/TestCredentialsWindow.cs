@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ADP_Tests
 {
-    public partial class SmokeTestWindow : Form
+    public partial class TestCredentialsWindow : Form
     {
         public static string BretId;
         public static string Username;
@@ -22,8 +22,10 @@ namespace ADP_Tests
         public static string ImpersonatedUser;
         public static string ValidCompanyCode;
         public static string ValidFein;
-        public static string validMEP;
-        public SmokeTestWindow()
+        public static string ValidMep;
+        public static string ValidWfnUsername;
+        public static string ValidWfnPassword;
+        public  TestCredentialsWindow()
         {
             InitializeComponent();
         }
@@ -57,7 +59,6 @@ namespace ADP_Tests
 
         private void username_text_Click(object sender, EventArgs e)
         {
-
         }
 
         public void SmokeTestWindow_Load(object sender, EventArgs e)
@@ -218,7 +219,17 @@ namespace ADP_Tests
 
         private void MEP_companycode_TextChanged(object sender, EventArgs e)
         {
-            validMEP = this.MEP_companycode.Text;
+            ValidMep = this.MEP_companycode.Text;
+        }
+
+        private void wfnUsername_TextChanged(object sender, EventArgs e)
+        {
+            ValidWfnUsername = wfnUsername.Text;
+        }
+
+        private void wfnPassword_TextChanged(object sender, EventArgs e)
+        {
+            ValidWfnPassword = wfnPassword.Text;
         }
     }
 }

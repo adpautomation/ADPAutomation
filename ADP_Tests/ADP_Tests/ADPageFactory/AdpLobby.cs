@@ -131,7 +131,7 @@ namespace ADP_Tests.ADP_PageFactory
             try
             {
                 WaitInvisibleElement(_loadingBar);
-                StringAssert.AreEqualIgnoringCase(SmokeTestWindow.ImpersonatedUser, _headerAccountName.Text);
+                StringAssert.AreEqualIgnoringCase(TestCredentialsWindow.ImpersonatedUser, _headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }
             catch (AssertionException ex)

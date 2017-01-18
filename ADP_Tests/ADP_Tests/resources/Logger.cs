@@ -48,7 +48,7 @@ namespace ADP_Tests.resources
             String time = DateTime.Now.ToString("HH : mm");
             _test = Report.StartTest(name, description);
             _test.AssignCategory(date, time);
-            _test.AssignAuthor("Environment:" + " " + "<b>" + SmokeTestWindow.Env + "</b>");
+            _test.AssignAuthor("Environment:" + " " + "<b>" + TestCredentialsWindow.Env + "</b>");
         }
         public static String TakeScreenShot()
         {

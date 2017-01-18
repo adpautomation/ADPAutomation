@@ -46,7 +46,7 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
 
         public void NavigateAca()
         {
-            _feinField.SendKeys((SmokeTestWindow.ValidFein));
+            _feinField.SendKeys((TestCredentialsWindow.ValidFein));
             Click(_searchButton);
             Click(_yearDropDown);
             Click(_year2016);
