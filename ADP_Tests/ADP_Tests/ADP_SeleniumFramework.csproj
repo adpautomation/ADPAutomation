@@ -49,6 +49,7 @@
       <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -91,58 +92,74 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ADPageFactory\ACAWizard\AcaWizardHomePage.cs" />
-    <Compile Include="ADPageFactory\ACAWizard\AcaWizardReport.cs" />
-    <Compile Include="ADPageFactory\AdpAdmin.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\ACAWizard\AcaWizardHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\ACAWizard\AcaWizardReport.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\AdpAdmin.cs" />
     <Compile Include="ADPageFactory\AdpAbstractPageFactory.cs" />
-    <Compile Include="ADPageFactory\AdpLobby.cs" />
-    <Compile Include="ADPageFactory\BenefitsBOB\BobHomePage.cs" />
-    <Compile Include="ADPageFactory\BenefitsBOB\BobParentDetails.cs" />
-    <Compile Include="ADPageFactory\BenefitsBOB\BobSolutions.cs" />
-    <Compile Include="ADPageFactory\BRET\BretAddClass.cs" />
-    <Compile Include="ADPageFactory\BRET\BretClassesEmployeesSetupModal.cs" />
-    <Compile Include="ADPageFactory\BRET\BretDetails.cs" />
-    <Compile Include="ADPageFactory\BRET\BretHomePage.cs" />
-    <Compile Include="ADPageFactory\BRET\BretModifySolution.cs" />
-    <Compile Include="ADPageFactory\BRET\BretSolutions.cs" />
-    <Compile Include="ADPageFactory\CAT\CatDisabilityRatingsManager.cs" />
-    <Compile Include="ADPageFactory\CAT\CatExceptionManager.cs" />
-    <Compile Include="ADPageFactory\CAT\CatHomePage.cs" />
-    <Compile Include="ADPageFactory\CAT\CatRateLevelManager.cs" />
-    <Compile Include="ADPageFactory\CAT\CatSummary.cs" />
-    <Compile Include="ADPageFactory\EEOC\Eeoc.cs" />
-    <Compile Include="ADPageFactory\Login.cs" />
-    <Compile Include="ADPageFactory\MEP\MepCompany.cs" />
-    <Compile Include="ADPageFactory\MEP\MepElection.cs" />
-    <Compile Include="ADPageFactory\MEP\MepHomePage.cs" />
-    <Compile Include="ADPageFactory\RateSheets\RateSheetsHomePage.cs" />
-    <Compile Include="ADPageFactory\RateSheets\RateSheetsPlans.cs" />
-    <Compile Include="ADPageFactory\VOE\VoeResults.cs" />
-    <Compile Include="ADPageFactory\VOE\VoeSearch.cs" />
-    <Compile Include="ADPageFactory\WorkBench\WorkBenchAm.cs" />
-    <Compile Include="ADPageFactory\WorkBench\WorkBenchCa.cs" />
-    <Compile Include="ADPageFactory\WorkBench\WorkBenchLobby.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\AdpLobby.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobParentDetails.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobSolutions.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretAddClass.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretClassesEmployeesSetupModal.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretDetails.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretModifySolution.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BRET\BretSolutions.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\CAT\CatDisabilityRatingsManager.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\CAT\CatExceptionManager.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\CAT\CatHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\CAT\CatRateLevelManager.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\CAT\CatSummary.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\EEOC\Eeoc.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\Login.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\MEP\MepCompany.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\MEP\MepElection.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\MEP\MepHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\RateSheets\RateSheetsHomePage.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\RateSheets\RateSheetsPlans.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\VOE\VoeResults.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\VOE\VoeSearch.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\WorkBench\WorkBenchAm.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\WorkBench\WorkBenchCa.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\WorkBench\WorkBenchLobby.cs" />
+    <Compile Include="ADPageFactory\WFN\Login.cs" />
+    <Compile Include="ADPageFactory\WFN\WfnAddClient.cs" />
+    <Compile Include="ADPageFactory\WFN\WFNAdminHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\Data.cs" />
     <Compile Include="resources\Environments.cs" />
     <Compile Include="resources\Logger.cs" />
     <Compile Include="resources\webDriver.cs" />
+    <Compile Include="SmokeTestWindowInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmokeTestWindowInfo.Designer.cs">
+      <DependentUpon>SmokeTestWindowInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestCredentialsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TestCredentialsWindow.Designer.cs">
       <DependentUpon>TestCredentialsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="tests\BOB_SmokeTest.cs" />
-    <Compile Include="tests\PlanComparisonTest.cs" />
-    <Compile Include="tests\SmokeTest.cs" />
-    <Compile Include="tests\BRET_SmokeTest.cs" />
-    <Compile Include="tests\WFN_SubmissionTest.cs" />
-    <Compile Include="WFN_SubmissionWindow.cs">
+    <Compile Include="tests\Total Solution tests\BOB_SmokeTest.cs" />
+    <Compile Include="tests\Total Solution tests\PlanComparisonTest.cs" />
+    <Compile Include="tests\Total Solution tests\SmokeTest.cs" />
+    <Compile Include="tests\Total Solution tests\BRET_SmokeTest.cs" />
+    <Compile Include="tests\WFN tests\WFN_ClientCreationTest.cs" />
+    <Compile Include="tests\Total Solution tests\WFN_SubmissionTest.cs" />
+    <Compile Include="WFN_CreateClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WFN_SubmissionWindow.Designer.cs">
-      <DependentUpon>WFN_SubmissionWindow.cs</DependentUpon>
+    <Compile Include="WFN_CreateClientInfo.Designer.cs">
+      <DependentUpon>WFN_CreateClientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WFN_SubmissionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFN_SubmissionInfo.Designer.cs">
+      <DependentUpon>WFN_SubmissionInfo.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -161,13 +178,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SmokeTestWindowInfo.resx">
+      <DependentUpon>SmokeTestWindowInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestCredentialsWindow.resx">
       <DependentUpon>TestCredentialsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WFN_SubmissionWindow.resx">
-      <DependentUpon>WFN_SubmissionWindow.cs</DependentUpon>
+    <EmbeddedResource Include="WFN_CreateClientInfo.resx">
+      <DependentUpon>WFN_CreateClientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFN_SubmissionInfo.resx">
+      <DependentUpon>WFN_SubmissionInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

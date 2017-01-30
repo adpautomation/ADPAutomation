@@ -18,6 +18,7 @@ namespace ADP_Tests
         public static string ValidEmployeeId;
         public static int EnvIndex;
         public static string Env;
+        public static string WFN_Env;
         public static int ImpersonatedUserIndex;
         public static string ImpersonatedUser;
         public static string ValidCompanyCode;
@@ -73,7 +74,10 @@ namespace ADP_Tests
             {
                 env_dropDown.Items.Add("staging");
             }
-            
+            if (!env_dropDown.Items.Contains("production"))
+            {
+                env_dropDown.Items.Add("production");
+            }
             if (!Impersonate_listOfUsers.Items.Contains("Felipe Adams"))
             {
                 Impersonate_listOfUsers.Items.Add("Felipe Adams");
@@ -135,10 +139,16 @@ namespace ADP_Tests
             if (env_dropDown.SelectedIndex == 0)
             {
                 Env = "http://bsg-mobile-dev/dist/#/lobby";
+                WFN_Env = "https://online-dit.nj.adp.com/wfndit2/login.html";
             }
             else if (env_dropDown.SelectedIndex == 1)
             {
                 Env = "http://bsg-mobile-staging/dist/#/lobby";
+                WFN_Env = "https://wfn-fit.nj.adp.com/public/index.htm";
+            }
+            else if (env_dropDown.SelectedIndex == 2)
+            {
+                Env = "http://bsg-mobile-prod/dist/#/lobby";
             }
         }
 
