@@ -28,6 +28,7 @@ namespace ADP_Tests.ADP_PageFactory
             _userName.SendKeys(TestCredentialsWindow.Username);
             _password.Clear();
             _password.SendKeys(TestCredentialsWindow.Password);
+            StandBy(2);
             Click(_loginButton);
         }
     }

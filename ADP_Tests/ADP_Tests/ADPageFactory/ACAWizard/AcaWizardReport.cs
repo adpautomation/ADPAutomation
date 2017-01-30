@@ -134,8 +134,10 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             WaitVisibleElement(_title);
         }
 
+        
         public void VerifyContents()
         {
+            #region Verifying main contents of the page
             if (IsElementDisplayed(_searchField)) { }
             if (IsElementDisplayed(_filterDropDown)) { }
             if (IsElementDisplayed(_incompleteOnlyCheckbox)) { }
@@ -149,7 +151,9 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             {
                 Logger.screenshot_PASS("ACA Report. All the main page elemens are displayed correctly");
             }
+#endregion
             Click(_filterDropDown);
+            #region Verifying contents of the Filter drop down
             if (IsElementDisplayed(_filterAllDropDownSelection)) { }
             if (IsElementDisplayed(_filterEv4DropDownSelection)) { }
             if (IsElementDisplayed(_filterAdditionalDropDownSelection)) { }
@@ -157,8 +161,10 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             {
                 Logger.screenshot_PASS("ACA Report. Filter drop down. All the values are displayed correctly");
             }
+#endregion
             Click(_curtain);
             Click(_clientSurveyButton);
+            #region Verifying contents of the Client Survey modal window 
             if (IsElementDisplayed(_clientSurveyText)) { }
             if (IsElementDisplayed(_question1Text)) { }
             if (IsElementDisplayed(_question2Text)) { }
@@ -173,10 +179,11 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             {
                 Logger.screenshot_PASS("ACA Report. Client Survey pop up. All the values are displayed correctly");
             }
-
-            Click((_clientSurveyCloseButton));
+#endregion
+            Click(_clientSurveyCloseButton);
             StandBy(2);
             Click(_hamburgerMenuIcon);
+            #region Verifying contents of the right habmurger menu
             if (IsElementDisplayed(_employeeTemplateFile)) { }
             if (IsElementDisplayed(_safeHarborCalculator)) { }
             if (IsElementDisplayed(_artFile)) { }
@@ -187,6 +194,7 @@ namespace ADP_Tests.ADP_PageFactory.ACAWizard
             {
                 Logger.screenshot_PASS("ACA Reports. Hamburger menu. All the page elements are displayed correctly.");
             }
+#endregion
         }
 
         public void VerifyFinalReport()
