@@ -124,8 +124,12 @@
     <Compile Include="ADPageFactory\TotalSolutions\WorkBench\WorkBenchCa.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\WorkBench\WorkBenchLobby.cs" />
     <Compile Include="ADPageFactory\WFN\Login.cs" />
+    <Compile Include="ADPageFactory\WFN\Setup\Security\AccessPermissions\AccessPermissionLobby.cs" />
+    <Compile Include="ADPageFactory\WFN\Setup\Security\AccessPermissions\UserAccessPermissions.cs" />
     <Compile Include="ADPageFactory\WFN\WfnAddClient.cs" />
     <Compile Include="ADPageFactory\WFN\WFNAdminHomePage.cs" />
+    <Compile Include="ADPageFactory\WFN\WfnHeader.cs" />
+    <Compile Include="ADPageFactory\WFN\WfnRegisterClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\Data.cs" />
     <Compile Include="resources\Environments.cs" />
@@ -191,7 +195,35 @@
       <DependentUpon>WFN_SubmissionInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ADPageFactory\WFN\Home\" />
+    <Folder Include="ADPageFactory\WFN\MySelf\" />
+    <Folder Include="ADPageFactory\WFN\People\" />
+    <Folder Include="ADPageFactory\WFN\Process\" />
+    <Folder Include="ADPageFactory\WFN\Reports\" />
+    <Folder Include="ADPageFactory\WFN\Resources\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\AutoEnrollmentSettings\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\BenefitOfferings\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\BenefitProviders\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\BenefitSettings\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\COBRAContacts\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\EnrollmentDependencies\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\EnrollmentProfiles\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\PlanSetup\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\RateStructure\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Benefits\WaivePlans\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Mobile\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Security\MembershipRules\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Security\SecurityManagement\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Security\UserSecurityReport\" />
+    <Folder Include="ADPageFactory\WFN\Setup\TimeAndAttendance\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\CustomBusinessRules\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\CustomFields\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\LogFiles\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\SystemOptions\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\UserLogs\" />
+    <Folder Include="ADPageFactory\WFN\Setup\Tools\ValidationTables\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

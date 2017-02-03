@@ -100,7 +100,7 @@ namespace ADP_Tests.resources
      //       report.Flush();
      //       report.EndTest(test);   
             Report.Close();
-            WebDriver.GetDriver(_driver).Quit();
+   //         WebDriver.GetDriver(_driver).Quit();
 
         }
         public static void CloseWebDriver()

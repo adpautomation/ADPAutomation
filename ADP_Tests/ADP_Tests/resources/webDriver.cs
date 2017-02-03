@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -26,6 +27,8 @@ namespace ADP_Tests.resources
 
         private static DesiredCapabilities Caps()
         {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--no-startup-window");
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.SetCapability(CapabilityType.BrowserName, "chrome");
             return caps;
@@ -64,8 +67,9 @@ namespace ADP_Tests.resources
                         break;
                     case Browser.Remote:
                         _driver = new RemoteWebDriver(new Uri(_gridUrl), Caps());
-                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                        _driver.Manage().Window.Maximize();                        
+                        _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));      
+                        _driver.Manage().Window.Position = new Point(-2000, 0);
+                        _driver.Manage().Window.Maximize();
                         break;
                     case Browser.Phantom:
                         _driver = new PhantomJSDriver();
@@ -132,7 +136,7 @@ namespace ADP_Tests.resources
         public static void WaitVisibleText(IWebElement element, String text)
         {
 
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(90));
             try
             {
                 _wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
@@ -224,7 +228,7 @@ namespace ADP_Tests.resources
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(90));
             try
             {
-                StandBy(1);
+               // StandBy(1);
                 _wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 90 seconds of waiting");
             }

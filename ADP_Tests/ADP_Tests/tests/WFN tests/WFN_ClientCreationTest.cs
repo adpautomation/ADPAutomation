@@ -6,6 +6,8 @@ using NUnit.Framework.Interfaces;
 
 namespace ADP_Tests.tests.WFN_tests
 {
+    [TestFixture]
+    [Parallelizable(ParallelScope.Fixtures)]
     public class WfnClientCreation
     {
         [OneTimeSetUp]
@@ -28,14 +30,15 @@ namespace ADP_Tests.tests.WFN_tests
 
             WebDriver.OpenUrl(TestCredentialsWindow.WFN_Env);
 
+            #endregion
+            #region Start the reporter tool
+            Logger.GetLogger("WFN Client Creation Test");
             #endregion           
             #region Login to the Total Solutions
             var login = new Login();
             login.LoginToWFN();
             #endregion
-            #region Start the reporter tool
-            Logger.GetLogger("WFN Client Creation Test");
-            #endregion
+            
         }
         [OneTimeTearDown]
         public void AfterEntireTest()
@@ -51,7 +54,7 @@ namespace ADP_Tests.tests.WFN_tests
         }
 
         [Test]
-        public void VerifyWfnClientCreation()
+        public void WFN_CreateClient()
         {
             Logger.StartLogger("WFN Client Creation", "User should be able to create practitioner account");
             var home =  new WfnAdminHomePage();
@@ -62,6 +65,24 @@ namespace ADP_Tests.tests.WFN_tests
             addClient.ClientOptions();
             addClient.CreateCompany();
             addClient.CreateUser();
+        }
+        [Test]
+        public void WFN_RegisterClient()
+        {
+            Logger.StartLogger("WFN Client Creation", "User should be able to create practitioner account");
+            var register = new WfnRegisterClient();
+            register.CreatePassword();
+            register.EnterActivationCode();
+            register.QuestionsAnswers();
+            register.ComputerType();
+        }
+
+        [Test]
+        public void WFN_SetUpClient()
+        {
+            var header = new WfnHeader();
+            header.SetUpAccessPermissions();
+             
         }
     }
 }
