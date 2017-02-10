@@ -228,7 +228,7 @@ namespace ADP_Tests.resources
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(90));
             try
             {
-               // StandBy(1);
+                StandBy(1);
                 _wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
                 System.Diagnostics.Debug.Write("Element" + " " + by.ToString() + " " + "has disappeared after 90 seconds of waiting");
             }

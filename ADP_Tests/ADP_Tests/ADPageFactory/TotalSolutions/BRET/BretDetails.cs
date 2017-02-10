@@ -89,7 +89,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BRET
 
         public void NavigateToSolutions()
         {
-
+            WaitInvisibleElement(_loaderModal);
             Click(_bsButton);
         }
 

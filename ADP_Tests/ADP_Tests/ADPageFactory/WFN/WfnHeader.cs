@@ -27,14 +27,14 @@ namespace ADP_Tests.ADPageFactory.WFN
         private IWebElement _securityLink;
 
         [FindsBy(How = How.XPath, Using = "//span[.='Access Permissions']")]
-        private IWebElement _accessPErmissionLink;
+        private IWebElement _accessPermissionLink;
 
         [FindsBy(How = How.XPath, Using = "//div[@id='whatsnewdialog']//span[@data-dojo-attach-point = 'closeButtonNode']")]
         private IWebElement _closeWindows;
 
         public WfnHeader() : base()
         {
-            WaitVisibleElement(_firstTimeTitle);
+//            WaitVisibleElement(_firstTimeTitle);
         }
 
         public void SetUpAccessPermissions()
@@ -43,14 +43,14 @@ namespace ADP_Tests.ADPageFactory.WFN
             {
                 Click(_closeWindow);
                 WaitInvisibleElement(_window);
+            }
                 Click(_setupLink);
                 Click(_securityLink);
-                Click(_accessPErmissionLink);
+                Click(_accessPermissionLink);
                 var access = new AccessPermissionLobby();
                 access.NavigatePayrollPeopleAccess();
                 var access2 = new UserAccessPermissions();
                 access2.GetAccessForPractitioner();
-            }
         }
     }
 }

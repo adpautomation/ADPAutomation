@@ -18,7 +18,7 @@ namespace ADP_Tests.ADPageFactory.WFN.Setup.Security.AccessPermissions
         [FindsBy(How = How.Id, Using = "role")]
         private IWebElement _roleField;
 
-        [FindsBy(How = How.Id, Using = "tableGridSearchButton")]
+        [FindsBy(How = How.Id, Using = "filter-search")]
         private IWebElement _filterButton;
 
         [FindsBy(How = How.XPath, Using = "//span[.='ractitioner, p']")]

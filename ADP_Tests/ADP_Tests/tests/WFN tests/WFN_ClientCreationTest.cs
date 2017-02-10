@@ -34,7 +34,7 @@ namespace ADP_Tests.tests.WFN_tests
             #region Start the reporter tool
             Logger.GetLogger("WFN Client Creation Test");
             #endregion           
-            #region Login to the Total Solutions
+            #region Login to WFN
             var login = new Login();
             login.LoginToWFN();
             #endregion
