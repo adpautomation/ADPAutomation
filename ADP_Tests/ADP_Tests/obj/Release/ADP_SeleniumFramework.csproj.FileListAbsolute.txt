@@ -18,7 +18,12 @@ C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Relea
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\WebDriver.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\WebDriver.Support.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_SeleniumFramework.csprojResolveAssemblyReference.cache
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.SmokeTestWindow.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_SeleniumFramework.csproj.GenerateResource.Cache
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.dll
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.pdb
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\Microsoft.VisualStudio.QualityTools.WebTestFramework.dll
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\Microsoft.VisualStudio.QualityTools.WebTestFramework.xml
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.SmokeTestWindowInfo.resources
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.TestCredentialsWindow.resources
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.WFN_CreateClientInfo.resources
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.WFN_SubmissionInfo.resources

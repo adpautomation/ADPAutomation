@@ -25,9 +25,9 @@ namespace ADP_Tests.ADP_PageFactory_TotalSolutions
         public void LoginToMobile()
         {
             _userName.Clear();
-            _userName.SendKeys(TestCredentialsWindow.Username);
+            _userName.SendKeys("ramazana");
             _password.Clear();
-            _password.SendKeys(TestCredentialsWindow.Password);
+            _password.SendKeys("ILosha#15121985");
             StandBy(2);
             Click(_loginButton);
         }

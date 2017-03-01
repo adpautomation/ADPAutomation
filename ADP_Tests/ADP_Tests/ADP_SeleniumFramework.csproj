@@ -133,6 +133,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\Data.cs" />
     <Compile Include="resources\Environments.cs" />
+    <Compile Include="resources\Jenkins.cs" />
     <Compile Include="resources\Logger.cs" />
     <Compile Include="resources\webDriver.cs" />
     <Compile Include="SmokeTestWindowInfo.cs">
@@ -148,6 +149,7 @@
       <DependentUpon>TestCredentialsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="tests\Total Solution tests\BOB_SmokeTest.cs" />
+    <Compile Include="tests\Total Solution tests\JenkinsTest.cs" />
     <Compile Include="tests\Total Solution tests\PlanComparisonTest.cs" />
     <Compile Include="tests\Total Solution tests\SmokeTest.cs" />
     <Compile Include="tests\Total Solution tests\BRET_SmokeTest.cs" />

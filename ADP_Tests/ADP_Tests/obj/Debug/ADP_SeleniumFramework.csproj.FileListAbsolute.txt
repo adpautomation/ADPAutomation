@@ -41,6 +41,4 @@ C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.TestCredentialsWindow.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.WFN_SubmissionInfo.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.SmokeTestWindowInfo.resources
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.WebTestFramework.dll
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.WebTestFramework.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Debug\ADP_Tests.WFN_CreateClientInfo.resources

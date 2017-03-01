@@ -24,15 +24,6 @@ namespace ADP_Tests.tests.Total_Solution_tests
         [OneTimeSetUp]
         public void OneTimesetUp()
         {
-            #region Open the window to insert test parameters 
-            var info = new SmokeTestWindowInfo();
-            info.TopMost = true;
-            info.ShowDialog();
-            var window = new TestCredentialsWindow();
-            window.ShowDialog();
-
-            #endregion
-
             #region Initializing remote web driver
 
             WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
@@ -41,7 +32,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
 
             #region Open predefined environment
 
-            WebDriver.OpenUrl(TestCredentialsWindow.Env);
+            WebDriver.OpenUrl(Jenkins.Env());
 
             #endregion
 
