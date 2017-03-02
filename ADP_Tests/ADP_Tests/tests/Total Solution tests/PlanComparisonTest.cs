@@ -1,10 +1,9 @@
 ﻿using ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB;
-using ADP_Tests.ADP_PageFactory;
+using ADP_Tests.ADP_PageFactory_TotalSolutions;
 using ADP_Tests.resources;
 using NUnit.Framework;
-using ADP_Tests.ADP_PageFactory_TotalSolutions;
 
-namespace ADP_Tests.tests
+namespace ADP_Tests.tests.Total_Solution_tests
 {
     [TestFixture]
     [Parallelizable]
@@ -14,10 +13,8 @@ namespace ADP_Tests.tests
         [SetUp]
         public void SetUp()
         {
-            TestCredentialsWindow window = new TestCredentialsWindow();
-            window.ShowDialog();
             WebDriver.GetDriver(WebDriver.Initialize(WebDriver.Browser.Remote));
-            WebDriver.OpenUrl(TestCredentialsWindow.Env);
+            WebDriver.OpenUrl(Jenkins.Env());
             Login login = new Login();
             login.LoginToMobile();
             Logger.GetLogger("Plan Comparison Test");

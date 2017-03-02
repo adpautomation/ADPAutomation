@@ -103,7 +103,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         }
         public void VerifyUnmapped()
         {
-            var reader = new StreamReader(File.OpenRead("C:/AznariyRamazanov/JMeter Scripts/ErrorLog.csv"));
+            var reader = new StreamReader(File.OpenRead("C:/AznariyRamazanov/JMeter Scripts/ValidatePlanComparison/ErrorLog.csv"));
             List<string> companyCodes = new List<string>();
             List<string> testStatus = new List<string>();
             reader.ReadLine();
