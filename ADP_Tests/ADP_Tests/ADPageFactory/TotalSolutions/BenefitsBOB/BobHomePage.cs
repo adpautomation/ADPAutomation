@@ -520,7 +520,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         {
             WaitInvisibleElement(_loadingBar);
             Click(_paygroupCodeOrNameField);
-            _paygroupCodeOrNameField.SendKeys(TestCredentialsWindow.ValidCompanyCode);
+            _paygroupCodeOrNameField.SendKeys(Jenkins.CompanyCode);
             Click(_searchIcon);
             WaitVisibleText(_companyName, "");
             Click(_companyName);

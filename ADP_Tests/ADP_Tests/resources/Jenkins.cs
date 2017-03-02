@@ -11,6 +11,9 @@ namespace ADP_Tests.resources
         public static string Browser = System.Environment.GetEnvironmentVariable("Browser");
         public static string Environment = System.Environment.GetEnvironmentVariable("Environment");
         public static string Impersonate = System.Environment.GetEnvironmentVariable("User to impersonate");
+        public static string BretId = System.Environment.GetEnvironmentVariable("BRET ID");
+        public static string Mep = System.Environment.GetEnvironmentVariable("MEP Company Code");
+        public static string CompanyCode = System.Environment.GetEnvironmentVariable("Benefits BOB Company Code");
 
 
         public static string Env()

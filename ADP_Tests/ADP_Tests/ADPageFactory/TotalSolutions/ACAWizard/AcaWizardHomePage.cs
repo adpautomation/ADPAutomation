@@ -6,6 +6,8 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
 {
     class AcaWizardHomePage: AdpAbstractPageFactory
     {
+        private string ValidFEIN = "111111111";
+
         private readonly By _title = By.XPath("//button[@id='adp-current-breadcrumb-Search']");
 
         private readonly By _loadingBar = By.Id("adp-bar-loading-indicator");
@@ -47,7 +49,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
 
         public void NavigateAca()
         {
-            _feinField.SendKeys((TestCredentialsWindow.ValidFein));
+            _feinField.SendKeys(ValidFEIN);
             Click(_searchButton);
             Click(_yearDropDown);
             Click(_year2016);

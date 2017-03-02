@@ -12,7 +12,7 @@ namespace ADP_Tests.resources
     {
         private static IWebDriver _driver;
         private static String _curentTime = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-        private static String _basePath = "C:\\AznariyRamazanov\\TestResults\\";
+        private static String _basePath = "C:\\AznariyRamazanov\\VisualStudioWorkSpace\\TfsUtils\\ADP_Tests\\ADP_Tests\\TestResults";
         [ThreadStatic]
         private static Logger _instance = null;
         private static String _reportPath = System.IO.Path.Combine(_basePath, ("Report_" + _curentTime + "\\"));
@@ -35,7 +35,7 @@ namespace ADP_Tests.resources
                 _instance = new Logger(testSuiteName);
                 System.IO.Directory.CreateDirectory(_reportPath);
                 String currentTimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-                String htmlReportPath = _reportPath + testSuiteName + "_" + currentTimeStamp + ".html";
+                String htmlReportPath = _basePath + testSuiteName + "_" + currentTimeStamp + ".html";
                 Report = new ExtentReports(htmlReportPath, false, DisplayOrder.NewestFirst);
             }
             return _instance;
@@ -48,12 +48,12 @@ namespace ADP_Tests.resources
             String time = DateTime.Now.ToString("HH : mm");
             _test = Report.StartTest(name, description);
             _test.AssignCategory(date, time);
-            _test.AssignAuthor("Environment:" + " " + "<b>" + TestCredentialsWindow.Env + "</b>");
+            _test.AssignAuthor("Environment:" + " " + "<b>" + Jenkins.Env() + "</b>");
         }
         public static String TakeScreenShot()
         {
             String currentTimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-            String imageAbsolutePath = _reportPath + currentTimeStamp + ".png";
+            String imageAbsolutePath = _basePath + currentTimeStamp + ".png";
             String imageRelativePath = currentTimeStamp + ".png";
             var fileName = new StringBuilder(imageAbsolutePath);
             var screenShot = ((ITakesScreenshot)WebDriver.GetDriver(_driver)).GetScreenshot();
@@ -100,7 +100,7 @@ namespace ADP_Tests.resources
      //       report.Flush();
      //       report.EndTest(test);   
             Report.Close();
-   //         WebDriver.GetDriver(_driver).Quit();
+            WebDriver.GetDriver(_driver).Quit();
 
         }
         public static void CloseWebDriver()

@@ -8,6 +8,8 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
 {
     class AcaWizardReport : AdpAbstractPageFactory
     {
+        private string ValidFEIN = "111111111";
+
         private readonly string _folder = "C:/Users/ramazana/Downloads";
 
         private readonly By _title = By.XPath("//button[@id='adp-current-breadcrumb-Report']");
@@ -208,7 +210,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
             string[] files = System.IO.Directory.GetFiles(_folder, "*.xls", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
-                Logger.screenshot_PASS("FEIN for" + " " + "<b>" + TestCredentialsWindow.ValidFein + "</b>" + " " + "is successfully downloaded to" + " " + _folder);
+                Logger.screenshot_PASS("FEIN for" + " " + "<b>" + ValidFEIN + "</b>" + " " + "is successfully downloaded to" + " " + _folder);
             }
             else
             {

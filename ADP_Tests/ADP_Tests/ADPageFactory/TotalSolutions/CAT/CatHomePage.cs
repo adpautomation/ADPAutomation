@@ -1,4 +1,5 @@
 ﻿using ADP_Tests.ADP_PageFactory;
+using ADP_Tests.resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -25,7 +26,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.CAT
         public void NavigateClientLevel()
         {
             Click(_clientSearchField);
-            _clientSearchField.SendKeys(TestCredentialsWindow.ValidCompanyCode);
+            _clientSearchField.SendKeys(Jenkins.CompanyCode);
             Click(_companyName);
         }
     }

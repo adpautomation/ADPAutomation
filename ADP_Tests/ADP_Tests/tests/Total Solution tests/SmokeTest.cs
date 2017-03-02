@@ -59,7 +59,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
         [SetUp]
         public void SetUp()
         {
-            WebDriver.OpenUrl(TestCredentialsWindow.Env);
+            WebDriver.OpenUrl(Jenkins.Env());
         }
 
         [Test, Order(1)]
@@ -108,8 +108,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
         [Test, Order(5)]
         public void BOB_ParentLookUp()
         {
-            Logger.StartLogger("BOB Home Page",
-                "User should be able to open BOB LookUp page and apply different filters");
+            Logger.StartLogger("BOB Home Page", "User should be able to open BOB LookUp page and apply different filters");
             var lobby = new AdpLobby();
             lobby.Navigate(AdpLobby.Tile.BenefitsBob);
             var home = new BobHomePage();

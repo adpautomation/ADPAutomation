@@ -132,7 +132,7 @@ namespace ADP_Tests.ADP_PageFactory_TotalSolutions
             try
             {
                 WaitInvisibleElement(_loadingBar);
-                StringAssert.AreEqualIgnoringCase(TestCredentialsWindow.ImpersonatedUser, _headerAccountName.Text);
+                StringAssert.AreEqualIgnoringCase(Jenkins.Impersonate, _headerAccountName.Text);
                 Logger.screenshot_PASS("Impersonate test has passed");
             }
             catch (AssertionException ex)

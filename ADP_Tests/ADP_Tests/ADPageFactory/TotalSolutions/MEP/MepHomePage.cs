@@ -67,15 +67,15 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.MEP
 
         public void NavigateElection()
         {
-            _searchField.SendKeys(TestCredentialsWindow.ValidMep);
-            Logger.screenshot_PASS("Using" + " " + "<b>" + TestCredentialsWindow.ValidMep + "</b>" + " " + "as test company code");
+            _searchField.SendKeys(Jenkins.Mep);
+            Logger.screenshot_PASS("Using" + " " + "<b>" + Jenkins.Mep + "</b>" + " " + "as test company code");
             Click(_searchButton);
             Click(_navigateRecordKeepingLevel);
         }
 
         public void NavigateCompany()
         {
-            _searchField.SendKeys(TestCredentialsWindow.ValidMep);
+            _searchField.SendKeys(Jenkins.Mep);
             Click(_searchButton);
             Click(_navigateCompanyLevel);
         }

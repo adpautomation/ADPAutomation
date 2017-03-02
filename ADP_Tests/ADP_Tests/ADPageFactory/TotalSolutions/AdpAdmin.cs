@@ -33,10 +33,10 @@ namespace ADP_Tests.ADP_PageFactory_TotalSolutions
 
         public void ImpersonateUser()
         {
-            _inputField.SendKeys(TestCredentialsWindow.ImpersonatedUser);
+            _inputField.SendKeys(Jenkins.Impersonate);
             Click(_searchIcon);
             Click(_impersonateButton);
-            Logger.screenshot_PASS("Trying to impersonate" + " " + "<b>" + TestCredentialsWindow.ImpersonatedUser + "</b>");
+            Logger.screenshot_PASS("Trying to impersonate" + " " + "<b>" + Jenkins.Impersonate + "</b>");
             Click(_impersonateButtonYes);
         }
     }
