@@ -17,7 +17,6 @@ C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Relea
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\nunit.framework.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\WebDriver.xml
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\bin\Release\WebDriver.Support.xml
-C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_SeleniumFramework.csprojResolveAssemblyReference.cache
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_SeleniumFramework.csproj.GenerateResource.Cache
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.dll
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.pdb
