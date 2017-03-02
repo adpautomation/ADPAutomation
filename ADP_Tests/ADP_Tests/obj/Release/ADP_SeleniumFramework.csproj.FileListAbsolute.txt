@@ -26,3 +26,4 @@ C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Relea
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.TestCredentialsWindow.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.WFN_CreateClientInfo.resources
 C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_Tests.WFN_SubmissionInfo.resources
+C:\AznariyRamazanov\VisualStudioWorkSpace\TfsUtils\ADP_Tests\ADP_Tests\obj\Release\ADP_SeleniumFramework.csprojResolveAssemblyReference.cache

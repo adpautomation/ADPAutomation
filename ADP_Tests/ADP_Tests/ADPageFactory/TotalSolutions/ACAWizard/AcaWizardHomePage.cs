@@ -30,7 +30,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
         [FindsBy(How = How.XPath, Using = "//div[.='2015']")]
         private readonly IWebElement _year2015;
 
-        [FindsBy(How = How.XPath, Using = "//button[.='Show Report']")]
+        [FindsBy(How = How.Id, Using = "aca-select-report-dialog-action-button")]
         private readonly IWebElement _showReportButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Close']")]
