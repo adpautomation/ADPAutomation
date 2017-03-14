@@ -66,7 +66,14 @@ namespace ADP_Tests.tests.Total_Solution_tests
         [SetUp]
         public void SetUp()
         {
-            WebDriver.OpenUrl(Jenkins.Env());
+            if (Jenkins.Environment == null)
+            {
+                WebDriver.OpenUrl("http://bsg-mobile-dev/dist/#/lobby");
+            }
+            else
+            {
+                WebDriver.OpenUrl(Jenkins.Env());
+            }
         }
 
         [Test, Order(1)]
@@ -150,9 +157,33 @@ namespace ADP_Tests.tests.Total_Solution_tests
             details.NavigateSolutions();
             var solutions = new BobSolutions();
             solutions.VerifyContents();
+            solutions.NavigateToClassesModal();
+            var setup = new BobClassesSetupModal();
+            setup.VerifyContents();
         }
 
         [Test, Order(8)]
+        public void BOB_MobifySolution()
+        {
+            Logger.StartLogger("BOB Plans", "User should be able to navigate to BOB Plans page");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.BenefitsBob);
+            var home = new BobHomePage();
+            home.NavigateClientLevel();
+            var details = new BobParentDetails();
+            details.NavigateSolutions();
+            var solutions = new BobSolutions();
+            solutions.NavigateToModifySolution();
+        }
+
+        [Test, Order(9)]
+        public void BOB_ModifyContributions()
+        {
+
+        }
+
+
+        [Test, Order(10)]
         public void Cat()
         {
             Logger.StartLogger("CAT Home Page", "User should be able to navigate to CAT page");
@@ -173,7 +204,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
             disability.VerifyContents();
         }
 
-        [Test, Order(9)]
+        [Test, Order(11)]
         public void Bret()
         {
             Logger.StartLogger("BRET", "User should be able to navigate to BRET Solutions");
@@ -198,7 +229,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
             modify.VerifyContents();
         }
 
-        [Test, Order(10)]
+        [Test, Order(12)]
         public void RateSheets()
         {
             Logger.StartLogger("Rate Sheets", "User should be able to navigate to Rate Sheets and generate the report");
@@ -209,7 +240,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
             sheets.NavigatetoSheets();
         }
 
-        [Test, Order(11)]
+        [Test, Order(13)]
         public void Mep()
         {
             Logger.StartLogger("MEP", "User should be able to look for and navigate to Company Level");
@@ -227,7 +258,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
 
         }
 
-        [Test, Order(12)]
+        [Test, Order(14)]
         public void ACA_Wizard()
         {
             Logger.StartLogger("ACA Wizard", "User should be able to see the report");

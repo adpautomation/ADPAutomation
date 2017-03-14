@@ -48,7 +48,14 @@ namespace ADP_Tests.resources
             String time = DateTime.Now.ToString("HH : mm");
             _test = Report.StartTest(name, description);
             _test.AssignCategory(date, time);
-            _test.AssignAuthor("Environment:" + " " + "<b>" + Jenkins.Env() + "</b>");
+            if (Jenkins.Environment == null)
+            {
+                _test.AssignAuthor("Environment:" + " " + "<b> http://bsg-mobile-dev/dist/#/lobby </b>");
+            }
+            else
+            {
+                _test.AssignAuthor("Environment:" + " " + "<b>" + Jenkins.Env() + "</b>");
+            }
         }
         public static String TakeScreenShot()
         {

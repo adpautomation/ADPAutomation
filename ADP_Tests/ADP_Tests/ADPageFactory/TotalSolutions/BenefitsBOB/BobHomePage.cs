@@ -520,9 +520,16 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         {
             WaitInvisibleElement(_loadingBar);
             Click(_paygroupCodeOrNameField);
-            _paygroupCodeOrNameField.SendKeys(Jenkins.CompanyCode);
+            if (Jenkins.CompanyCode == null)
+            {
+                _paygroupCodeOrNameField.SendKeys("00A");
+            }
+            else
+            {
+                _paygroupCodeOrNameField.SendKeys(Jenkins.CompanyCode);
+            }
             Click(_searchIcon);
-            WaitVisibleText(_companyName, "");
+            StandBy(1);
             Click(_companyName);
         }
     }

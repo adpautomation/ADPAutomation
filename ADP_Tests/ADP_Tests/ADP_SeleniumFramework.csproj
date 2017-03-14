@@ -105,6 +105,7 @@
     <Compile Include="ADPageFactory\TotalSolutions\AdpAdmin.cs" />
     <Compile Include="ADPageFactory\AdpAbstractPageFactory.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\AdpLobby.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BOBClassesSetupModal.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobHomePage.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobParentDetails.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobSolutions.cs" />

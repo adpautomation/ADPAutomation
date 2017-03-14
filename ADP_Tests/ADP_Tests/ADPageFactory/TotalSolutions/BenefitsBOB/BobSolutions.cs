@@ -71,6 +71,14 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='add']")]
         private IWebElement _addSolutionIcon;
 
+        [FindsBy(How = How.XPath, Using = "//adp-solution-card[@id='benefit-solution-proposed-0']//i[.='mode_edit']")]
+        private IWebElement _modifySolutionIcon;
+
+        [FindsBy(How = How.XPath, Using = "//span[.='Plans']")]
+        private IWebElement _plansButton;
+
+
+
 
 
         public BobSolutions() : base()
@@ -128,6 +136,17 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
                     Console.WriteLine(ex.Message);
                 }                
             }
+        }
+
+        public void NavigateToClassesModal()
+        {
+            _setupIcon.Click();
+        }
+
+        public void NavigateToModifySolution()
+        {
+            Click(_modifySolutionIcon);
+            Click(_plansButton);
         }
     }
 }
