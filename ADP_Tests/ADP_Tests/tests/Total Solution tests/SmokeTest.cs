@@ -32,7 +32,14 @@ namespace ADP_Tests.tests.Total_Solution_tests
 
             #region Open predefined environment
 
-            WebDriver.OpenUrl(Jenkins.Env());
+            if (Jenkins.Environment==null)
+            {
+                    WebDriver.OpenUrl("http://bsg-mobile-dev/dist/#/lobby");
+            }
+            else
+            {
+                WebDriver.OpenUrl(Jenkins.Env());
+            }
 
             #endregion
 

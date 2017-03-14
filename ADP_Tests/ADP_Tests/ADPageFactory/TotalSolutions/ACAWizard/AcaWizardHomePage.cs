@@ -21,13 +21,13 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
         [FindsBy(How = How.XPath, Using = "//md-select[@aria-label='Year']")]
         private readonly IWebElement _yearDropDown;
 
-        [FindsBy(How = How.XPath, Using = "//div[.='2017']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@value='2017']//div[.='2017']")]
         private readonly IWebElement _year2017;
 
-        [FindsBy(How = How.XPath, Using = "//div[.='2016']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@value='2016']//div[.='2016']")]
         private readonly IWebElement _year2016;
 
-        [FindsBy(How = How.XPath, Using = "//div[.='2015']")]
+        [FindsBy(How = How.XPath, Using = "//md-option[@value='2015']//div[.='2015']")]
         private readonly IWebElement _year2015;
 
         [FindsBy(How = How.Id, Using = "aca-select-report-dialog-action-button")]

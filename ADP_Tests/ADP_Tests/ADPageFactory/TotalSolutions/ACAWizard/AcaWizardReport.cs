@@ -126,7 +126,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.ACAWizard
         [FindsBy(How = How.XPath, Using = "//span[.='View Different Report Year']")]
         private IWebElement _viewDifferentReportYear;
 
-        [FindsBy(How = How.XPath, Using = "//body[@ng-controller='MainController']")]
+        [FindsBy(How = How.XPath, Using = "//body[@ng-controller='MainController as mainCtrl']")]
         private IWebElement _curtain;
 
         public AcaWizardReport() : base()
