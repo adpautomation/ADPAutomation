@@ -55,7 +55,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "(//h6[.='Offering Method'])[1]")]
         private readonly IWebElement _renewalTabOfferingMethod;
 
-        [FindsBy(How = How.XPath, Using = "(//button[@aria-label='delete']//i[.='delete'])[1]")]
+        [FindsBy(How = How.XPath, Using = "(//button[@aria-label='delete'])[1]")]
         private readonly IWebElement _renewalTabDeleteIcon;
 
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Close']")]
