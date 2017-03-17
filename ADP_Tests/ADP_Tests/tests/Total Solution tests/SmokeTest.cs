@@ -120,7 +120,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
         }
 
         [Test, Order(5)]
-        public void BOB_ParentLookUp()
+        public void BOB_HomePage()
         {
             Logger.StartLogger("BOB Home Page", "User should be able to open BOB LookUp page and apply different filters");
             var lobby = new AdpLobby();
@@ -128,11 +128,10 @@ namespace ADP_Tests.tests.Total_Solution_tests
             var home = new BobHomePage();
             home.VerifyContents();
             home.VerifyFilters();
-            home.NavigateClientLevel();
         }
 
         [Test, Order(6)]
-        public void BOB_ParentSummary()
+        public void BOB_ParentPage()
         {
             Logger.StartLogger("BOB Parent Page", "User should be able to download Roster and WSE Presentation");
             var lobby = new AdpLobby();
@@ -143,6 +142,7 @@ namespace ADP_Tests.tests.Total_Solution_tests
             details.VerifyContents();
             details.download_WSE_Presentation();
             details.download_Roster();
+            details.download_ClientDecisionDeck();
         }
 
         [Test, Order(7)]

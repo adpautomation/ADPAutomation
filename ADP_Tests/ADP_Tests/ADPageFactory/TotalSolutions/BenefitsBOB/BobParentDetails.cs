@@ -26,6 +26,9 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Download Roster']")]
         private IWebElement _roster;
 
+        [FindsBy(How = How.XPath, Using = "//button[@aria-label='Client Decision Deck']")]
+        private IWebElement _clientDecisionDeck;
+
         [FindsBy(How = How.XPath, Using = "//button[@aria-label='Select Download...']")]
         private IWebElement _downloadPlanButton;
 
@@ -124,6 +127,28 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
             else
             {
                 Logger.Fail("Unable to download Roster file");
+            }
+        }
+
+        public void download_ClientDecisionDeck()
+        {
+            string[] filesToDelete = Directory.GetFiles(_folder);
+            foreach (string fileToDelete in filesToDelete)
+                File.Delete(fileToDelete);
+            Click(_choosePlanTypeDropDown);
+            StandBy(1);
+            Click(_clientDecisionDeck);
+            StandBy(1);
+            Click(_downloadPlanButton);
+            StandBy(5);
+            string[] files = System.IO.Directory.GetFiles(_folder, "*.xlsx", SearchOption.AllDirectories);
+            if (files.Length > 0)
+            {
+                Logger.screenshot_PASS("Client Decision Deck file is successfully downloaded to" + " " + _folder);
+            }
+            else
+            {
+                Logger.Fail("Unable to download Client Decision Deck file");
             }
         }
         public void NavigateSolutions()
