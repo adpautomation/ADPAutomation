@@ -194,20 +194,19 @@ namespace ADP_Tests.resources
 
         public static void Click(IWebElement element)
         {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     if (element.Displayed)
                     {
                             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
                             _wait.Until(ExpectedConditions.ElementToBeClickable(element));
-                            ((IJavaScriptExecutor) _driver).ExecuteScript("window.scrollTo(0," + element.Location.Y + ")");
+                            //((IJavaScriptExecutor) _driver).ExecuteScript("window.scrollTo(0," + element.Location.Y + ")");
                             element.Click();
                             break;
                     }
                     else
                     {
                         Logger.Info("<b><font color = 'orange'>" + "Temporarily unable to click on" + " " + element.Text + "</font></b>");
-                        System.Diagnostics.Debug.Write("Unable to click on" + " " + element.Text);
                     }
                 }
             }

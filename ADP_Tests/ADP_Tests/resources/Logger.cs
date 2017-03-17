@@ -5,6 +5,8 @@ using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using RelevantCodes.ExtentReports;
+using ADP_Tests.resources;
+
 
 namespace ADP_Tests.resources
 {
@@ -70,16 +72,19 @@ namespace ADP_Tests.resources
 
         public static void screenshot_FAIL(String details)
         {
+            WebDriver.StandBy(1);
             _test.Log(LogStatus.Fail, _test.AddScreenCapture(Logger.TakeScreenShot()), "<b><font color = 'red'>" + details + "</font></b>");
         }
         public static void screenshot_PASS(String details)
         {
+            WebDriver.StandBy(1);
             _test.Log(LogStatus.Pass, _test.AddScreenCapture(Logger.TakeScreenShot()), details);
 
         }
 
         public static void screenshot_WARNING(String details)
         {
+            WebDriver.StandBy(1);
             _test.Log(LogStatus.Warning, _test.AddScreenCapture(Logger.TakeScreenShot()), details);
         }
         public static void Info(String details)

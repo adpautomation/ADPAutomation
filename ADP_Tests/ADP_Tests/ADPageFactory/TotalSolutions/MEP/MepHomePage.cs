@@ -11,6 +11,8 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.MEP
 
         private By _loadingBar = By.Id("adp-bar-loading-indicator");
 
+        private By recordKeepingnumber = By.XPath("(//h4[@class='ng-binding'])[1]");
+
         [FindsBy(How = How.XPath, Using = "//input[@ng-model = 'mepSearch.config.query']")]
         private IWebElement _searchField;
 
@@ -70,6 +72,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.MEP
             _searchField.SendKeys(Jenkins.Mep);
             Logger.screenshot_PASS("Using" + " " + "<b>" + Jenkins.Mep + "</b>" + " " + "as test company code");
             Click(_searchButton);
+            WaitVisibleElement(recordKeepingnumber);
             Click(_navigateRecordKeepingLevel);
         }
 
