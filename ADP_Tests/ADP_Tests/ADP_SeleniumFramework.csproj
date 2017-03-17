@@ -109,6 +109,8 @@
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobHomePage.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobParentDetails.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BobSolutions.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BOB_ModifyContributions.cs" />
+    <Compile Include="ADPageFactory\TotalSolutions\BenefitsBOB\BOB_ModifyPlans.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BRET\BretAddClass.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BRET\BretClassesEmployeesSetupModal.cs" />
     <Compile Include="ADPageFactory\TotalSolutions\BRET\BretDetails.cs" />

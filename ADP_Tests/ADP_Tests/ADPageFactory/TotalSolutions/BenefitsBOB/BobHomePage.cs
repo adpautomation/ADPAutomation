@@ -522,11 +522,13 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
             Click(_paygroupCodeOrNameField);
             if (Jenkins.CompanyCode == null)
             {
-                _paygroupCodeOrNameField.SendKeys("00A");
+                Logger.Info("Company Code" + " " + "<b>" + "OOA" + "</b" + " " + "is chosen for the test");
+                _paygroupCodeOrNameField.SendKeys("00A");    
             }
             else
             {
-                _paygroupCodeOrNameField.SendKeys(Jenkins.CompanyCode);
+                Logger.Info("Company Code" + " " + "<b>" + Jenkins.CompanyCode + "</b" + " " + "is chosen for the test");
+                _paygroupCodeOrNameField.SendKeys(Jenkins.CompanyCode);     
             }
             Click(_searchIcon);
             StandBy(1);

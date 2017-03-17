@@ -163,9 +163,9 @@ namespace ADP_Tests.tests.Total_Solution_tests
         }
 
         [Test, Order(8)]
-        public void BOB_MobifySolution()
+        public void BOB_MobifyPlans()
         {
-            Logger.StartLogger("BOB Plans", "User should be able to navigate to BOB Plans page");
+            Logger.StartLogger("BOB Modify Plans", "User should be able to navigate to BOB Modify Plans page");
             var lobby = new AdpLobby();
             lobby.Navigate(AdpLobby.Tile.BenefitsBob);
             var home = new BobHomePage();
@@ -173,13 +173,25 @@ namespace ADP_Tests.tests.Total_Solution_tests
             var details = new BobParentDetails();
             details.NavigateSolutions();
             var solutions = new BobSolutions();
-            solutions.NavigateToModifySolution();
+            solutions.NavigateToModifyPlans();
+            var modifyPlans = new BobModifyPlans();
+            modifyPlans.VerifyContents();
         }
 
         [Test, Order(9)]
         public void BOB_ModifyContributions()
         {
-
+            Logger.StartLogger("BOB Modify Contributions", "User should be able to navigate to BOB Modify Contributions page");
+            var lobby = new AdpLobby();
+            lobby.Navigate(AdpLobby.Tile.BenefitsBob);
+            var home = new BobHomePage();
+            home.NavigateClientLevel();
+            var details = new BobParentDetails();
+            details.NavigateSolutions();
+            var solutions = new BobSolutions();
+            solutions.NavigateToModifyContributions();
+            var contr = new BobModifyContributions();
+            contr.VerifyContents();
         }
 
 

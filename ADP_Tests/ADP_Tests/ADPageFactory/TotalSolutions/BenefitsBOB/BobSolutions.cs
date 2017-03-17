@@ -77,6 +77,9 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "//span[.='Plans']")]
         private IWebElement _plansButton;
 
+        [FindsBy(How = How.XPath, Using = "//span[.='Contributions']")]
+        private IWebElement _contributionsButton;
+
 
 
 
@@ -143,10 +146,16 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
             _setupIcon.Click();
         }
 
-        public void NavigateToModifySolution()
+        public void NavigateToModifyPlans()
         {
             Click(_modifySolutionIcon);
             Click(_plansButton);
+        }
+
+        public void NavigateToModifyContributions()
+        {
+            Click(_modifySolutionIcon);
+            Click(_contributionsButton);
         }
     }
 }
