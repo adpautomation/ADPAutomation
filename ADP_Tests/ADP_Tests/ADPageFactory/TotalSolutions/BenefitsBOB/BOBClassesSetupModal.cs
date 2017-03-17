@@ -12,6 +12,8 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
 {
    public class BobClassesSetupModal: AdpAbstractPageFactory
     {
+        private By _loaderModal = By.Id("adp-bar-loading-indicator");
+
         [FindsBy(How = How.XPath, Using = "//md-tab-item[@aria-selected = 'true']//span[contains(text(), 'Current')]")]
         private readonly IWebElement _currentTab;
 
@@ -56,6 +58,9 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
         [FindsBy(How = How.XPath, Using = "(//button[@aria-label='delete']//i[.='delete'])[1]")]
         private readonly IWebElement _renewalTabDeleteIcon;
 
+        [FindsBy(How = How.XPath, Using = "//button[@aria-label='Close']")]
+        private readonly IWebElement _closeModal;
+
         public BobClassesSetupModal() : base()
         {
         }
@@ -83,6 +88,8 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
             {
                 Logger.screenshot_PASS("Renewal class setup navigation icons are displayed correctly");
             }
+            Click(_closeModal);
+            WaitInvisibleElement(_loaderModal);
         }
     }
  }
