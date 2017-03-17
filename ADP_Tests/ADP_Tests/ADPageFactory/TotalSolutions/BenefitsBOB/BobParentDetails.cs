@@ -141,7 +141,7 @@ namespace ADP_Tests.ADPageFactory.TotalSolutions.BenefitsBOB
             StandBy(1);
             Click(_downloadPlanButton);
             StandBy(5);
-            string[] files = System.IO.Directory.GetFiles(_folder, "*.xlsx", SearchOption.AllDirectories);
+            string[] files = System.IO.Directory.GetFiles(_folder, "*.pptx", SearchOption.AllDirectories);
             if (files.Length > 0)
             {
                 Logger.screenshot_PASS("Client Decision Deck file is successfully downloaded to" + " " + _folder);
